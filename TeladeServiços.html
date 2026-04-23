@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Pet</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+body {
+    font-family: 'Inter', sans-serif;
+}
+</style>
+</head>
+<!--Estrutura principal, onde estamos definindo a cor do fundo, estamos colocando um espaçamento interno(responsavel por deixar ele no centro,
+para o conteudo não ficar colado nas bordas). Esse "md" é responsavel pela "responsividade", significa que em telas medias (tablets/PCs) o espaçamento aumenta para "pd-10"-->
+<body class="bg-[#f5f5f5] p-6 md:p-10">
+
+<div class="max-w-6xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
+<!--O "max-w-6xl mx-auto" é a "caixa" branca centralizada que contem todo o conteudo-->
+    <!-- HEADER -->
+    <div class="mb-12">
+        <span class="text-gray-400 text-sm">Royal Pet</span>
+
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mt-2">
+            Cuidados e Serviços <br>
+            <span class="text-green-600">para o seu Pet 🐾</span>
+        </h1>
+
+        <p class="text-gray-500 mt-4">
+            Agenda, conheça e ofereça o melhor para seu melhor amigo.
+        </p>
+    </div>
+
+    <!-- CARDS PRINCIPAIS -->
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+
+        <!-- CARD -->
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
+
+            <div class="w-20 h-20 mx-auto mb-4 bg-green-100 rounded-xl flex items-center justify-center relative">
+                <span class="absolute top-1 left-2 text-xs opacity-30">🐾</span>
+                <span class="absolute bottom-1 right-2 text-xs opacity-30">🐾</span>
+                <span class="text-2xl text-green-600">🩺</span>
+            </div>
+
+            <h3 class="font-semibold text-lg">Veterinário</h3>
+            <p class="text-gray-500 text-sm mt-2 mb-4">
+                Consultas, vacinas e acompanhamento clínico
+            </p>
+
+            <button class="bg-green-600 text-white px-5 py-2 rounded-full text-sm flex items-center justify-center gap-2 mx-auto hover:bg-green-700">
+                Saiba mais →
+            </button>
+        </div>
+
+        <!-- CARD -->
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
+
+            <div class="w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-xl flex items-center justify-center relative">
+                <span class="absolute top-1 left-2 text-xs opacity-30">🐾</span>
+                <span class="absolute bottom-1 right-2 text-xs opacity-30">🐾</span>
+                <span class="text-2xl text-blue-500">🛁</span>
+            </div>
+
+            <h3 class="font-semibold text-lg">Banho e tosa</h3>
+            <p class="text-gray-500 text-sm mt-2 mb-4">
+                Higiene completa com produtos premium
+            </p>
+
+            <button class="bg-blue-500 text-white px-5 py-2 rounded-full text-sm flex items-center justify-center gap-2 mx-auto hover:bg-blue-600">
+                Saiba mais →
+            </button>
+        </div>
+
+        <!-- CARD -->
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
+
+            <div class="w-20 h-20 mx-auto mb-4 bg-purple-100 rounded-xl flex items-center justify-center relative">
+                <span class="absolute top-1 left-2 text-xs opacity-30">🐾</span>
+                <span class="absolute bottom-1 right-2 text-xs opacity-30">🐾</span>
+                <span class="text-2xl text-purple-600">🎓</span>
+            </div>
+
+            <h3 class="font-semibold text-lg">Adestramento</h3>
+            <p class="text-gray-500 text-sm mt-2 mb-4">
+                Consultas, vacinas e acompanhamento clínico
+            </p>
+
+            <button class="bg-purple-600 text-white px-5 py-2 rounded-full text-sm flex items-center justify-center gap-2 mx-auto hover:bg-purple-700">
+                Saiba mais →
+            </button>
+        </div>
+
+    </div>
+
+    <!-- CARDS SECUNDÁRIOS -->
+    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
+
+            <div class="w-20 h-20 mx-auto mb-4 bg-red-100 rounded-xl flex items-center justify-center relative">
+                <span class="text-2xl text-red-400">🏠</span>
+            </div>
+
+            <h3 class="font-semibold text-lg">Hotel & Day Care</h3>
+            <p class="text-gray-500 text-sm mt-2 mb-4">
+                Hospedagem e creche com todo conforto
+            </p>
+
+            <button class="bg-red-400 text-white px-5 py-2 rounded-full text-sm hover:bg-red-500">
+                Saiba mais →
+            </button>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
+
+            <div class="w-20 h-20 mx-auto mb-4 bg-orange-100 rounded-xl flex items-center justify-center relative">
+                <span class="text-2xl text-orange-500">🐶</span>
+            </div>
+
+            <h3 class="font-semibold text-lg">Adoção de Pets</h3>
+            <p class="text-gray-500 text-sm mt-2 mb-4">
+                Encontre um novo amigo para a sua família
+            </p>
+
+            <button class="bg-orange-500 text-white px-5 py-2 rounded-full text-sm hover:bg-orange-600">
+                Saiba mais →
+            </button>
+        </div>
+
+    </div>
+
+    <!-- RODAPÉ -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+        <div class="bg-gray-100 p-4 rounded-xl flex items-center gap-3">
+            <div class="bg-white p-2 rounded-lg">🚚</div>
+            <div>
+                <p class="font-semibold text-sm">Frete grátis</p>
+                <p class="text-xs text-gray-500">Acima de R$100</p>
+            </div>
+        </div>
+
+        <div class="bg-gray-100 p-4 rounded-xl flex items-center gap-3">
+            <div class="bg-white p-2 rounded-lg">⏱</div>
+            <div>
+                <p class="font-semibold text-sm">Entrega rápida</p>
+                <p class="text-xs text-gray-500">Receba em até 24h</p>
+            </div>
+        </div>
+
+        <div class="bg-gray-100 p-4 rounded-xl flex items-center gap-3">
+            <div class="bg-white p-2 rounded-lg">🛡</div>
+            <div>
+                <p class="font-semibold text-sm">Segurança</p>
+                <p class="text-xs text-gray-500">Ambiente monitorado</p>
+            </div>
+        </div>
+
+        <div class="bg-gray-100 p-4 rounded-xl flex items-center gap-3">
+            <div class="bg-white p-2 rounded-lg">📅</div>
+            <div>
+                <p class="font-semibold text-sm">Agende online</p>
+                <p class="text-xs text-gray-500">Rápido e prático</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Royal Pet
+</footer>
+
+</body>
+</html>

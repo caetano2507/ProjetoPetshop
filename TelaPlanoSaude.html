@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Pet</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+    color: #333;
+}
+
+/* ANIMAÇÃO */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HEADER */
+header {
+    background: #41bdea;
+    padding: 20px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #f7f7f7;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #666666;
+}
+
+/* PLANOS */
+.planos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: rgb(255, 255, 255);
+    padding: 25px;
+    border-radius: 15px;
+    width: 250px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+}
+
+.price {
+    font-size: 24px;
+    color: #38cc24;
+    margin: 10px 0;
+}
+
+/* BOTÃO */
+.btn {
+    background: #6d4cff00;
+    color: rgb(112, 32, 32);
+    padding: 10px;
+    border-radius: 8px;
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #5640d600;
+}
+
+/* SIMULADOR */
+.simulador {
+    background: rgba(150, 42, 42, 0);
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.simulador select, .simulador button {
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+}
+
+.resultado {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #6c4cff;
+}
+
+/* BENEFÍCIOS */
+.beneficios {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/* FAQ */
+.faq {
+    padding: 40px 20px;
+    max-width: 700px;
+    margin: auto;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #a51b1b00;
+}
+</style>
+
+</head>
+<body>
+
+<header class="fade-in">
+    Royal Pet
+</header>
+
+<section class="hero fade-in">
+    <h1>Plano de Saúde para seu Pet</h1>
+    <p>Proteção, cuidado e economia em um só lugar.</p>
+</section>
+
+<section class="planos fade-in">
+
+    <div class="card">
+        <h3>Básico</h3>
+        <div class="price">R$ 29</div>
+        <p>Cuidados essenciais</p>
+    </div>
+
+    <div class="card">
+        <h3>Intermediário</h3>
+        <div class="price">R$ 59</div>
+        <p>Mais proteção</p>
+    </div>
+
+    <div class="card">
+        <h3>Premium</h3>
+        <div class="price">R$ 99</div>
+        <p>Cobertura completa</p>
+    </div>
+
+</section>
+
+<!-- SIMULADOR -->
+<section class="simulador fade-in">
+    <h2>Simule o plano ideal</h2>
+
+    <select id="tipo">
+        <option value="">Tipo de pet</option>
+        <option value="gato">Gato</option>
+        <option value="cachorro">Cachorro</option>
+        <option value="Pássaro">Pássaro</option>
+        <option value="Coelhos">Coelhos</option>
+        <option value="Porquinho da índia">Porquinhos da índia</option>
+        <option value="Hamster e Twister">Hamster e Twister</option>
+        <option value="Chinchilas">Chinchilas</option>
+        <option value="Furão">Furão</option>
+        <option value="Tartarugas">Tartarugas</option>
+        <option value="Largatos">Largatos</option>
+    </select>
+
+    <select id="idade">
+        <option value="">Idade</option>
+        <option value="novo">0-3 anos</option>
+        <option value="adulto">4-8 anos</option>
+        <option value="idoso">+8 anos</option>
+    </select>
+
+    <button onclick="simular()">Simular</button>
+
+    <div class="resultado" id="resultado"></div>
+</section>
+
+<section class="beneficios fade-in">
+    <h2>Por que escolher a Royal Pet?</h2>
+    <p>Planos simples, atendimento rápido e cuidado completo para seu pet.</p>
+</section>
+
+<section class="faq fade-in">
+    <h2>Ficou alguma dúvida?</h2>
+<br>
+    <div class="faq-item">
+        <h4>O plano cobre emergências?</h4>
+        <p>Sim, nos planos intermediário e premium.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4>Tem carência?</h4>
+        <p>Alguns serviços possuem carência de até 30 dias.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4>Posso usar em qualquer clínica?</h4>
+        <p>Não, apenas nas clínicas credenciadas.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4>Inclui vacinas?</h4>
+        <p>Sim, dependendo do plano escolhido.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4>Como faço o cancelamento?</h4>
+        <p>Pode ser feito diretamente pelo suporte.</p>
+    </div>
+
+</section>
+
+<footer>
+    © 2026 Royal Pet
+</footer>
+
+<script>
+function simular() {
+    let tipo = document.getElementById("tipo").value.toLowerCase();
+    let idade = document.getElementById("idade").value;
+    let resultado = document.getElementById("resultado");
+
+    if (!tipo || !idade) {
+        resultado.innerHTML = "Selecione todas as opções.";
+        return;
+    }
+
+    // Preso de custo por animal
+    let custo = 1;
+
+    if (tipo.includes("cachorro") || tipo.includes("furão")) custo = 3;
+    else if (tipo.includes("gato") || tipo.includes("chinchila")) custo = 2;
+    else if (tipo.includes("coelho") || tipo.includes("porquinho")) custo = 2;
+    else if (tipo.includes("tartaruga") || tipo.includes("lagarto")) custo = 3;
+    else custo = 1;
+
+    // Preso da idade
+    let fatorIdade = 1;
+    if (idade === "adulto") fatorIdade = 1.3;
+    if (idade === "idoso") fatorIdade = 1.7;
+
+    let score = custo * fatorIdade;
+
+    let plano = "";
+    let preco = "";
+
+    if (score <= 2) {
+        plano = "Plano Básico";
+        preco = "R$ 29";
+    } else if (score <= 3.5) {
+        plano = "Plano Intermediário";
+        preco = "R$ 59";
+    } else {
+        plano = "Plano Premium";
+        preco = "R$ 99";
+    }
+
+    resultado.innerHTML = `Recomendado: <br><strong>${plano}</strong> - ${preco}<br><small>Baseado no perfil do seu pet</small>`;
+}
+</script>
+<!--Essa parte é bem "dificil" de explicar-->
+<a href="https://wa.me/5511995417758?text=Olá,%20tenho%20interesse%20no%20plano%20da%20Royal%20Pet"
+class="whatsapp-btn" target="_blank">💬</a>
+<!--"href" basicamente foi criado uma "URL" que direciona o usuario para uma pagina do WhatsApp, nesta pagina ele vai encaminhar o usuario para o numero presente na "URL".
+ O numero presente na "URL" recebera uma mensagem que está presente na mesma,"text=Olá,%20tenho%20interesse%20no%20plano%20da%20Royal%20Pet"= Olá, tenho interesse no plano da Royal Pet, É essa a mensagem que vai ser enviada para o numero presente na "URL"-->
+
+<style>
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    color: white;
+    font-size: 24px;
+    padding: 15px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+}
+</style>
+<!--Aqui nessa parte apenas está fazendo a estilização do botão presente no canto inferior direito da tela-->
+
+</body>
+</html>

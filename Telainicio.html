@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoyalPet - Interface</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">Royal<span>Pet</span></div>
+            
+            <nav class="nav-links">
+                <a href="#" class="btn-inicio">Início</a>
+                <a href="#">Produtos</a>
+                <a href="#">Serviços</a>
+                <a href="#">Meu pet</a>
+            </nav>
+
+            <div class="search-and-actions">
+                <div class="search-container">
+                    <input type="text" placeholder="Para seu pet ou sua casa, procure aqui">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <div class="user-icons">
+                    <i class="fa-solid fa-headset"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="hero">
+        <div class="cards-wrapper">
+            <div class="category-card">
+                <div class="card-icon"><img src="https://i.postimg.cc/XJctFj4s/download-(14).png" alt="Rações"></div>
+                <span>Rações</span>
+            </div>
+            <div class="category-card">
+                <div class="card-icon"><img src="https://i.postimg.cc/nM8dwNHP/download-(15).png" alt="Brinquedos"></div>
+                <span>Brinquedos</span>
+            </div>
+            <div class="category-card">
+                <div class="card-icon"><img src="https://i.postimg.cc/SNrTG10N/download-(16).png" alt="Acessórios"></div>
+                <span>Acessórios</span>
+            </div>
+            <div class="category-card">
+                <div class="card-icon"><img src="https://i.postimg.cc/ht8SMBSk/download-(17).png" alt="Casas"></div>
+                <span>Casas</span>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="logo-small">Royal<span>Pet</span></div>
+            <div class="footer-nav">
+                <a href="#">Contato</a>
+                <a href="#">Sobre nós</a>
+            </div>
+        </div>
+    </footer>
+
+<style>
+
+:root {
+    --azul-claro: #90E0EF;
+    --azul-botao: #48CAE4;
+    --cinza-footer: #E0E0E0;
+    --branco-transp: rgba(255, 255, 255, 0.85);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #f4f4f4;
+}
+
+/* --- HEADER --- */
+.main-header {
+    background-color: var(--azul-claro);
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: #444;
+}
+
+.logo span { font-weight: 400; }
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btn-inicio {
+    background-color: var(--azul-botao);
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 50px;
+}
+
+.search-and-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-container {
+    position: relative;
+    background: white;
+    border-radius: 50px;
+    padding: 5px 15px;
+    display: flex;
+    width: 250px;
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    font-size: 12px;
+    width: 100%;
+}
+
+.search-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.user-icons {
+    display: flex;
+    gap: 15px;
+    font-size: 18px;
+}
+
+/* --- HERO & CARDS --- */
+.hero {
+    height: 80vh;
+    background-image: url('seu-petshop-bg.jpg'); /* Adicione sua imagem aqui */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.category-card {
+    background: var(--branco-transp);
+    width: 150px;
+    height: 200px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.category-card:hover { transform: translateY(-5px); }
+
+.card-icon img {
+    width: 900px;
+    height: 110px;
+    object-fit: contain;
+}
+
+.category-card span {
+    font-weight: bold;
+    color: #333;
+}
+
+/* --- FOOTER --- */
+.main-footer {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px;
+    background: var(--cinza-footer);
+    border-radius: 15px;
+    padding: 15px 40px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 992px) {
+    .header-container { flex-direction: column; gap: 15px; }
+    .search-container { width: 100%; }
+    .hero { height: auto; padding: 50px 20px; }
+}
+
+@media (max-width: 600px) {
+    .nav-links { display: none; } /* Esconde menu no mobile para simplificar */
+    .cards-wrapper { gap: 10px; }
+    .category-card { width: 130px; height: 160px; }
+    .footer-content { flex-direction: column; gap: 10px; }
+    .footer-nav a { margin: 0 10px; }
+}
+
+</style>
+    
+</body>
+</html>
