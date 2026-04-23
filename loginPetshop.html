@@ -5,35 +5,60 @@
     <title>Royal Pet - Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Royal Pet - Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <div class ="container">
-
-        <div class ="card">
-            <h2> ROYAL PET </h2>
-
-
-    <!-- LOGIN -->
-     <form>
-        <label>E-mail</label>
-        <input type="email"
-        placeholder="Digite seu e-mail">
-        <br>
-        
-
-        <label>Senha</label>
-        <input type="password"
-        placeholder="Digite sua senha">
-        <br>
-
-        <a href="#">Esqueceu a senha?</a>
-        
-        <button>Entrar</button>
-        <br>
-        <br>
-        <p>Novo no RoyalPet? <a href="#">Crie sua conta</a></p>
-     </form>
-        </div>
-    </div>
-    
+<div class ="container">
+<div class ="card">
+<h2> ROYAL PET </h2>
+ 
+<form id="loginForm">
+<label>E-mail</label>
+<input type="email" id="email" placeholder="Digite seu e-mail" required>
+<br>
+ 
+<label>Senha</label>
+<input type="password" id="senha" placeholder="Digite sua senha" required>
+<br>
+ 
+<a href="#" id="esqueciSenha">Esqueceu a senha?</a>
+ 
+<button type="submit">Entrar</button>
+<br>
+<br>
+<p>Novo no RoyalPet? <a href="cadastroPetshop.html">Crie sua conta</a></p>
+</form>
+</div>
+</div>
+ 
+<script>
+    const loginForm = document.getElementById('loginForm');
+ 
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Impede o recarregamento da página
+ 
+        const email = document.getElementById('email').value;
+        const senha = document.getElementById('senha').value;
+ 
+        // Simulação simples de login
+        if (email === "admin@royalpet.com" && senha === "1234") {
+            alert("Login realizado com sucesso! Bem-vindo.");
+            // Redirecionar para uma home
+        } else {
+            alert("E-mail ou senha incorretos. Tente novamente!");
+        }
+    });
+ 
+    // Função para o "Esqueceu a senha"
+    document.getElementById('esqueciSenha').addEventListener('click', (e) => {
+        e.preventDefault();
+        alert("Enviamos um link de recuperação da senha para o seu e-mail.");
+    });
+</script>
 </body>
 </html>

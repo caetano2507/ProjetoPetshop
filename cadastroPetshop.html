@@ -56,6 +56,12 @@
             cursor: pointer;
         }
 
+        button:active {
+            transform: scale(0.95);
+            background: #444;
+
+        }
+
         .form-grid {
             display: grid;
             grid-template-columns: 2fr 2fr;
@@ -86,40 +92,72 @@
     </style>
 </head>
 <body>
-    <div class="container">
-
-        <h2>ROYAL PET</h2>
-        
+ <div class="container">
+    <h2>ROYAL PET</h2>
+ 
+    <form id="formCadastro">
         <div class="form-grid">
-
-    <!-- Cadastro-->
-        <div class="campo">
-        <label>Nome Completo</label>
-        <input type="text" placeholder="Nome completo"> 
-        </div>
-
-        <div class="campo">
-        <label>E-mail</label>
-        <input type="email" placeholder="E-mail">
-        </div>
-
-        <div class="campo">
-        <label>Senha</label>
-        <input type="password" placeholder="Digite sua senha">
-        </div>
-
-        <div class="campo">
-        <label>Confirmar a senha</label>
-        <input type="password" placeholder="Confirmar senha">
+            <div class="campo">
+                <label>Nome Completo</label>
+                <input type="text" id="nome" placeholder="Nome completo" required>
+            </div>
+ 
+            <div class="campo">
+                <label>E-mail</label>
+                <input type="email" id="email" placeholder="E-mail" required>
+            </div>
+ 
+            <div class="campo">
+                <label>Senha</label>
+                <input type="password" id="senha" placeholder="Digite sua senha" required>
+            </div>
+ 
+            <div class="campo">
+                <label>Confirmar a senha</label>
+                <input type="password" id="confirmarSenha" placeholder="Confirmar senha" required>
             </div>
         </div>
-
+ 
         <label class="termos">
-            <input type="checkbox">
+            <input type="checkbox" id="termos" required>
             <span>Eu li e aceito os termos de uso e privacidade.</span>
         </label>
-        <button>Criar minha conta</button>
-    </div>
-    
+        
+        <button type="submit" id="btnCriar">Criar minha conta</button>
+    </form>
+ </div>
+ 
+ <script>
+    // Pegamos/Selecionamos o formulário
+    const form = document.getElementById('formCadastro');
+ 
+    form.addEventListener('submit', function(event) {
+        // Impede a página de ficar recarregando
+        event.preventDefault();
+ 
+        // Pegando os valores dos campos
+        const nome = document.getElementById('nome').value;
+        const senha = document.getElementById('senha').value;
+        const confirmarSenha = document.getElementById('confirmarSenha').value;
+        const termos = document.getElementById('termos').checked;
+ 
+        // Lógica de validação da senha e termos
+        if (senha !== confirmarSenha) {
+            alert(" As senhas não coincidem! Tente novamente.");
+            return;
+        }
+ 
+        if (!termos) {
+            alert(" Você precisa aceitar os termos de uso.");
+            return;
+        }
+ 
+        // Simulação de sucesso
+        alert(` Bem-vindo(a), ${nome}! Sua conta Royal Pet foi criada.`);
+        
+        // Aqui enviaria os dados para o seu servidor
+        console.log("Dados prontos para envio:", { nome, senha });
+    });
+ </script>
 </body>
-</html>
+ 
