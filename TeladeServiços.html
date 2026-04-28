@@ -3,178 +3,389 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Royal Pet</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
+<title>Royal Pet — Serviços</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+:root {
+  --bg: #f7f5f2;
+  --white: #ffffff;
+  --text: #1a1a1a;
+  --muted: #7a7570;
+  --border: #e8e4de;
+  --green: #2d7a4f;
+  --green-light: #eaf5ee;
+  --blue: #2563a8;
+  --blue-light: #eaf1fb;
+  --purple: #6b3fa0;
+  --purple-light: #f3eefb;
+  --red: #c0392b;
+  --red-light: #fdf0ee;
+  --orange: #c96a12;
+  --orange-light: #fdf3e7;
+  --radius: 20px;
+  --radius-sm: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-    font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+
+.brand-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+
+.brand-logo span { color: var(--green); }
+
+.brand-paw {
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.hero-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 6vw, 54px);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+
+.hero-title .accent { color: var(--green); }
+
+.hero-sub {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 460px;
+  line-height: 1.6;
+  margin-bottom: 48px;
+}
+
+/* CARDS PRINCIPAIS */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.5s ease both;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card:nth-child(1) { animation-delay: 0.05s; }
+.card:nth-child(2) { animation-delay: 0.12s; }
+.card:nth-child(3) { animation-delay: 0.19s; }
+
+.icon-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.paw-deco {
+  position: absolute;
+  font-size: 10px;
+  opacity: 0.2;
+}
+.paw-deco.tl { top: 4px; left: 6px; }
+.paw-deco.br { bottom: 4px; right: 6px; }
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: filter 0.2s, transform 0.15s;
+  text-decoration: none;
+}
+
+.btn:hover { filter: brightness(1.1); transform: scale(1.03); }
+
+.btn-green  { background: var(--green);  color: #fff; }
+.btn-blue   { background: var(--blue);   color: #fff; }
+.btn-purple { background: var(--purple); color: #fff; }
+.btn-red    { background: var(--red);    color: #fff; }
+.btn-orange { background: var(--orange); color: #fff; }
+
+.icon-green  { background: var(--green-light); }
+.icon-blue   { background: var(--blue-light); }
+.icon-purple { background: var(--purple-light); }
+.icon-red    { background: var(--red-light); }
+.icon-orange { background: var(--orange-light); }
+
+/* features strip */
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.feature-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: fadeUp 0.5s ease 0.4s both;
+}
+
+.feature-icon {
+  background: var(--bg);
+  border-radius: 10px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.feature-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.feature-sub {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* footer */
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  padding-top: 8px;
+}
+
+/* responsividade */
+@media (max-width: 700px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .features { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 400px) {
+  .features { grid-template-columns: 1fr; }
 }
 </style>
 </head>
-<!--Estrutura principal, onde estamos definindo a cor do fundo, estamos colocando um espaçamento interno(responsavel por deixar ele no centro,
-para o conteudo não ficar colado nas bordas). Esse "md" é responsavel pela "responsividade", significa que em telas medias (tablets/PCs) o espaçamento aumenta para "pd-10"-->
-<body class="bg-[#f5f5f5] p-6 md:p-10">
+<body>
 
-<div class="max-w-6xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
-<!--O "max-w-6xl mx-auto" é a "caixa" branca centralizada que contem todo o conteudo-->
-    <!-- HEADER -->
-    <div class="mb-12">
-        <span class="text-gray-400 text-sm">Royal Pet</span>
+<div class="page">
 
-        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mt-2">
-            Cuidados e Serviços <br>
-            <span class="text-green-600">para o seu Pet 🐾</span>
-        </h1>
+  <!-- brand -->
 
-        <p class="text-gray-500 mt-4">
-            Agenda, conheça e ofereça o melhor para seu melhor amigo.
-        </p>
+<!--Caso não de certo, use o codigo abaixo:-->
+
+<!--        
+
+        <nav class="nav-links">
+            <a href="loginPetshop.html" class="btn-inicio">Início</a>
+            <a href="#">Produtos</a>
+            <a href="TeladeServiços.html">Serviços</a>
+            <a href="TelaPlanoSaude.html">Meu pet</a>
+        </nav>
+        
+-->
+
+
+  <div class="brand">
+    <span class="brand-logo" href="Telainicio.html" >Royal<span>Pet</span></span>
+    <span class="brand-paw">🐾</span>
+  </div>
+
+  <!-- HERO -->
+  <p class="hero-label">Nossos Serviços</p>
+  <h1 class="hero-title">
+    Cuidados e Serviços<br>
+    <span class="accent">para o seu Pet 🐾</span>
+  </h1>
+  <p class="hero-sub">Agende, conheça e ofereça o melhor para seu melhor amigo.</p>
+
+  <!-- CARDS PRINCIPAIS -->
+  <div class="grid-3">
+
+    <div class="card">
+      <div class="icon-wrap icon-green">
+        <span class="paw-deco tl">🐾</span>
+        <span class="paw-deco br">🐾</span>
+        🩺
+      </div>
+      <h3 class="card-title">Veterinário</h3>
+      <p class="card-desc">Consultas, vacinas e acompanhamento clínico especializado</p>
+      <button class="btn btn-green">Saiba mais →</button>
     </div>
 
-    <!-- CARDS PRINCIPAIS -->
-    <div class="grid md:grid-cols-3 gap-6 mb-10">
-
-        <!-- CARD -->
-        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
-
-            <div class="w-20 h-20 mx-auto mb-4 bg-green-100 rounded-xl flex items-center justify-center relative">
-                <span class="absolute top-1 left-2 text-xs opacity-30">🐾</span>
-                <span class="absolute bottom-1 right-2 text-xs opacity-30">🐾</span>
-                <span class="text-2xl text-green-600">🩺</span>
-            </div>
-
-            <h3 class="font-semibold text-lg">Veterinário</h3>
-            <p class="text-gray-500 text-sm mt-2 mb-4">
-                Consultas, vacinas e acompanhamento clínico
-            </p>
-
-            <button class="bg-green-600 text-white px-5 py-2 rounded-full text-sm flex items-center justify-center gap-2 mx-auto hover:bg-green-700">
-                Saiba mais →
-            </button>
-        </div>
-
-        <!-- CARD -->
-        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
-
-            <div class="w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-xl flex items-center justify-center relative">
-                <span class="absolute top-1 left-2 text-xs opacity-30">🐾</span>
-                <span class="absolute bottom-1 right-2 text-xs opacity-30">🐾</span>
-                <span class="text-2xl text-blue-500">🛁</span>
-            </div>
-
-            <h3 class="font-semibold text-lg">Banho e tosa</h3>
-            <p class="text-gray-500 text-sm mt-2 mb-4">
-                Higiene completa com produtos premium
-            </p>
-
-            <button class="bg-blue-500 text-white px-5 py-2 rounded-full text-sm flex items-center justify-center gap-2 mx-auto hover:bg-blue-600">
-                Saiba mais →
-            </button>
-        </div>
-
-        <!-- CARD -->
-        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
-
-            <div class="w-20 h-20 mx-auto mb-4 bg-purple-100 rounded-xl flex items-center justify-center relative">
-                <span class="absolute top-1 left-2 text-xs opacity-30">🐾</span>
-                <span class="absolute bottom-1 right-2 text-xs opacity-30">🐾</span>
-                <span class="text-2xl text-purple-600">🎓</span>
-            </div>
-
-            <h3 class="font-semibold text-lg">Adestramento</h3>
-            <p class="text-gray-500 text-sm mt-2 mb-4">
-                Consultas, vacinas e acompanhamento clínico
-            </p>
-
-            <button class="bg-purple-600 text-white px-5 py-2 rounded-full text-sm flex items-center justify-center gap-2 mx-auto hover:bg-purple-700">
-                Saiba mais →
-            </button>
-        </div>
-
+    <div class="card">
+      <div class="icon-wrap icon-blue">
+        <span class="paw-deco tl">🐾</span>
+        <span class="paw-deco br">🐾</span>
+        🛁
+      </div>
+      <h3 class="card-title">Banho e Tosa</h3>
+      <p class="card-desc">Higiene completa com produtos premium e carinho</p>
+      <button class="btn btn-blue">Saiba mais →</button>
     </div>
 
-    <!-- CARDS SECUNDÁRIOS -->
-    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
-
-        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
-
-            <div class="w-20 h-20 mx-auto mb-4 bg-red-100 rounded-xl flex items-center justify-center relative">
-                <span class="text-2xl text-red-400">🏠</span>
-            </div>
-
-            <h3 class="font-semibold text-lg">Hotel & Day Care</h3>
-            <p class="text-gray-500 text-sm mt-2 mb-4">
-                Hospedagem e creche com todo conforto
-            </p>
-
-            <button class="bg-red-400 text-white px-5 py-2 rounded-full text-sm hover:bg-red-500">
-                Saiba mais →
-            </button>
-        </div>
-
-        <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center">
-
-            <div class="w-20 h-20 mx-auto mb-4 bg-orange-100 rounded-xl flex items-center justify-center relative">
-                <span class="text-2xl text-orange-500">🐶</span>
-            </div>
-
-            <h3 class="font-semibold text-lg">Adoção de Pets</h3>
-            <p class="text-gray-500 text-sm mt-2 mb-4">
-                Encontre um novo amigo para a sua família
-            </p>
-
-            <button class="bg-orange-500 text-white px-5 py-2 rounded-full text-sm hover:bg-orange-600">
-                Saiba mais →
-            </button>
-        </div>
-
+    <div class="card">
+      <div class="icon-wrap icon-purple">
+        <span class="paw-deco tl">🐾</span>
+        <span class="paw-deco br">🐾</span>
+        🎓
+      </div>
+      <h3 class="card-title">Adestramento</h3>
+      <p class="card-desc">Treinamento comportamental com técnicas modernas e eficazes</p>
+      <button class="btn btn-purple">Saiba mais →</button>
     </div>
 
-    <!-- RODAPÉ -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+  </div>
 
-        <div class="bg-gray-100 p-4 rounded-xl flex items-center gap-3">
-            <div class="bg-white p-2 rounded-lg">🚚</div>
-            <div>
-                <p class="font-semibold text-sm">Frete grátis</p>
-                <p class="text-xs text-gray-500">Acima de R$100</p>
-            </div>
-        </div>
+  <!-- CARDS SECUNDÁRIOS -->
+  <div class="grid-2">
 
-        <div class="bg-gray-100 p-4 rounded-xl flex items-center gap-3">
-            <div class="bg-white p-2 rounded-lg">⏱</div>
-            <div>
-                <p class="font-semibold text-sm">Entrega rápida</p>
-                <p class="text-xs text-gray-500">Receba em até 24h</p>
-            </div>
-        </div>
-
-        <div class="bg-gray-100 p-4 rounded-xl flex items-center gap-3">
-            <div class="bg-white p-2 rounded-lg">🛡</div>
-            <div>
-                <p class="font-semibold text-sm">Segurança</p>
-                <p class="text-xs text-gray-500">Ambiente monitorado</p>
-            </div>
-        </div>
-
-        <div class="bg-gray-100 p-4 rounded-xl flex items-center gap-3">
-            <div class="bg-white p-2 rounded-lg">📅</div>
-            <div>
-                <p class="font-semibold text-sm">Agende online</p>
-                <p class="text-xs text-gray-500">Rápido e prático</p>
-            </div>
-        </div>
-
+    <div class="card">
+      <div class="icon-wrap icon-red">🏠</div>
+      <h3 class="card-title">Hotel & Day Care</h3>
+      <p class="card-desc">Hospedagem e creche com todo conforto e segurança</p>
+      <button class="btn btn-red">Saiba mais →</button>
     </div>
+
+    <div class="card">
+      <div class="icon-wrap icon-orange">🐶</div>
+      <h3 class="card-title">Adoção de Pets</h3>
+      <p class="card-desc">Encontre um novo amigo para a sua família com amor</p>
+      <button class="btn btn-orange">Saiba mais →</button>
+    </div>
+
+  </div>
+
+  <!-- FEATURES STRIP -->
+  <div class="features">
+    <div class="feature-item">
+      <div class="feature-icon">🚚</div>
+      <div>
+        <p class="feature-title">Frete grátis</p>
+        <p class="feature-sub">Acima de R$100</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">⏱</div>
+      <div>
+        <p class="feature-title">Entrega rápida</p>
+        <p class="feature-sub">Receba em até 24h</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🛡</div>
+      <div>
+        <p class="feature-title">Segurança</p>
+        <p class="feature-sub">Ambiente monitorado</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">📅</div>
+      <div>
+        <p class="feature-title">Agende online</p>
+        <p class="feature-sub">Rápido e prático</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2026 Royal Pet — Todos os direitos reservados</footer>
 
 </div>
-
-<footer>
-    © 2026 Royal Pet
-</footer>
-
 </body>
 </html>
