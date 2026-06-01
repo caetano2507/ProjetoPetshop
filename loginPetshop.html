@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Royal Pet - Login</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
 <meta charset="UTF-8">
 <title>Royal Pet - Login</title>
 <link rel="stylesheet" href="style.css">
@@ -15,7 +8,9 @@
 <body>
 <div class ="container">
 <div class ="card">
-<h2> ROYAL PET </h2>
+<h2 onclick="voltarInicio()" style="cursor: pointer;">
+  ROYAL PET
+</h2>
  
 <form id="loginForm">
 <label>E-mail</label>
@@ -35,10 +30,10 @@
 </form>
 </div>
 </div>
- 
+
 <script>
     const loginForm = document.getElementById('loginForm');
- 
+
     loginForm.addEventListener('submit', function(event) {
         event.preventDefault(); // Impede o recarregamento da página
  
@@ -53,12 +48,33 @@
             alert("E-mail ou senha incorretos. Tente novamente!");
         }
     });
+
+        function voltarInicio() {
+        window.location.href = "Telainicio.html"; //tela inicio
+}
  
     // Função para o "Esqueceu a senha"
-    document.getElementById('esqueciSenha').addEventListener('click', (e) => {
+
+   document.addEventListener("DOMContentLoaded", function () {
+
+    const loginForm = document.getElementById('loginForm');
+    const esqueciSenha = document.getElementById('esqueciSenha');
+
+    esqueciSenha.addEventListener('click', async (e) => {
         e.preventDefault();
-        alert("Enviamos um link de recuperação da senha para o seu e-mail.");
+
+        const email = document.getElementById('email').value;
+
+        if (!email) {
+            alert("Digite seu e-mail no campo acima primeiro.");
+            return;
+        }
+
+        alert("Recuperação enviada para: " + email);
     });
+
+});
+   
 </script>
 </body>
 </html>

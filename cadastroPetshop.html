@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Royal Pet - Cadastro</title>
 
+    <!-- CSS -->
     <style>
         body{
             margin: 0;
@@ -49,7 +50,7 @@
         button {
             margin-top: 20px;
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             border: none;
             border-radius: 12px;
             background: rgba(173, 173, 173, 0.916);
@@ -58,7 +59,7 @@
 
         button:active {
             transform: scale(0.95);
-            background: #444;
+            background: rgba(173, 173, 173, 0.916);
 
         }
 
@@ -74,9 +75,9 @@
         }
 
         .termos{
-                display: flex;
-                align-items: center;
-                gap: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .termos input{
@@ -89,14 +90,31 @@
 
         }
 
+        .btn-voltar {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 15px;
+            cursor: pointer;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        .btn-voltar:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
  <div class="container">
+    <button class="btn-voltar" onclick="voltarLogin()">← Voltar</button>
     <h2>ROYAL PET</h2>
- 
+
+    <!--Formulado do usuário-->
     <form id="formCadastro">
         <div class="form-grid">
+            <!--Divs definindo qual tipo de informações podem ser passadas em cada campo-->
             <div class="campo">
                 <label>Nome Completo</label>
                 <input type="text" id="nome" placeholder="Nome completo" required>
@@ -119,17 +137,22 @@
         </div>
  
         <label class="termos">
-            <input type="checkbox" id="termos" required>
+            <input type="checkbox" id="termos" required> <!--Chamei a caixinha de confirmação-->
             <span>Eu li e aceito os termos de uso e privacidade.</span>
         </label>
         
-        <button type="submit" id="btnCriar">Criar minha conta</button>
+        <button type="submit" id="btnCriar">Criar minha conta</button> <!--Criei o botão/Criar minha-->
     </form>
  </div>
  
  <script>
     // Pegamos/Selecionamos o formulário
     const form = document.getElementById('formCadastro');
+
+    //Criei a função voltar
+    function voltarLogin() {
+    window.location.href = "loginPetshop.html";  //Local para onde vai voltar
+}
  
     form.addEventListener('submit', function(event) {
         // Impede a página de ficar recarregando
