@@ -104,12 +104,36 @@
             text-decoration: underline;
         }
 
+        .btn-entrar {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-align: center;
+            width: 100%; 
+        }
+
+        .btn-entrar:hover {
+            text-decoration: underline;
+        }
+
+        .titulo {
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 10px;
+            transition: 0,2s;
+}
+
     </style>
 </head>
 <body>
  <div class="container">
     <button class="btn-voltar" onclick="voltarLogin()">← Voltar</button>
-    <h2>ROYAL PET</h2>
+
+
+    <h2 class="titulo" onclick="voltarTelaInicio()">ROYAL PET</h2>
 
     <!--Formulado do usuário-->
     <form id="formCadastro">
@@ -142,6 +166,7 @@
         </label>
         
         <button type="submit" id="btnCriar">Criar minha conta</button> <!--Criei o botão/Criar minha-->
+        <button type="button" class="btn-entrar" onclick="entrar()">Entrar</button>
     </form>
  </div>
  
@@ -154,6 +179,14 @@
     window.location.href = "loginPetshop.html";  //Local para onde vai voltar
 }
  
+    function entrar() {
+    window.location.href ="loginPetshop.html";
+    }
+
+    function voltarTelaInicio() {
+    window.location.href = "Telainicio.html";
+    }
+
     form.addEventListener('submit', function(event) {
         // Impede a página de ficar recarregando
         event.preventDefault();

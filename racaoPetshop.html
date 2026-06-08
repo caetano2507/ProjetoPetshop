@@ -10,7 +10,7 @@
     <body>
  
   <header class="main-header">
-      <span class="logo-small">RoyalPet</span>
+      <span class="logo-small" onclick="voltarTelaInicio()">RoyalPet</span>
       <h1>Rações</h1>
   </header>
  
@@ -207,6 +207,15 @@
             .main-header h1 { font-size: 2rem; }
             .add-btn { bottom: 55px; font-size: 1rem; }
         }
+
+        .logo-small {
+            cursor: pointer;
+        }
+
+        .logo-small:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
@@ -376,6 +385,11 @@
             </div>
         </section>
 
+    <script>
+        function voltarTelaInicio() {
+            window.location.href = "Telainicio.html";
+        }
+    </script>
     </main>
 
 </body>
