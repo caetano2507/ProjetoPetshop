@@ -27,7 +27,7 @@
             </div>
             <div class="user-icons">
                 <i class="fa-solid fa-headset"></i>
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-solid fa-cart-shopping" id="open-cart-icon"></i>
                 <i class="fa-regular fa-heart"></i>
             </div>
         </div>
@@ -73,6 +73,25 @@
             <span>Casas</span>
         </div>
     </a>
+</div>
+
+<div id="sidebar-cart" class="cart-sidebar">
+    <div class="cart-header">
+        <h2>Meu Carrinho</h2>
+        <span id="close-cart" class="close-cart-btn">&times;</span>
+    </div>
+
+    <div id="cart-items-container" class="cart-items-list">
+        <p class="empty-cart-msg">Seu carrinho está vazio.</p>
+    </div>
+
+    <div class="cart-footer-grid">
+        <div class="cart-total-row">
+            <span>Total:</span>
+            <span id="cart-total-value">R$ 0,00</span>
+        </div>
+        <button id="checkout-btn" class="finalize-purchase-btn">Finalizar Compra</button>
+    </div>
 </div>
 
 </main>
@@ -321,6 +340,159 @@ body {
     font-weight: bold;
 }
 
+/*--Daqui pra frente é o CSS do carrinho lateral*/
+
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -380px; /*A tela começa totalmente escondida à direita*/
+    width: 380px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -5px 0 15px rgb(0, 0, 0, 0.15);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s ease-in-out;
+}
+
+/*Classe dinâmica que o JavaScript vai adicionar para abrir*/
+.cart-sidebar.open {
+    right: 0;
+}
+
+.card-header {
+    padding: 20px;
+    background: var(--azul-claro);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.05);
+}
+
+.card-header h2 {
+    font-size: 20px;
+    color: #444;
+    font-weight: 700;
+}
+
+.close-cart-btn {
+    font-size: 28px;
+    cursor: pointer;
+    color: #444;
+    transition: color 0.2s;
+}
+
+.close-cart-btn:hover {
+    color: var(--azul-hover);
+}
+
+/*Área de rolagem dos produtos*/
+.cart-items-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+empty-cart-msg {
+    text-align: center;
+    color: #888;
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+/*Grid inferior fixo*/
+.cart-footer-grid {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.finalize-purchase-btn {
+    background: var(--azul-botao);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    width: 100%;
+}
+
+.finalize-purchase-btn:hover {
+    background: var(--azul-hover);
+}
+
+.finalize-purchase-btn:active {
+    transform: scale(0.98);
+}
+
+/*Estilo do Card individual dentro do carrinho*/
+
+.card-item-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    position: relative;
+}
+
+.cart-item-card img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.card-item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cart-item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cart-item-price {
+    font-size: 14px;
+    color: #5a8296;
+    font-weight: bold;
+}
+
+.remove-item-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    color: #FF7575;
+    font-size: 12px;
+}
+
+/*Responsividade básica para a barra não quebrar em telas muito pequenas*/
+@media (max-width: 400px) {
+    .cart-sidebar {width: 100%; right: -100%;}
+}
 /* responsividade */
 @media (max-width: 992px) {
     .header-container { flex-direction: column; gap: 15px; }
