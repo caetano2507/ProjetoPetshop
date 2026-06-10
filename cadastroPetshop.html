@@ -4,129 +4,12 @@
     <meta charset="UTF-8">
     <title>Royal Pet - Cadastro</title>
 
-    <!-- CSS -->
-    <style>
-        body{
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            background: url("https://i.postimg.cc/SsPPZKhm/Gemini-Generated-Image-tvworetvworetvwo.png") no-repeat center/cover;
-        }
+<!-- CSS -->
+<link rel="stylesheet" href="./cadastro.css">
 
-        .container{
-            background: rgba(255, 255, 255, 0.74);
-            padding: 35px;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 350px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0, 0, 0 ,2);
-        }
-            
-        h2{
-            margin-bottom:20px;
-            
-        }
+<!-- CONTROLLER -->
+<script src="./js/controller/cadastro_controller.js" defer></script>
 
-        label{
-            display: block;
-            text-align: left;
-            margin-top: 8px;
-        }
-
-        input{
-            width: 100%;
-            padding: 10px;
-            border-radius: 10px;
-            border: none;
-            margin-top: 3px;
-            background: #050505ee;
-            color: white;
-        }
-
-        button {
-            margin-top: 20px;
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 12px;
-            background: rgba(173, 173, 173, 0.916);
-            cursor: pointer;
-        }
-
-        button:active {
-            transform: scale(0.95);
-            background: rgba(173, 173, 173, 0.916);
-
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 2fr 2fr;
-            gap: 30px;
-        }
-
-        .campo{
-            display: flex;
-            flex-direction: column;
-        }
-
-        .termos{
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .termos input{
-            width: auto;
-        }
-
-        .termos label{
-            display: inline;
-            margin: 0;
-
-        }
-
-        .btn-voltar {
-            background: none;
-            border: none;
-            color: #333;
-            font-size: 15px;
-            cursor: pointer;
-            margin-bottom: 5px;
-            text-align: left;
-        }
-
-        .btn-voltar:hover {
-            text-decoration: underline;
-        }
-
-        .btn-entrar {
-            background: none;
-            border: none;
-            color: #333;
-            font-size: 15px;
-            cursor: pointer;
-            margin-top: 10px;
-            text-align: center;
-            width: 100%; 
-        }
-
-        .btn-entrar:hover {
-            text-decoration: underline;
-        }
-
-        .titulo {
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 10px;
-            transition: 0,2s;
-}
-
-    </style>
 </head>
 <body>
  <div class="container">
@@ -170,50 +53,6 @@
     </form>
  </div>
  
- <script>
-    // Pegamos/Selecionamos o formulário
-    const form = document.getElementById('formCadastro');
-
-    //Criei a função voltar
-    function voltarLogin() {
-    window.location.href = "loginPetshop.html";  //Local para onde vai voltar
-}
  
-    function entrar() {
-    window.location.href ="loginPetshop.html";
-    }
-
-    function voltarTelaInicio() {
-    window.location.href = "Telainicio.html";
-    }
-
-    form.addEventListener('submit', function(event) {
-        // Impede a página de ficar recarregando
-        event.preventDefault();
- 
-        // Pegando os valores dos campos
-        const nome = document.getElementById('nome').value;
-        const senha = document.getElementById('senha').value;
-        const confirmarSenha = document.getElementById('confirmarSenha').value;
-        const termos = document.getElementById('termos').checked;
- 
-        // Lógica de validação da senha e termos
-        if (senha !== confirmarSenha) {
-            alert(" As senhas não coincidem! Tente novamente.");
-            return;
-        }
- 
-        if (!termos) {
-            alert(" Você precisa aceitar os termos de uso.");
-            return;
-        }
- 
-        // Simulação de sucesso
-        alert(` Bem-vindo(a), ${nome}! Sua conta Royal Pet foi criada.`);
-        
-        // Aqui enviaria os dados para o seu servidor
-        console.log("Dados prontos para envio:", { nome, senha });
-    });
- </script>
 </body>
- 
+</html>

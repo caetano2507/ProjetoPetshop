@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <title>Royal Pet - Login</title>
 <link rel="stylesheet" href="style.css">
+
+<!-- CSS -->
+<link rel="stylesheet" href="./style.css">
+
+<!-- CONTROLLER -->
+<script src="./js/controller/login_controller.js" defer></script>
+
 </head>
 <body>
 <div class ="container">
@@ -29,50 +36,6 @@
 </div>
 </div>
 
-<script>
-    const loginForm = document.getElementById('loginForm');
 
-    loginForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Impede o recarregamento da página
- 
-        const email = document.getElementById('email').value;
-        const senha = document.getElementById('senha').value;
- 
-        // Simulação simples de login
-        if (email === "admin@royalpet.com" && senha === "1234") {
-            alert("Login realizado com sucesso! Bem-vindo.");
-            // Redirecionar para uma home
-        } else {
-            alert("E-mail ou senha incorretos. Tente novamente!");
-        }
-    });
-
-        function voltarTelaInicio() {
-        window.location.href = "Telainicio.html";
-        }
- 
-    // Função para o "Esqueceu a senha"
-
-   document.addEventListener("DOMContentLoaded", function () {
-
-    const loginForm = document.getElementById('loginForm');
-    const esqueciSenha = document.getElementById('esqueciSenha');
-
-    esqueciSenha.addEventListener('click', async (e) => {
-        e.preventDefault();
-
-        const email = document.getElementById('email').value;
-
-        if (!email) {
-            alert("Digite seu e-mail no campo acima primeiro.");
-            return;
-        }
-
-        alert("Recuperação enviada para: " + email);
-    });
-
-});
-   
-</script>
 </body>
 </html>
