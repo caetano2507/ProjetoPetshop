@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoyalPet - Dashboard</title>
+    <link rel="stylesheet" href="login.css">
+
+    <script src="./login.js" defer></script>
+
+    <script src="./routers/petshop_routers.js" defer></script>
+
+</head>
+<body class="dashboard-page">
+ 
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <h2>RoyalPet</h2>
+            <h3>Admin</h3>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active">📋 Dashboard</a>
+            <a href="/petshop/atendimento" class="nav-item">🐾 Pets & Atendimentos</a>
+            <a href="/petshop/acessorios" class="nav-item">🦴 Acessórios</a>
+            <a href="/petshop/casas" class="nav-item">🏠 Casas</a>
+            
+            <div id="menu-admin-only" class="admin-only-section hidden">
+                <div class="nav-divider">GERENCIAMENTO</div>
+                <a href="/petshop/racao" class="nav-item special-nav">🌾 Gerenciar Rações</a>
+            </div>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="/petshop/login" class="nav-item logout">🚪 Sair</a>
+        </div>
+    </aside>
+ 
+    <main class="main-content">
+        
+        <header class="content-header">
+            <div class="header-title">
+                <h1>Painel de Controle</h1>
+                <p>Bem-vindo ao sistema de gestão do RoyalPet</p>
+            </div>
+            <div class="user-profile-box">
+                <span class="paw-icon">🐾</span>
+                <div>
+                    <p class="profile-label">Logado como:</p>
+                    <strong id="user-role-display">Carregando...</strong>
+                </div>
+            </div>
+        </header>
+ 
+        <section class="dashboard-section">
+            <h3>Operações Gerais</h3>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon blue">🛒</div>
+                    <div class="card-info">
+                        <h4>Acessar Vitrine</h4>
+                        <p>Visualizar catálogo público de itens.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon purple">📅</div>
+                    <div class="card-info">
+                        <h4>Meus Agendamentos</h4>
+                        <p>Verificar horários de banho e tosa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
+        <section id="pane-admin-only" class="dashboard-section admin-box hidden">
+            <div class="admin-badge">PRIVILÉGIOS DE ADMINISTRADOR</div>
+            
+            <div class="admin-panel-content">
+                <div class="admin-illustration">⚙️</div>
+                <div class="admin-actions-details">
+                    <h3>Operações Avançadas: Estoque de Rações</h3>
+                    <p>Controle crítico de mercadorias, edição de valores e monitoramento de lotes de ração.</p>
+                    
+                    <div class="admin-buttons-group">
+                        <a href="/petshop/racao" class="admin-btn btn-primary">Controlar Estoque de Rações</a>
+                    </div>
+                </div>
+            </div>
+ 
+            <div class="admin-alert-footer">
+                ⚠️ O acesso a esta função é estritamente limitado a contas de <strong>ADMINISTRADOR</strong>.
+            </div>
+        </section>
+ 
+    </main>
+ 
+    <script src="login.js"></script>
+</body>
+</html>
+ 
