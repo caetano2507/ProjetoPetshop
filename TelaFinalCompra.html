@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - Checkout</title>
+    <style>
+        /* Configurações Globais (Reset) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Topo / Título */
+        .header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eaedf2;
+            padding-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            color: #1a202c;
+            font-weight: 700;
+        }
+
+        /* Layout em duas colunas */
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Seções de Formulários (Esquerda) */
+        .section-block {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #1e293b;
+        }
+
+        .btn-secondary {
+            background-color: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            color: #1e293b;
+            padding: 0 16px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background-color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e2e8f0;
+        }
+
+        .text-link {
+            display: inline-block;
+            font-size: 12px;
+            color: #3182ce;
+            text-decoration: none;
+            margin-top: 8px;
+        }
+
+        .text-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Resumo do Pedido (Direita) */
+        .summary-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 20px;
+            align-self: start;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #4a5568;
+        }
+
+        .summary-row.discount {
+            color: #38a169;
+            font-weight: 500;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eaedf2;
+        }
+
+        .total-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .total-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        /* Botão Final */
+        .btn-primary {
+            width: 100%;
+            background-color: #1e293b;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0f172a;
+        }
+
+        /* Seção de Ajuda */
+        .help-box {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #718096;
+            line-height: 1.5;
+        }
+
+        .help-box strong {
+            color: #4a5568;
+        }
+
+        /* Estilos extras adicionados para as opções dinâmicas de pagamento */
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .payment-option input {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="header">
+            <h1>Finalizar Compra</h1>
+        </div>
+
+        <div class="checkout-grid">
+            
+            <div class="checkout-forms">
+                
+                <div class="section-block">
+                    <h2 class="section-title">Qual o CEP para entrega?</h2>
+                    <div class="form-group">
+                        <div class="input-row">
+                            <input type="text" id="input-cep" placeholder="00000-000" maxlength="9">
+                            <button type="button" class="btn-secondary" id="btn-aplicar-cep">Aplicar</button>
+                        </div>
+                        <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank" class="text-link">Não sei meu CEP</a>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <h2 class="section-title">Cupom de desconto</h2>
+                    <div class="form-group">
+                        <div class="input-row">
+                            <input type="text" id="input-cupom" placeholder="Digite seu cupom">
+                            <button type="button" class="btn-secondary" id="btn-aplicar-cupom">Aplicar</button>
+                        </div>
+                        <span id="feedback-cupom" style="font-size: 12px; display: block; margin-top: 5px;"></span>
+                    </div>
+                </div>
+
+                <div class="section-block" id="bloco-pagamento">
+                    <h2 class="section-title">Forma de Pagamento</h2>
+                    <div id="conteudo-pagamento">
+                        <p style="font-size: 13px; color: #a0aec0; font-style: italic;">As opções de pagamento serão liberadas após calcular o frete.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="checkout-summary">
+                
+                <div class="summary-box">
+                    <h2 class="section-title" style="border-bottom: 1px solid #eaedf2; padding-bottom: 10px;">Resumo do pedido</h2>
+                    
+                    <div class="summary-row">
+                        <span>Valor dos produtos</span>
+                        <span id="valor-produtos">R$ 0,00</span>
+                    </div>
+                    
+                    <div class="summary-row discount">
+                        <span>Total de descontos</span>
+                        <span id="valor-descontos">- R$ 0,00</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Frete</span>
+                        <span id="valor-frete" style="font-style: italic; color: #a0aec0;">Digite o CEP...</span>
+                    </div>
+                    
+                    <div class="total-row">
+                        <span class="total-label">TOTAL:</span>
+                        <span class="total-value" id="valor-total">R$ 0,00</span>
+                    </div>
+
+                    <button class="btn-primary" id="btn-finalizar">Finalizar Compra</button>
+
+                    <div class="help-box">
+                        <p>Tem alguma dúvida?</p>
+                        <p><strong>(11) 99541-7758</strong> | <a href="atendimentoPetshop.html" class="text-link" style="margin: 0;">Atendimento</a></p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // Variáveis de controle de valores
+        let subtotalProdutos = 0;
+        let valorDesconto = 0;
+        let valorFrete = 0;
+
+        // Elementos da interface
+        const elProdutos = document.getElementById('valor-produtos');
+        const elDescontos = document.getElementById('valor-descontos');
+        const elFrete = document.getElementById('valor-frete');
+        const elTotal = document.getElementById('valor-total');
+        const conteudoPagamento = document.getElementById('conteudo-pagamento');
+
+        // Carrega dados iniciais do LocalStorage
+        function carregarResumo() {
+            const cart = JSON.parse(localStorage.getItem('royalPetCart')) || [];
+            
+            // Soma o preço de todos os produtos do array
+            subtotalProdutos = cart.reduce((total, produto) => total + parseFloat(produto.price || 0), 0);
+            
+            atualizarValoresTela();
+        }
+
+        // Formata os números para o padrão de moeda Real
+        function formatarMoeda(valor) {
+            return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        // Recalcula e renderiza os totais na tela
+        function atualizarValoresTela() {
+            const totalGeral = Math.max(0, (subtotalProdutos - valorDesconto) + valorFrete);
+            
+            elProdutos.textContent = formatarMoeda(subtotalProdutos);
+            elDescontos.textContent = `- ${formatarMoeda(valorDesconto)}`;
+            
+            if (valorFrete > 0) {
+                elFrete.textContent = formatarMoeda(valorFrete);
+                elFrete.style.fontStyle = 'normal';
+                elFrete.style.color = 'inherit';
+            } else if (elFrete.textContent !== 'Grátis' && valorFrete === 0 && document.getElementById('input-cep').value.length >= 8) {
+                elFrete.textContent = 'Grátis';
+                elFrete.style.fontStyle = 'normal';
+                elFrete.style.color = '#38a169';
+            }
+
+            elTotal.textContent = formatarMoeda(totalGeral);
+        }
+
+        // Máscara simples para o input do CEP (00000-000)
+        document.getElementById('input-cep').addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 5) {
+                value = value.substring(0, 5) + '-' + value.substring(5, 8);
+            }
+            e.target.value = value;
+        });
+
+        // Simulação do Cálculo do Frete e desbloqueio das formas de pagamento
+        document.getElementById('btn-aplicar-cep').addEventListener('click', () => {
+            const cep = document.getElementById('input-cep').value.replace(/\D/g, '');
+            
+            if (cep.length !== 8) {
+                alert('Por favor, digite um CEP válido.');
+                return;
+            }
+
+            // Se o carrinho estiver vazio, o frete é simulado como zero para evitar inconsistências
+            if (subtotalProdutos === 0) {
+                valorFrete = 0;
+            } else {
+                // Simulação matemática baseada no CEP para gerar um valor dinâmico realista
+                // cep.substring(0,3) essa parte isola os 3 primeiros numeros do CEP. Esses numeros determinam a região postal
+                // parseInt(...) transforma os 3 primeiros numeros em numeros inteiros com o qual o JS possa fazer as contas. Exemplo:se o CEP for 06767-390, ele vai capturar o 067 e transformar no numero 67
+                // %25 . O símbolo % encontra o resto da divisão por 25. Qualquer número dividido por 25 vai gerar um resto entre 0 e 24. Isso serve como um "limitador" para garantir que o valor do frete nunca fique absurdamente caro
+                // +10 Soma R$10,00 fixos aos resultados para que o frete minimo seja sempre R$10,00
+                valorFrete = (parseInt(cep.substring(0, 3)) % 25) + 10;
+            }
+
+            atualizarValoresTela();
+            liberarPagamento();
+        });
+
+        // Altera dinamicamente o bloco de pagamento exibindo as opções reais de escolha
+        function liberarPagamento() {
+            conteudoPagamento.innerHTML = `
+                <div class="payment-methods">
+                    <label class="payment-option">
+                        <input type="radio" name="forma-pagto" value="pix" checked>
+                        <span><strong>Pix</strong> (Aprovação imediata e 5% OFF extra)</span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="forma-pagto" value="cartao">
+                        <span><strong>Cartão de Crédito</strong> (Até 6x sem juros)</span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="forma-pagto" value="boleto">
+                        <span><strong>Boleto Bancário</strong> (Até 3 dias úteis para processar)</span>
+                    </label>
+                </div>
+            `;
+        }
+
+        // Validação básica de cupom de desconto
+        document.getElementById('btn-aplicar-cupom').addEventListener('click', () => {
+            const cupom = document.getElementById('input-cupom').value.trim().toUpperCase();
+            const feedback = document.getElementById('feedback-cupom');
+
+            if (subtotalProdutos === 0) {
+                feedback.textContent = 'Adicione produtos no carrinho antes de usar um cupom.';
+                feedback.style.color = '#e74c3c';
+                return;
+            }
+
+            // Regras simples de negócio para os cupons fictícios
+            if (cupom === 'ROYAL10') {
+                valorDesconto = subtotalProdutos * 0.10; // 10% de Desconto
+                feedback.textContent = 'Cupom ROYAL10 aplicado com sucesso! (10% OFF)';
+                feedback.style.color = '#38a169';
+            } else if (cupom === 'BOASVINDAS') {
+                valorDesconto = 15.00; // R$ 15 fixos
+                feedback.textContent = 'Cupom de boas-vindas aplicado! (R$ 15,00 OFF)';
+                feedback.style.color = '#38a169';
+            } else if (cupom === '') {
+                valorDesconto = 0;
+                feedback.textContent = '';
+            } else {
+                valorDesconto = 0;
+                feedback.textContent = 'Cupom inválido ou expirado.';
+                feedback.style.color = '#e74c3c';
+            }
+
+            atualizarValoresTela();
+        });
+
+        // Ação do botão Finalizar Compra
+        document.getElementById('btn-finalizar').addEventListener('click', () => {
+            const cart = JSON.parse(localStorage.getItem('royalPetCart')) || [];
+            const cep = document.getElementById('input-cep').value;
+            const formaPagto = document.querySelector('input[name="forma-pagto"]:checked');
+
+            if (cart.length === 0) {
+                alert('Seu carrinho está vazio! Volte à loja e escolha alguns brinquedos.');
+                return;
+            }
+
+            if (!cep || valorFrete === 0) {
+                alert('Por favor, digite seu CEP e clique em "Aplicar" para calcular o frete.');
+                return;
+            }
+
+            if (!formaPagto) {
+                alert('Selecione uma forma de pagamento para continuar.');
+                return;
+            }
+
+            alert(`Pedido realizado com sucesso!\nForma escolhida: ${formaPagto.value.toUpperCase()}\nObrigado por comprar na Royal Pet!`);
+            
+            // Limpa o carrinho após fechar o pedido com sucesso
+            localStorage.removeItem('royalPetCart');
+            window.location.href = 'Telainicio.html'; 
+        });
+
+        // Inicializa a página lendo as informações salvas
+        carregarResumo();
+    </script>
+</body>
+</html>
