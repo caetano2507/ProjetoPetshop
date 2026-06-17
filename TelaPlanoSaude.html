@@ -5,7 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Royal Pet</title>
 
+<!-- fonte importada para colocar na logo da pagina -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+
 <style>
+:root {
+    /* Cores de Fundo e Estrutura */
+    --bg-main: #f5f7fa;
+    --bg-card: rgb(255, 255, 255);
+    --bg-header: #f9f9f9; /* Fundo claro */
+    
+    /* Cores de Texto */
+    --text-main: #333;
+    --text-light: #f7f7f7;
+    --text-muted: #666666;
+    
+    /* Cores de Destaque e Elementos */
+    --color-price: #3d7254;
+    --color-resultado:  #4CAF50;
+    --text-btn: rgb(112, 32, 32);
+    
+    /* Fundos Transparentes / Efeitos */
+    --bg-btn: #6d4cff00;
+    --bg-btn-hover: #5640d600;
+    --bg-simulador: rgba(150, 42, 42, 0);
+    --bg-footer: #a51b1b00;
+    
+    /* Cores de Sombra */
+    --shadow-header: rgba(0, 0, 0, 0.05);
+    --shadow-box: rgba(0, 0, 0, 0.08);
+
+    /* Cores do Botão do Simulador */
+    --bg-btn-simular: #69cc94;         /* Cor de fundo verde */
+    --text-btn-simular: #ffffff;       /* Texto branco */
+    --bg-btn-simular-hover: #508667;   /* Verde mais escuro ao passar o mouse */
+
+    /* Cores da brand */
+    --brand--royal: #000000;   /* Cor do "Royal" da logo  */
+    --brand--pet: #2d7a4e;     /* Cor da "Pet" da logo */
+}
 * {
     margin: 0;
     padding: 0;
@@ -14,11 +52,11 @@
 }
 
 body {
-    background: #f5f7fa;
-    color: #333;
+    background: var(--bg-main);
+    color: var(--text-main);
 }
 
-/* ANIMAÇÃO */
+/* animação */
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -32,21 +70,46 @@ body {
     }
 }
 
-/* HEADER */
+/* header */
 header {
-    background: #41bdea;
-    padding: 20px;
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    color: #f7f7f7;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background: transparent; /* É para remover o fundo rígido */
+    padding: 15px 20px;
+    text-align: center;      
+}
+
+/* Alinhamento da Logo */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.brand-logo {
+    font-family: 'Playfair Display', serif;   /* para aderir a fonte importada no codigo, essa parte é importante ter para que ela entenda que deve ser usada nesse treixo do codigo */
+    font-weight: 900;
+    font-size: 30px;
+    letter-spacing: -0.7px;
+    color: var(--brand--royal);
+    text-decoration: none;
+}
+
+.brand-logo span {
+    color: var(--brand--pet);
+    font-family: inherit; /* CORREÇÃO: Força o 'Pet' a herdar a fonte Playfair Display e sair do Arial */
+}
+
+.brand-paw {
+  font-size: 14px;  /* Muda o tamanho das patinhas por aqui */
+  opacity: 0.6;
 }
 
 /* HERO */
 .hero {
     text-align: center;
-    padding: 60px 20px;
+    padding: 40px 20px 60px 20px; /* Reduzido levemente o espaçamento superior */
 }
 
 .hero h1 {
@@ -55,10 +118,10 @@ header {
 }
 
 .hero p {
-    color: #666666;
+    color: var(--text-muted);
 }
 
-/* PLANOS */
+/* planos */
 .planos {
     display: flex;
     justify-content: center;
@@ -68,11 +131,11 @@ header {
 }
 
 .card {
-    background: rgb(255, 255, 255);
+    background: var(--bg-card);
     padding: 25px;
     border-radius: 15px;
     width: 250px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 5px 20px var(--shadow-box);
     text-align: center;
     transition: 0.3s;
 }
@@ -83,14 +146,14 @@ header {
 
 .price {
     font-size: 24px;
-    color: #38cc24;
+    color: var(--color-price);
     margin: 10px 0;
 }
 
-/* BOTÃO */
+/* botão */
 .btn {
-    background: #6d4cff00;
-    color: rgb(112, 32, 32);
+    background: var(--bg-btn);
+    color: var(--text-btn);
     padding: 10px;
     border-radius: 8px;
     display: inline-block;
@@ -99,17 +162,17 @@ header {
 }
 
 .btn:hover {
-    background: #5640d600;
+    background: var(--bg-btn-hover);
 }
 
-/* SIMULADOR */
+/* simulador */
 .simulador {
-    background: rgba(150, 42, 42, 0);
+    background: var(--bg-simulador);
     margin: 40px auto;
     padding: 30px;
     border-radius: 15px;
     max-width: 500px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 5px 20px var(--shadow-box);
     text-align: center;
 }
 
@@ -119,13 +182,29 @@ header {
     width: 80%;
 }
 
+/* Estilização do botão do simulador  */
+.btn-simular {
+    background-color: var(--bg-btn-simular);
+    color: var(--text-btn-simular);
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-simular:hover {
+    background-color: var(--bg-btn-simular-hover);
+    transform: scale(1.02); /* Dá um leve efeito de crescimento ao passar o mouse */
+}
+
 .resultado {
     margin-top: 15px;
     font-weight: bold;
-    color: #6c4cff;
+    color: var(--color-resultado);
 }
 
-/* BENEFÍCIOS */
+/* Benefícios  */
 .beneficios {
     padding: 50px 20px;
     text-align: center;
@@ -146,16 +225,31 @@ header {
 footer {
     text-align: center;
     padding: 20px;
-    color: #a51b1b00;
+    color: var(--bg-footer);
 }
+
 </style>
 
 </head>
+
 <body>
 
-<header class="fade-in">
-    Royal Pet
-</header>
+  <header class="fade-in">
+    <div class="brand">
+        <a class="brand-logo" href="Telainicio.html">
+            Royal <span>Pet</span>
+        </a>
+        <span class="brand-paw">🐾</span>
+    </div>
+  </header>
+
+<!-- <header class="fade-in">
+    <div class="brand">
+        <span class="brand-royal">Royal</span>
+        <span class="brand-pet">Pet</span> 
+        <span class="brand-paw">🐾</span>
+    </div>
+</header> -->
 
 <section class="hero fade-in">
     <h1>Plano de Saúde para seu Pet</h1>
@@ -184,7 +278,6 @@ footer {
 
 </section>
 
-<!-- SIMULADOR -->
 <section class="simulador fade-in">
     <h2>Simule o plano ideal</h2>
 
@@ -209,7 +302,7 @@ footer {
         <option value="idoso">+8 anos</option>
     </select>
 
-    <button onclick="simular()">Simular</button>
+    <button class="btn-simular" onclick="simular()">Simular</button>
 
     <div class="resultado" id="resultado"></div>
 </section>
@@ -297,12 +390,9 @@ function simular() {
     resultado.innerHTML = `Recomendado: <br><strong>${plano}</strong> - ${preco}<br><small>Baseado no perfil do seu pet</small>`;
 }
 </script>
-<!--Essa parte é bem "dificil" de explicar-->
+
 <a href="https://wa.me/5511995417758?text=Olá,%20tenho%20interesse%20no%20plano%20da%20Royal%20Pet"
 class="whatsapp-btn" target="_blank">💬</a>
-<!--"href" basicamente foi criado uma "URL" que direciona o usuario para uma pagina do WhatsApp, nesta pagina ele vai encaminhar o usuario para o numero presente na "URL".
- O numero presente na "URL" recebera uma mensagem que está presente na mesma,"text=Olá,%20tenho%20interesse%20no%20plano%20da%20Royal%20Pet"= Olá, tenho interesse no plano da Royal Pet, É essa a mensagem que vai ser enviada para o numero presente na "URL"-->
-
 <style>
 .whatsapp-btn {
     position: fixed;
@@ -322,7 +412,5 @@ class="whatsapp-btn" target="_blank">💬</a>
     transform: scale(1.1);
 }
 </style>
-<!--Aqui nessa parte apenas está fazendo a estilização do botão presente no canto inferior direito da tela-->
-
 </body>
 </html>

@@ -27,8 +27,16 @@
             </div>
             <div class="user-icons">
                 <i href="atendimentoPetshop.html" class="fa-solid fa-headset"></i>
-                <i class="fa-solid fa-cart-shopping" id="open-cart-icon"></i>
-                <i class="fa-regular fa-heart"></i>
+                
+                <div class="cart-icon-wrapper">
+                    <i class="fa-solid fa-cart-shopping" id="open-cart-icon"></i>
+                    <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
+                </div>
+                
+                <div class="heart-icon-wrapper">
+                    <i class="fa-regular fa-heart" id="open-heart-icon"></i>
+                    <span id="heart-badge" class="heart-badge" style="display: none;">0</span>
+                </div>
             </div>
         </div>
     </div>
@@ -37,64 +45,76 @@
 <main class="hero">
 
     <div class="cards-wrapper">
-
-    <a href="racaoPetshop.html" class="card-link">
-        <div class="category-card">
-            <div class="card-icon">
-                <img src="https://i.postimg.cc/6pWZvBLB/download-(20).png" alt="Rações">
+        <a href="racaoPetshop.html" class="card-link">
+            <div class="category-card">
+                <div class="card-icon">
+                    <img src="https://i.postimg.cc/6pWZvBLB/download-(20).png" alt="Rações">
+                </div>
+                <span>Rações</span>
             </div>
-            <span>Rações</span>
-        </div>
-    </a>
+        </a>
 
-    <a href="TeladosBrinquedos.html" class="card-link">
-        <div class="category-card">
-            <div class="card-icon">
-                <img src="https://i.postimg.cc/PJVgQXvT/download-(21).png" alt="Brinquedos">
+        <a href="TeladosBrinquedos.html" class="card-link">
+            <div class="category-card">
+                <div class="card-icon">
+                    <img src="https://i.postimg.cc/PJVgQXvT/download-(21).png" alt="Brinquedos">
+                </div>
+                <span>Brinquedos</span>
             </div>
-            <span>Brinquedos</span>
-        </div>
-    </a>
+        </a>
 
-    <a href="acessoriosPetshop.html" class="card-link">
-        <div class="category-card">
-            <div class="card-icon">
-                <img src="https://i.postimg.cc/SNrTG10N/download-(16).png" alt="Acessórios">
+        <a href="acessoriosPetshop.html" class="card-link">
+            <div class="category-card">
+                <div class="card-icon">
+                    <img src="https://i.postimg.cc/SNrTG10N/download-(16).png" alt="Acessórios">
+                </div>
+                <span>Acessórios</span>
             </div>
-            <span>Acessórios</span>
-        </div>
-    </a>
+        </a>
 
-    <a href="casasPetshop.html" class="card-link">
-        <div class="category-card">
-            <div class="card-icon">
-                <img src="https://i.postimg.cc/HLLLpx0z/download-(19).png" alt="Casas">
+        <a href="casasPetshop.html" class="card-link">
+            <div class="category-card">
+                <div class="card-icon">
+                    <img src="https://i.postimg.cc/HLLLpx0z/download-(19).png" alt="Casas">
+                </div>
+                <span>Casas</span>
             </div>
-            <span>Casas</span>
-        </div>
-    </a>
-</div>
-
-<div id="sidebar-cart" class="cart-sidebar">
-    <div class="cart-header">
-        <h2>Meu Carrinho</h2>
-        <span id="close-cart" class="close-cart-btn">&times;</span>
+        </a>
     </div>
 
-    <div id="cart-items-container" class="cart-items-list">
-        <p class="empty-cart-msg">Seu carrinho está vazio.</p>
-    </div>
-
-    <div class="cart-footer">
-        <div class="cart-total-row">
-            <span class="cart-total-label">Total:</span>
-            <span id="cart-total-value">R$ 0,00</span>
+    <div id="sidebar-cart" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Meu Carrinho</h2>
+            <span id="close-cart" class="close-cart-btn">&times;</span>
         </div>
 
-        <a href="TelaFinalCompra.html" id="checkout-btn" class="finalize-purchase-btn">Finalizar Compra</a>
-        <!-- <button id="checkout-btn" class="finalize-purchase-btn">Finalizar Compra</button> -->
+        <div id="cart-items-container" class="cart-items-list">
+            <p class="empty-cart-msg">Seu carrinho está vazio.</p>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span class="cart-total-label">Total:</span>
+                <span id="cart-total-value">R$ 0,00</span>
+            </div>
+            <a href="TelaFinalCompra.html" id="checkout-btn" class="finalize-purchase-btn">Finalizar Compra</a>
+        </div>
     </div>
-</div>
+
+    <div id="sidebar-favorites" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Meus Favoritos</h2>
+            <span id="close-favorites" class="close-cart-btn">&times;</span>
+        </div>
+
+        <div id="favorites-items-container" class="cart-items-list">
+            <p class="empty-cart-msg">Sua lista de favoritos está vazia.</p>
+        </div>
+
+        <div class="cart-footer" id="favorites-footer" style="display: none;">
+            <button id="add-all-to-cart-btn" class="finalize-purchase-btn" style="background: #2ecc71;">Adicionar tudo no carrinho</button>
+        </div>
+    </div>
 
 </main>
 
@@ -183,7 +203,6 @@ body {
     gap: 25px;
 }
 
-/* Barra de pesquisa */
 .search-container {
     display: flex;
     align-items: center;
@@ -239,11 +258,13 @@ body {
     color: white;
     font-size: 14px;
 }
+
 /* icones da direita */
 .user-icons {
     display: flex;
     gap: 20px;
     font-size: 18px;
+    align-items: center;
 }
 
 .user-icons i {
@@ -255,6 +276,34 @@ body {
     transform: scale(1.2);
     color: var(--azul-hover);
 }
+
+/* Wrappers para os badges */
+.cart-icon-wrapper, .heart-icon-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Estilo unificado para os balões de notificação */
+.cart-badge, .heart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+.cart-badge { background-color: #e74c3c; }
+.heart-badge { background-color: #2ecc71; }
 
 /* hero */
 .hero {
@@ -318,37 +367,31 @@ body {
     background: #ffffff;
     padding: 17px 40px;
     border-radius: 20px;
-    position: relative; /* Garante que o contato fique centralizado em relação ao footer */
+    position: relative; 
 }
 
-/* Base comum para os três elementos (texto e links) */
-.footer-left,
-.footer-center,
-.footer-right {
+.footer-left, .footer-center, .footer-right {
     font-weight: bold;
     color: #000000;
     text-decoration: none;
     transition: color 0.3s;
-    display: inline-flex; /* Alinha o conteúdo interno verticalmente */
+    display: inline-flex; 
     align-items: center;
     height: 100%;
 }
 
-/* Posicionamento estrito do centro */
 .footer-center {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
 
-/* Efeito hover apenas nos links clicáveis */
-.footer-center:hover,
-.footer-right:hover {
+.footer-center:hover, .footer-right:hover {
     color: var(--azul-hover);
 }
 
-/* Designer do carrinho lateral */
-#sidebar-cart {
+/* Design das abas laterais */
+.cart-sidebar {
     position: fixed;
     top: 0;
     right: -380px;
@@ -363,7 +406,7 @@ body {
     border-left: 1px solid #f0f0f0;
 }
 
-#sidebar-cart.open {
+.cart-sidebar.open {
     right: 0;
 }
 
@@ -381,7 +424,7 @@ body {
     font-weight: 600;
 }
 
-#close-cart {
+.close-cart-btn {
     background: none;
     border: none;
     font-size: 1.4rem;
@@ -390,11 +433,11 @@ body {
     transition: color 0.2s;
 }
 
-#close-cart:hover {
+.close-cart-btn:hover {
     color: #333;
 }
 
-#cart-items-container {
+.cart-items-list {
     flex: 1;
     overflow-y: auto;
     padding: 24px;
@@ -407,7 +450,6 @@ body {
     font-size: 0.95rem;
 }
 
-/* Card Interno: Alinhamento seguro para conter imagem e lixeira */
 .cart-item-card {
     display: flex;
     justify-content: space-between;
@@ -418,7 +460,6 @@ body {
     border-bottom: 1px solid #fbfbfb;
 }
 
-/* Caixa wrapper para proteger imagem e textos contra esmagamentos */
 .cart-item-info {
     display: flex;
     align-items: center;
@@ -427,7 +468,6 @@ body {
     min-width: 0;
 }
 
-/* Estilo estrito para travar as dimensões da foto do produto */
 .cart-item-img-fixed {
     width: 60px;
     height: 60px;
@@ -463,8 +503,13 @@ body {
     font-weight: 700;
 }
 
-/* Botão excluir  */
-.remove-item-btn {
+.action-buttons-container {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.remove-item-btn, .add-to-cart-from-fav {
     background: none;
     border: none;
     color: #ccc;
@@ -477,7 +522,6 @@ body {
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
-    flex-shrink: 0;
     padding: 0;
 }
 
@@ -487,7 +531,12 @@ body {
     transform: scale(1.05);
 }
 
-/* Rodapé do carrinho feito para aproximar elementos  */
+.add-to-cart-from-fav:hover {
+    color: #2ecc71;
+    background-color: rgba(46, 204, 113, 0.08);
+    transform: scale(1.05);
+}
+
 .cart-footer {
     padding: 20px 24px 24px 24px;
     border-top: 1px solid #f5f5f5;
@@ -509,7 +558,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Preço Total em destaque elegante */
 #cart-total-value {
     font-size: 1.45rem;
     font-weight: 700;
@@ -518,7 +566,7 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-#checkout-btn {
+#checkout-btn, #add-all-to-cart-btn {
     display: block;          
     text-align: center;          
     text-decoration: none;       
@@ -531,16 +579,16 @@ body {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, transform 0.1s ease;
     box-shadow: 0 4px 12px rgba(44, 62, 80, 0.1);
 }
 
-#checkout-btn:hover {
-    background: #1a252f;
-}
+#checkout-btn:hover { background: #1a252f; }
+#add-all-to-cart-btn:hover { background: #27ae60 !important; }
+#add-all-to-cart-btn:active { transform: scale(0.98); }
 
 @media (max-width: 480px) {
-    #sidebar-cart {
+    .cart-sidebar {
         width: 100%;
         right: -100%;
     }
@@ -561,14 +609,29 @@ body {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    // Elementos do Carrinho
     const sidebarCart = document.getElementById('sidebar-cart');
     const openCartIcon = document.getElementById('open-cart-icon');
     const closeCart = document.getElementById('close-cart');
     const cartItemsContainer = document.getElementById('cart-items-container');
     const cartTotalValue = document.getElementById('cart-total-value');
+    const cartBadge = document.getElementById('cart-badge');
 
-    // Abre e fecha a janela lateral
+    // Elementos de Favoritos
+    const sidebarFavorites = document.getElementById('sidebar-favorites');
+    const openHeartIcon = document.getElementById('open-heart-icon');
+    const closeFavorites = document.getElementById('close-favorites');
+    const favoritesItemsContainer = document.getElementById('favorites-items-container');
+    const heartBadge = document.getElementById('heart-badge');
+    const favoritesFooter = document.getElementById('favorites-footer');
+    const addAllToCartBtn = document.getElementById('add-all-to-cart-btn');
+
+    // Inicializa os contadores ao carregar a página
+    updateBadges();
+
+    // --- Controle de Janelas Laterais ---
     openCartIcon.addEventListener('click', () => {
+        sidebarFavorites.classList.remove('open'); 
         renderCartItems();
         sidebarCart.classList.add('open');
     });
@@ -577,7 +640,41 @@ document.addEventListener('DOMContentLoaded', () => {
         sidebarCart.classList.remove('open');
     });
 
-    // Função para renderizar os produtos salvos no localStorage
+    openHeartIcon.addEventListener('click', () => {
+        sidebarCart.classList.remove('open'); 
+        renderFavoritesItems();
+        sidebarFavorites.classList.add('open');
+    });
+
+    closeFavorites.addEventListener('click', () => {
+        sidebarFavorites.classList.remove('open');
+    });
+
+
+    // --- Funções Auxiliares: Atualização e Exibição de Badges ---
+    function updateBadges() {
+        const cart = JSON.parse(localStorage.getItem('royalPetCart')) || [];
+        const favorites = JSON.parse(localStorage.getItem('royalPetFavorites')) || [];
+        
+        // Regra do Carrinho: só exibe se for maior que zero
+        if (cart.length > 0) {
+            cartBadge.innerText = cart.length;
+            cartBadge.style.display = 'flex';
+        } else {
+            cartBadge.style.display = 'none';
+        }
+
+        // Regra dos Favoritos: só exibe se for maior que zero
+        if (favorites.length > 0) {
+            heartBadge.innerText = favorites.length;
+            heartBadge.style.display = 'flex';
+        } else {
+            heartBadge.style.display = 'none';
+        }
+    }
+
+
+    // --- Gerenciamento do Carrinho ---
     function renderCartItems() {
         const cart = JSON.parse(localStorage.getItem('royalPetCart')) || [];
         cartItemsContainer.innerHTML = '';
@@ -585,11 +682,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Seu carrinho está vazio.</p>';
             cartTotalValue.innerText = 'R$ 0,00';
+            updateBadges();
             return;
         }
 
         let total = 0;
-
         cart.forEach((item, index) => {
             total += item.price;
             const itemHTML = `
@@ -610,22 +707,116 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         cartTotalValue.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+        updateBadges();
 
-        document.querySelectorAll('.remove-item-btn').forEach(btn => {
+        cartItemsContainer.querySelectorAll('.remove-item-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const targetBtn = e.target.closest('.remove-item-btn');
                 const idx = targetBtn.getAttribute('data-index');
-                removeProduct(idx);
+                removeProductFromCart(idx);
             });
         });
     }
 
-    function removeProduct(index) {
+    function removeProductFromCart(index) {
         let cart = JSON.parse(localStorage.getItem('royalPetCart')) || [];
         cart.splice(index, 1);
         localStorage.setItem('royalPetCart', JSON.stringify(cart));
         renderCartItems();
     }
+
+
+    // --- Gerenciamento de Favoritos ---
+    function renderFavoritesItems() {
+        const favorites = JSON.parse(localStorage.getItem('royalPetFavorites')) || [];
+        favoritesItemsContainer.innerHTML = '';
+
+        if (favorites.length === 0) {
+            favoritesItemsContainer.innerHTML = '<p class="empty-cart-msg">Sua lista de favoritos está vazia.</p>';
+            favoritesFooter.style.display = 'none'; 
+            updateBadges();
+            return;
+        }
+
+        favoritesFooter.style.display = 'block'; 
+
+        favorites.forEach((item, index) => {
+            const itemHTML = `
+                <div class="cart-item-card">
+                    <div class="cart-item-info">
+                        <img src="${item.img}" alt="${item.name}" class="cart-item-img-fixed">
+                        <div class="cart-item-details">
+                            <span class="cart-item-name">${item.name}</span>
+                            <span class="cart-item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</span>
+                        </div>
+                    </div>
+                    <div class="action-buttons-container">
+                        <button class="add-to-cart-from-fav" data-index="${index}" title="Mover para o carrinho">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                        <button class="remove-item-btn" data-index="${index}" title="Remover dos favoritos">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            favoritesItemsContainer.insertAdjacentHTML('beforeend', itemHTML);
+        });
+
+        updateBadges();
+
+        favoritesItemsContainer.querySelectorAll('.remove-item-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const targetBtn = e.target.closest('.remove-item-btn');
+                const idx = targetBtn.getAttribute('data-index');
+                removeProductFromFavorites(idx);
+            });
+        });
+
+        favoritesItemsContainer.querySelectorAll('.add-to-cart-from-fav').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const targetBtn = e.target.closest('.add-to-cart-from-fav');
+                const idx = targetBtn.getAttribute('data-index');
+                moveFromFavoritesToCart(idx);
+            });
+        });
+    }
+
+    function removeProductFromFavorites(index) {
+        let favorites = JSON.parse(localStorage.getItem('royalPetFavorites')) || [];
+        favorites.splice(index, 1);
+        localStorage.setItem('royalPetFavorites', JSON.stringify(favorites));
+        renderFavoritesItems();
+    }
+
+    function moveFromFavoritesToCart(index) {
+        let favorites = JSON.parse(localStorage.getItem('royalPetFavorites')) || [];
+        let cart = JSON.parse(localStorage.getItem('royalPetCart')) || [];
+
+        cart.push(favorites[index]);
+        favorites.splice(index, 1);
+
+        localStorage.setItem('royalPetCart', JSON.stringify(cart));
+        localStorage.setItem('royalPetFavorites', JSON.stringify(favorites));
+
+        renderFavoritesItems();
+    }
+
+    // --- Lógica: Adicionar tudo no carrinho ---
+    addAllToCartBtn.addEventListener('click', () => {
+        let favorites = JSON.parse(localStorage.getItem('royalPetFavorites')) || [];
+        let cart = JSON.parse(localStorage.getItem('royalPetCart')) || [];
+
+        if (favorites.length > 0) {
+            cart = cart.concat(favorites);
+            favorites = [];
+
+            localStorage.setItem('royalPetCart', JSON.stringify(cart));
+            localStorage.setItem('royalPetFavorites', JSON.stringify(favorites));
+
+            renderFavoritesItems();
+        }
+    });
 });
 </script>
 

@@ -5,15 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Royal Pet — Serviços</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
+
 :root {
   --bg: #f7f5f2;
   --white: #ffffff;
   --text: #1a1a1a;
   --muted: #7a7570;
   --border: #e8e4de;
-  --green: #2d7a4f;
-  --green-light: #eaf5ee;
+  --green: #2d7a4e;
   --blue: #2563a8;
   --blue-light: #eaf1fb;
   --purple: #6b3fa0;
@@ -33,34 +34,40 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
-  padding: 40px 20px;
+  padding: 15px 20px 40px 20px;
 }
 
+/* Adicionada a animação fadeUp aqui para a página inteira suavizar ao carregar */
 .page {
   max-width: 900px;
   margin: 0 auto;
+  animation: fadeUp 0.8s ease both;
 }
+
 
 /* HEADER */
 .brand {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 36px;
+  margin-top: -5px;
+  margin-bottom: 20px;
+  justify-content: center;
 }
 
 .brand-logo {
   font-family: 'Playfair Display', serif;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 30px;
+  font-weight: 900;
   color: var(--text);
-  letter-spacing: -0.3px;
+  letter-spacing: -0.7px;
+  text-decoration: none;  /* Serve para tirar o sublinhado da palavra. Sem isso, iria ficar sublinhado  */
 }
 
 .brand-logo span { color: var(--green); }
 
 .brand-paw {
-  font-size: 14px;
+  font-size: 14px;  /* Muda o tamanho das patinhas por aqui */
   opacity: 0.6;
 }
 
@@ -135,6 +142,10 @@ body {
 .card:nth-child(2) { animation-delay: 0.12s; }
 .card:nth-child(3) { animation-delay: 0.19s; }
 
+/* Correção para que os cards da segunda fileira também peguem o efeito de delay corretamente */
+.grid-2 .card:nth-child(1) { animation-delay: 0.26s; }
+.grid-2 .card:nth-child(2) { animation-delay: 0.33s; }
+
 .icon-wrap {
   width: 80px;
   height: 80px;
@@ -193,8 +204,7 @@ body {
 .btn-red    { background: var(--red);    color: #fff; }
 .btn-orange { background: var(--orange); color: #fff; }
 
-.icon-green  { background: var(--green-light); }
-.icon-blue   { background: var(--blue-light); }
+.icon-blue  { background: var(--blue-light); }
 .icon-purple { background: var(--purple-light); }
 .icon-red    { background: var(--red-light); }
 .icon-orange { background: var(--orange-light); }
@@ -266,28 +276,12 @@ footer {
 
 <div class="page">
 
-  <!-- brand -->
-
-<!--Caso não de certo, use o codigo abaixo:-->
-
-<!--        
-
-        <nav class="nav-links">
-            <a href="loginPetshop.html" class="btn-inicio">Início</a>
-            <a href="#">Produtos</a>
-            <a href="TeladeServiços.html">Serviços</a>
-            <a href="TelaPlanoSaude.html">Meu pet</a>
-        </nav>
-        
--->
-
-
   <div class="brand">
-    <span class="brand-logo" href="Telainicio.html" >Royal<span>Pet</span></span>
-    <span class="brand-paw">🐾</span>
-  </div>
+    <a class="brand-logo" href="Telainicio.html">
+      Royal <span>Pet</span>
+    </a>
+    <span class="brand-paw">🐾</span>  </div>
 
-  <!-- HERO -->
   <p class="hero-label">Nossos Serviços</p>
   <h1 class="hero-title">
     Cuidados e Serviços<br>
@@ -295,37 +289,30 @@ footer {
   </h1>
   <p class="hero-sub">Agende, conheça e ofereça o melhor para seu melhor amigo.</p>
 
-  <!-- CARDS PRINCIPAIS -->
   <div class="grid-3">
 
     <div class="card">
-      <div class="icon-wrap icon-green">
-        <span class="paw-deco tl">🐾</span>
-        <span class="paw-deco br">🐾</span>
-        🩺
-      </div>
+      <div class="icon-wrap icon-green">🩺
+        </div>
+
       <h3 class="card-title">Veterinário</h3>
       <p class="card-desc">Consultas, vacinas e acompanhamento clínico especializado</p>
       <button class="btn btn-green">Saiba mais →</button>
     </div>
 
     <div class="card">
-      <div class="icon-wrap icon-blue">
-        <span class="paw-deco tl">🐾</span>
-        <span class="paw-deco br">🐾</span>
-        🛁
-      </div>
+      <div class="icon-wrap icon-blue">🛁
+        </div>
+
       <h3 class="card-title">Banho e Tosa</h3>
       <p class="card-desc">Higiene completa com produtos premium e carinho</p>
       <button class="btn btn-blue">Saiba mais →</button>
     </div>
 
     <div class="card">
-      <div class="icon-wrap icon-purple">
-        <span class="paw-deco tl">🐾</span>
-        <span class="paw-deco br">🐾</span>
-        🎓
-      </div>
+      <div class="icon-wrap icon-purple">🎓
+        </div>
+
       <h3 class="card-title">Adestramento</h3>
       <p class="card-desc">Treinamento comportamental com técnicas modernas e eficazes</p>
       <button class="btn btn-purple">Saiba mais →</button>
@@ -333,7 +320,6 @@ footer {
 
   </div>
 
-  <!-- CARDS SECUNDÁRIOS -->
   <div class="grid-2">
 
     <div class="card">
@@ -352,7 +338,6 @@ footer {
 
   </div>
 
-  <!-- FEATURES STRIP -->
   <div class="features">
     <div class="feature-item">
       <div class="feature-icon">🚚</div>
@@ -384,7 +369,7 @@ footer {
     </div>
   </div>
 
-  <footer>© 2026 Royal Pet — Todos os direitos reservados</footer>
+  <footer>© 2026 Royal Pet</footer>
 
 </div>
 </body>
