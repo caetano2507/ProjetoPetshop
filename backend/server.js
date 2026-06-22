@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 
@@ -15,7 +16,7 @@ app.use(express.static(path.join(__dirname, "./")));
 
 app.use("/petshop", petshopRoutes);
 
-app.listen(3000, () => {
+app.listen(process.env.DB_PORT, () => {
     console.log("Servidor rodando em http://localhost:3000");
 });
 

@@ -3,7 +3,7 @@
 
     //Criei a função voltar
     function voltarLogin() {
-    window.location.href = "loginPetshop.html";  //Local para onde vai voltar
+    window.location.href = "/frontend/loginPetshop.html";  //Local para onde vai voltar
 }
  
     function entrar() {
