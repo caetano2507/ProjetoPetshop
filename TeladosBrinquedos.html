@@ -101,7 +101,7 @@
             gap: 25px;
             margin-bottom: 0;
             padding: 15px 5px;
-            scrollbar-width: none; /* Esconde a barra no Firefox */
+            scrollbar-width: none; /* Esconde a barra */
         }
 
         .product-grid.carousel::-webkit-scrollbar {
@@ -257,8 +257,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             z-index: 10;
         }
-
-        /* --- RESPONSIVIDADE PARA CELULAR E TABLETS --- */
+        /* responsividade para celular e tablets */
         @media (max-width: 900px) {
             .product-grid.carousel .product-card {
                 flex: 0 0 calc(50% - 13px); /* 2 itens por tela em tablets */
@@ -572,7 +571,7 @@
     </main>
 
 <script>
-    // --- CÓDIGO DO CARROSSEL ---
+    // codigo do carrossel 
     const carousel = document.getElementById('ofertas-carousel');
     const carouselWrapper = document.querySelector('.carousel-wrapper');
     let autoScrollTimer; 
@@ -600,7 +599,7 @@
     carouselWrapper.addEventListener('mouseenter', pausarAutoPlay);
     carouselWrapper.addEventListener('mouseleave', iniciarAutoPlay);
 
-    // --- CÓDIGO DO CARRINHO ---
+    // código do carrinho 
     function mostrarAvisoVisual(nomeProduto) {
         let container = document.getElementById('toast-container');
         if (!container) {
@@ -669,7 +668,7 @@
         });
     });
 
-    // --- ADIÇÃO CIRÚRGICA: LÓGICA DE FAVORITOS ---
+    // lógica de favoritos 
     
     // Função para atualizar o estado visual dos corações ao carregar a página
     function atualizarCoracoesVisuais() {

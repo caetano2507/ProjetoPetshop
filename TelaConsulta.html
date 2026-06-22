@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultas Veterinárias - RoyalPet</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color: #333;
+}
+
+/* HEADER */
+.main-header{
+    background:#fff;
+    padding:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+}
+
+.logo-small{
+    text-decoration:none;
+    color:#2E8B57;
+    font-size:1.3rem;
+    font-weight:bold;
+}
+
+.main-header h1{
+    color:#222;
+    font-size: 1.5rem;
+}
+
+/* BANNER */
+.hero-consultas{
+    background:linear-gradient(135deg,#2E8B57,#3aa567);
+    color:white;
+    text-align:center;
+    padding:70px 20px;
+}
+
+.hero-consultas h2{
+    font-size:2.3rem;
+    margin-bottom:10px;
+}
+
+.hero-consultas p{
+    font-size:1.1rem;
+}
+
+/* FORMULÁRIO */
+.agendamento{
+    max-width:900px;
+    margin:40px auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,.06);
+}
+
+.agendamento h2{
+    text-align:center;
+    margin-bottom:25px;
+    color:#222;
+}
+
+form{
+    display:grid;
+    gap:20px;
+}
+
+.campo{
+    display:flex;
+    flex-direction:column;
+}
+
+.campo label{
+    margin-bottom:6px;
+    font-weight:600;
+    color:#333;
+}
+
+.campo input,
+.campo select{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.2s;
+}
+
+.campo input:focus,
+.campo select:focus{
+    border-color: #2E8B57;
+    box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
+}
+
+/* LINHA VERMELHA DE ERRO IGUAL A FOTO ENVIADA */
+.campo input.campo-invalido {
+    border-color: #fca5a5 !important; /* Rosa/Vermelho suave idêntico ao print */
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1) !important;
+}
+
+.btn-agendar{
+    background:#2E8B57;
+    color:white;
+    border:none;
+    padding:15px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight: bold;
+    transition:.3s;
+}
+
+.btn-agendar:hover{
+    background:#256F47;
+}
+
+/* ESPECIALIDADES */
+.especialidades{
+    max-width:1200px;
+    margin:40px auto;
+    padding:0 20px;
+    text-align: center;
+}
+
+.especialidades h2{
+    text-align:center;
+    margin-bottom:30px;
+    color: #222;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:30px 25px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,.05);
+    border: 1px solid #eef2f5;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover{
+    transform: translateY(-3px);
+    border-color: #2E8B57;
+}
+
+.card .icone{
+    font-size:1.5rem;
+    margin-bottom: 10px;
+}
+
+.card h3{
+    margin-bottom: 20px;
+    color: #222;
+    font-size: 1.3rem;
+}
+
+.card .quando-procurar{
+    text-align: left;
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 15px;
+}
+
+.card .quando-procurar h4{
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.card .quando-procurar ul{
+    list-style: none;
+}
+
+.card .quando-procurar ul li{
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.card .quando-procurar ul li::before{
+    content: "•";
+    color: #2E8B57;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.card.escondido {
+    display: none;
+}
+
+.container-ver-mais {
+    margin-top: 35px;
+}
+
+.btn-ver-mais {
+    background: transparent;
+    color: #2E8B57;
+    border: 2px solid #2E8B57;
+    padding: 12px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+
+.btn-ver-mais:hover {
+    background: #2E8B57;
+    color: white;
+}
+
+/* CONSULTAS */
+.consultas-marcadas{
+    max-width:900px;
+    margin:40px auto;
+    padding:20px;
+}
+
+.consultas-marcadas h2{
+    text-align:center;
+    margin-bottom:25px;
+    color: #222;
+}
+
+.item-consulta{
+    background:white;
+    padding:20px;
+    margin-bottom:15px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #2E8B57;
+}
+
+.item-consulta .info-pet h3{
+    color:#222;
+    margin-bottom:4px;
+}
+
+.item-consulta .info-pet p{
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.item-consulta .direita-bloco {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.item-consulta span.badge-esp{
+    background:#e8f7ee;
+    color:#2E8B57;
+    padding:6px 12px;
+    border-radius:30px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.acoes-consulta {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-acao {
+    background: none;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-alterar {
+    color: #2E8B57;
+    border: 1px solid #2E8B57;
+}
+
+.btn-alterar:hover {
+    background: #2E8B57;
+    color: white;
+}
+
+.btn-excluir {
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+.btn-excluir:hover {
+    background: #dc3545;
+    color: white;
+}
+
+/* BALÃO DE AVISOS CUSTOMIZADO */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.modal-overlay.ativo {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-balao {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+    border-top: 6px solid #2E8B57;
+}
+
+.modal-overlay.erro-data .modal-balao {
+    border-top-color: #dc3545;
+}
+
+.modal-balao p {
+    font-size: 1.05rem;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.modal-botoes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+
+.btn-modal-confirmar {
+    background: #2E8B57;
+    color: white;
+}
+
+.btn-modal-confirmar:hover {
+    background: #256F47;
+}
+
+.modal-overlay.erro-data .btn-modal-confirmar {
+    background: #dc3545;
+}
+
+.modal-overlay.erro-data .btn-modal-confirmar:hover {
+    background: #bd2130;
+}
+
+.btn-modal-cancelar {
+    background: #f1f3f5;
+    color: #495057;
+}
+
+.btn-modal-cancelar:hover {
+    background: #e9ecef;
+}
+
+/* FOOTER */
+footer{
+    margin-top:50px;
+    background:white;
+    text-align:center;
+    padding:20px;
+    color:#666;
+    border-top: 1px solid #eee;
+}
+
+@media(max-width:768px){
+    .hero-consultas h2{ font-size:1.8rem; }
+    .item-consulta { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .item-consulta .direita-bloco { width: 100%; justify-content: space-between; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="main-header">
+    <a href="index.html" class="logo-small">RoyalPet</a>
+    <h1>Consultas Veterinárias</h1>
+</header>
+
+<section class="hero-consultas">
+    <h2>Cuide da saúde do seu melhor amigo</h2>
+    <p>Agende consultas com profissionais especializados.</p>
+</section>
+
+<section class="agendamento">
+    <h2 id="titulo-form">Agendar Consulta</h2>
+
+    <form id="form-consulta">
+        <div class="campo">
+            <label>Nome do Pet</label>
+            <input type="text" id="petNome" placeholder="Digite o nome do pet" required>
+        </div>
+
+        <div class="campo">
+            <label>Espécie</label>
+            <select id="petEspecie">
+                <option>Cachorro</option>
+                <option>Gato</option>
+                <option>Ave</option>
+                <option>Peixe</option>
+                <option>Outro</option>
+            </select>
+        </div>
+
+        <div class="campo">
+            <label>Tipo de Consulta / Especialidade</label>
+            <select id="petEsp">
+                <option>Clínica Geral</option>
+                <option>Cardiologia</option>
+                <option>Dermatologia</option>
+                <option>Oftalmologia</option>
+                <option>Neurologia</option>
+                <option>Ortopedia</option>
+                <option>Odontologia</option>
+                <option>Oncologia</option>
+                <option>Nutrologia</option>
+                <option>Hematologia</option>
+                <option>Endocrinologia</option>
+                <option>Fisioterapia e Reabilitação</option>
+                <option>Nefrologia</option>
+                <option>Gastroenterologia</option>
+                <option>Pneumologia</option>
+            </select>
+        </div>
+
+        <div class="campo">
+            <label>Data</label>
+            <input type="date" id="petData" required>
+        </div>
+
+        <div class="campo">
+            <label>Horário</label>
+            <input type="time" id="petHora" required>
+        </div>
+
+        <button type="submit" class="btn-agendar" id="btn-submit-form">
+            Agendar Consulta
+        </button>
+    </form>
+</section>
+
+<section class="especialidades">
+    <h2>Especialidades Disponíveis</h2>
+
+    <div class="cards">
+        <div class="card">
+            <div class="icone">❤️</div>
+            <h3>Cardiologia</h3>
+            <div class="quando-procurar">
+                <h4>Quando procurar?</h4>
+                <ul>
+                    <li>Falta de ar</li>
+                    <li>Tosse frequente</li>
+                    <li>Cansaço excessivo</li>
+                    <li>Desmaios</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="icone">🩹</div>
+            <h3>Dermatologia</h3>
+            <div class="quando-procurar">
+                <h4>Quando procurar?</h4>
+                <ul>
+                    <li>Coceira intensa</li>
+                    <li>Queda de pelo excessiva</li>
+                    <li>Feridas na pele</li>
+                    <li>Vermelhidão ou descamação</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="icone">👁️</div>
+            <h3>Oftalmologia</h3>
+            <div class="quando-procurar">
+                <h4>Quando procurar?</h4>
+                <ul>
+                    <li>Olhos vermelhos ou lacrimejantes</li>
+                    <li>Secreção ocular em excesso</li>
+                    <li>Dificuldade para enxergar</li>
+                    <li>Manchas esbranquiçadas nos olhos</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="icone">🧠</div>
+            <h3>Neurologia</h3>
+            <div class="quando-procurar">
+                <h4>Quando procurar?</h4>
+                <ul>
+                    <li>Convulsões ou ataques</li>
+                    <li>Desequilíbrio ao andar</li>
+                    <li>Alterações de comportamento</li>
+                    <li>Fraqueza súbita nas patas</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card escondido">
+            <div class="icone">🦴</div>
+            <h3>Ortopedia</h3>
+            <div class="quando-procurar">
+                <h4>Quando procurar?</h4>
+                <ul>
+                    <li>Mancar ou claudicar</li>
+                    <li>Dificuldade para levantar ou pular</li>
+                    <li>Inchaço nas articulações</li>
+                    <li>Dores na coluna ou membros</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card escondido">
+            <div class="icone">🦷</div>
+            <h3>Odontologia</h3>
+            <div class="quando-procurar">
+                <h4>Quando procurar?</h4>
+                <ul>
+                    <li>Mau hálito forte</li>
+                    <li>Dificuldade para mastigar a ração</li>
+                    <li>Sangramento na gengiva</li>
+                    <li>Dentes moles ou quebrados</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card escondido">
+            <div class="icone">🎗️</div>
+            <h3>Oncologia</h3>
+            <div class="quando-procurar">
+                <h4>Quando procurar?</h4>
+                <ul>
+                    <li>Nódulos ou caroços na pele</li>
+                    <li>Perda de peso inexplicável</li>
+                    <li>Feridas que não cicatrizam</li>
+                    <li>Aumento de volume abdominal</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card escondido">
+            <div class="icone">🥦</div>
+            <h3>Nutrologia</h3>
+            <div class="quando-procurar">
+                <h4>Quando procurar?</h4>
+                <ul>
+                    <li>Obesidade ou sobrepeso</li>
+                    <li>Perda de apetite crônica</li>
+                    <li>Necessidade de dieta caseira</li>
+                    <li>Apoio nutricional para doenças</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card escondido">
+            <div class="icone">🩸</div>
+            <h3>Hematologia</h3>
+            <div class="quando-procurar">
+                <h4>Quando procurar?</h4>
+                <ul>
+                    <li>Gengivas muito pálidas (anemia)</li>
+                    <li>Sangramentos espontâneos</li>
+                    <li>Manchas roxas pelo corpo</li>
+                    <li>Suspeita de doença do carrapato</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card escondido">
+            <div class="icone">🧪</div>
+            <h3>Endocrinologia</h3>
+            <div class="quando-procurar">
+                <h4>Quando procurar?</h4>
+                <ul>
+                    <li>Sede e urina em excesso</li>
+                    <li>Ganho de peso mesmo comendo pouco</li>
+                    <li>Sintomas de Diabetes</li>
+                    <li>Queda de pelo simétrica bilateral</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card escondido">
+            <div class="icone">🏃‍♂️</div>
+            <h3>Fisioterapia e Reabilitação</h3>
+            <div class="quando-procurar">
+                <h4>Quando procurar?</h4>
+                <ul>
+                    <li>Pós-operatório ortopédico</li>
+                    <li>Hérnia de disco ou paralisias</li>
+                    <li>Alívio de dores crônicas (artrose)</li>
+                    <li>Melhoria da mobilidade em idosos</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card escondido">
+            <div class="icone">💧</div>
+            <h3>Nefrologia</h3>
+            <div class="quando-procurar">
+                <h4>Quando procurar?</h4>
+                <ul>
+                    <li>Aumento ou redução drástica da urina</li>
+                    <li>Vômitos frequentes e perda de peso</li>
+                    <li>Suspeita de insuficiência renal</li>
+                    <li>Cálculos no trato urinário</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card escondido">
+            <div class="icone">🤢</div>
+            <h3>Gastroenterologia</h3>
+            <div class="quando-procurar">
+                <h4>Quando procurar?</h4>
+                <ul>
+                    <li>Vômitos ou diarreias recorrentes</li>
+                    <li>Gases e desconforto abdominal</li>
+                    <li>Fezes com sangue ou muco</li>
+                    <li>Engasgos frequentes ou refluxo</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card escondido">
+            <div class="icone">🫁</div>
+            <h3>Pneumologia</h3>
+            <div class="quando-procurar">
+                <h4>Quando procurar?</h4>
+                <ul>
+                    <li>Tosse crônica ou engasgos</li>
+                    <li>Cansaço fácil e língua roxa</li>
+                    <li>Respiração acelerada ou ruidosa</li>
+                    <li>Crises de espirros constantes</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card escondido">
+            <div class="icone">🩺</div>
+            <h3>Clínica Geral</h3>
+            <div class="quando-procurar">
+                <h4>Quando procurar?</h4>
+                <ul>
+                    <li>Check-up e exames preventivos</li>
+                    <li>Vacinação e vermifugação</li>
+                    <li>Casos de febre ou desânimo</li>
+                    <li>Primeira avaliação de qualquer sintoma</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-ver-mais">
+        <button class="btn-ver-mais" id="btn-toggle-especialidades">Ver mais especialidades</button>
+    </div>
+</section>
+
+<section class="consultas-marcadas">
+    <h2>Próximas Consultas</h2>
+    <div id="lista-consultas"></div>
+</section>
+
+<div class="modal-overlay" id="modalAviso">
+    <div class="modal-balao">
+        <p id="modalTexto">Mensagem de aviso aqui.</p>
+        <div class="modal-botoes" id="modalBotoesContainer"></div>
+    </div>
+</div>
+
+<footer>
+    © 2026 RoyalPet - Todos os direitos reservados.
+</footer>
+
+<script>
+let cardEmEdicao = null;
+
+document.addEventListener('DOMContentLoaded', function() {
+    carregarConsultasDoArmazenamento();
+    
+    // Monitoramento em tempo real para aplicar a borda vermelha assim que digitar errado
+    const campoData = document.getElementById('petData');
+    campoData.addEventListener('input', validarCampoDataEmTempoReal);
+});
+
+document.getElementById('btn-toggle-especialidades').addEventListener('click', function() {
+    const cardsEscondidos = document.querySelectorAll('.card');
+    const estaEscondido = cardsEscondidos[4].classList.contains('escondido');
+
+    if (estaEscondido) {
+        cardsEscondidos.forEach((card, index) => {
+            if (index >= 4) card.classList.remove('escondido');
+        });
+        this.textContent = 'Ver menos';
+    } else {
+        cardsEscondidos.forEach((card, index) => {
+            if (index >= 4) card.classList.add('escondido');
+        });
+        this.textContent = 'Ver mais especialidades';
+    }
+});
+
+// FUNÇÃO PARA VALIDAR E ADICIONAR A LINHA VERMELHA EM TEMPO REAL
+function validarCampoDataEmTempoReal() {
+    const campoData = document.getElementById('petData');
+    const valor = campoData.value;
+
+    if (!valor) {
+        campoData.classList.remove('campo-invalido');
+        return false;
+    }
+
+    const partes = valor.split('-'); // Formato nativo: YYYY-MM-DD
+    const ano = parseInt(partes[0], 10);
+
+    const dataDigitada = new Date(valor + 'T00:00:00');
+    const dataHoje = new Date();
+    dataHoje.setHours(0,0,0,0);
+
+    // Se o ano tiver mais de 4 dígitos (ex: 222222) ou for maior que 2100 ou estiver no passado
+    if (partes[0].length > 4 || ano > 2100 || dataDigitada < dataHoje) {
+        campoData.classList.add('campo-invalido');
+        return false;
+    } else {
+        campoData.classList.remove('campo-invalido');
+        return true;
+    }
+}
+
+function abrirBalaoCustomizado(mensagem, tipo, acaoConfirmar = null) {
+    const overlay = document.getElementById('modalAviso');
+    const texto = document.getElementById('modalTexto');
+    const containerBotoes = document.getElementById('modalBotoesContainer');
+    
+    texto.textContent = mensagem;
+    containerBotoes.innerHTML = ''; 
+
+    overlay.classList.remove('erro-data');
+
+    if (tipo === 'alerta-erro') {
+        overlay.classList.add('erro-data');
+        
+        const btnOk = document.createElement('button');
+        btnOk.className = 'btn-modal btn-modal-confirmar';
+        btnOk.textContent = 'Ok';
+        btnOk.onclick = fecharBalaoCustomizado;
+        containerBotoes.appendChild(btnOk);
+    } else if (tipo === 'confirmacao') {
+        const btnCancelar = document.createElement('button');
+        btnCancelar.className = 'btn-modal btn-modal-cancelar';
+        btnCancelar.textContent = 'Cancelar';
+        btnCancelar.onclick = fecharBalaoCustomizado;
+
+        const btnConfirmar = document.createElement('button');
+        btnConfirmar.className = 'btn-modal btn-modal-confirmar';
+        btnConfirmar.textContent = 'Confirmar';
+        btnConfirmar.onclick = function() {
+            acaoConfirmar();
+            fecharBalaoCustomizado();
+        };
+
+        containerBotoes.appendChild(btnCancelar);
+        containerBotoes.appendChild(btnConfirmar);
+    }
+
+    overlay.classList.add('ativo');
+}
+
+function fecharBalaoCustomizado() {
+    document.getElementById('modalAviso').classList.remove('ativo');
+}
+
+// AGENDAMENTO E WHATSAPP
+document.getElementById('form-consulta').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const campoData = document.getElementById('petData');
+    const nome = document.getElementById('petNome').value;
+    const especie = document.getElementById('petEspecie').value;
+    const esp = document.getElementById('petEsp').value;
+    const data = campoData.value;
+    const hora = document.getElementById('petHora').value;
+
+    // Força a validação final antes de processar o agendamento
+    if (!validarCampoDataEmTempoReal()) {
+        campoData.classList.add('campo-invalido');
+        abrirBalaoCustomizado('Coloque uma data correta.', 'alerta-erro');
+        return;
+    }
+
+    const dataFormatada = data.split('-').reverse().join('/');
+
+    if (cardEmEdicao) {
+        cardEmEdicao.querySelector('.info-pet h3').textContent = nome;
+        cardEmEdicao.querySelector('.info-pet p').textContent = `${dataFormatada} às ${hora}`;
+        cardEmEdicao.querySelector('.badge-esp').textContent = esp;
+        
+        cardEmEdicao.dataset.nome = nome;
+        cardEmEdicao.dataset.especie = especie;
+        cardEmEdicao.dataset.esp = esp;
+        cardEmEdicao.dataset.data = data;
+        cardEmEdicao.dataset.hora = hora;
+
+        cardEmEdicao = null;
+        document.getElementById('titulo-form').textContent = 'Agendar Consulta';
+        document.getElementById('btn-submit-form').textContent = 'Agendar Consulta';
+    } else {
+        adicionarCardNaTela(nome, especie, esp, data, hora);
+    }
+
+    salvarConsultasNoArmazenamento();
+
+    const msg = `Olá, vim pelo site da Royal Pet. Gostaria de agendar uma consulta de ${esp} para o meu pet ${nome} no dia ${dataFormatada} às ${hora}.`;
+    const link = `https://wa.me/5511995417758?text=${encodeURIComponent(msg)}`;
+    
+    window.open(link, '_blank');
+    this.reset();
+    campoData.classList.remove('campo-invalido'); // Reseta a linha de erro
+});
+
+function adicionarCardNaTela(nome, especie, esp, data, hora) {
+    const lista = document.getElementById('lista-consultas');
+    const item = document.createElement('div');
+    item.className = 'item-consulta';
+    
+    item.dataset.nome = nome;
+    item.dataset.especie = especie;
+    item.dataset.esp = esp;
+    item.dataset.data = data;
+    item.dataset.hora = hora;
+
+    const dataFormatada = data.split('-').reverse().join('/');
+
+    item.innerHTML = `
+        <div class="info-pet">
+            <h3>${nome}</h3>
+            <p>${dataFormatada} às ${hora}</p>
+        </div>
+        <div class="direita-bloco">
+            <span class="badge-esp">${esp}</span>
+            <div class="acoes-consulta">
+                <button class="btn-acao btn-alterar" onclick="alterarConsulta(this.closest('.item-consulta'))">Alterar</button>
+                <button class="btn-acao btn-excluir" onclick="excluirConsulta(this.closest('.item-consulta'))">Excluir</button>
+            </div>
+        </div>
+    `;
+    lista.prepend(item);
+}
+
+function alterarConsulta(elementoCard) {
+    cardEmEdicao = elementoCard;
+
+    document.getElementById('petNome').value = elementoCard.dataset.nome;
+    document.getElementById('petEspecie').value = elementoCard.dataset.especie;
+    document.getElementById('petEsp').value = elementoCard.dataset.esp;
+    document.getElementById('petData').value = elementoCard.dataset.data;
+    document.getElementById('petHora').value = elementoCard.dataset.hora;
+
+    document.getElementById('titulo-form').textContent = 'Alterar Agendamento';
+    document.getElementById('btn-submit-form').textContent = 'Salvar Alterações e Enviar';
+    
+    document.getElementById('titulo-form').scrollIntoView({ behavior: 'smooth' });
+    validarCampoDataEmTempoReal(); // Valida se a data do card antigo é correta
+}
+
+function excluirConsulta(elementoCard) {
+    abrirBalaoCustomizado(`Tem certeza que deseja remover o agendamento do pet ${elementoCard.dataset.nome}?`, 'confirmacao', function() {
+        if (cardEmEdicao === elementoCard) {
+            cardEmEdicao = null;
+            document.getElementById('form-consulta').reset();
+            document.getElementById('petData').classList.remove('campo-invalido');
+            document.getElementById('titulo-form').textContent = 'Agendar Consulta';
+            document.getElementById('btn-submit-form').textContent = 'Agendar Consulta';
+        }
+        elementoCard.remove();
+        salvarConsultasNoArmazenamento();
+    });
+}
+
+function salvarConsultasNoArmazenamento() {
+    const cards = document.querySelectorAll('.item-consulta');
+    const dadosConsultas = [];
+    
+    cards.forEach(card => {
+        dadosConsultas.push({
+            nome: card.dataset.nome,
+            especie: card.dataset.especie,
+            esp: card.dataset.esp,
+            data: card.dataset.data,
+            hora: card.dataset.hora
+        });
+    });
+    
+    localStorage.setItem('royalpet_consultas', JSON.stringify(dadosConsultas.reverse()));
+}
+
+function carregarConsultasDoArmazenamento() {
+    const salvas = localStorage.getItem('royalpet_consultas');
+    if (salvas) {
+        const listaAgendamentos = JSON.parse(salvas);
+        listaAgendamentos.forEach(c => {
+            adicionarCardNaTela(c.nome, c.especie, c.esp, c.data, c.hora);
+        });
+    }
+}
+</script>
+
+</body>
+</html>
+
