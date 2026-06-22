@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = document.getElementById('email').value;
         const senha = document.getElementById('senha').value;
 
+        console.log("Botao clicado");
+
         // Mandando os dados para o seu servidor Express via POST
         try {
             const response = await fetch('/login', {
@@ -45,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Recuperação enviada para: " + email);
     });
 });
+
+    
 
 // Fora do DOMContentLoaded para o botão do HTML achar a função
 function voltarTelaInicio() {
