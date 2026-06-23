@@ -15,23 +15,24 @@
 <div class ="container">
 <div class ="card">
 <h2 class="titulo" onclick="voltarTelaInicio()">ROYAL PET</h2>
- 
+
 <form id="loginForm">
-<label>E-mail</label>
-<input type="email" id="email" placeholder="Digite seu e-mail" required>
-<br>
+    <label for="email">E-mail</label>
+    <input type="email" id="email" placeholder="Digite seu e-mail" autocomplete="email" required>
+    <br>
  
-<label>Senha</label>
-<input type="password" id="senha" placeholder="Digite sua senha" required>
-<br>
+    <label for="senha">Senha</label>
+    <input type="password" id="senha" placeholder="Digite sua senha" autocomplete="current-password" required>
+    <br>
  
-<a href="#" id="esqueciSenha">Esqueceu a senha?</a>
+    <a href="#" id="esqueciSenha">Esqueceu a senha?</a>
  
-<button type="button">Entrar</button>
-<br>
-<br>
-<p>Novo no RoyalPet? <a href="cadastroPetshop.html">Crie sua conta</a></p>
+    <button type="button" id="btnEntrar">Entrar</button>
+    <br>
+    <br>
+    <p>Novo no RoyalPet? <a href="cadastroPetshop.html">Crie sua conta</a></p>
 </form>
+
 </div>
 </div>
 
