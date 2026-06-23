@@ -106,12 +106,6 @@ form{
     box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
 }
 
-/* LINHA VERMELHA DE ERRO IGUAL A FOTO ENVIADA */
-.campo input.campo-invalido {
-    border-color: #fca5a5 !important; /* Rosa/Vermelho suave idêntico ao print */
-    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1) !important;
-}
-
 .btn-agendar{
     background:#2E8B57;
     color:white;
@@ -318,7 +312,7 @@ form{
     color: white;
 }
 
-/* BALÃO DE AVISOS CUSTOMIZADO */
+/* NOVO MODAL CUSTOMIZADO (BALÃO DE AVISOS) */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -350,11 +344,10 @@ form{
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     transform: scale(0.9);
     transition: transform 0.2s ease;
-    border-top: 6px solid #2E8B57;
 }
 
-.modal-overlay.erro-data .modal-balao {
-    border-top-color: #dc3545;
+.modal-overlay.ativo .modal-balao {
+    transform: scale(1);
 }
 
 .modal-balao p {
@@ -389,14 +382,6 @@ form{
     background: #256F47;
 }
 
-.modal-overlay.erro-data .btn-modal-confirmar {
-    background: #dc3545;
-}
-
-.modal-overlay.erro-data .btn-modal-confirmar:hover {
-    background: #bd2130;
-}
-
 .btn-modal-cancelar {
     background: #f1f3f5;
     color: #495057;
@@ -427,7 +412,7 @@ footer{
 <body>
 
 <header class="main-header">
-    <a href="index.html" class="logo-small">RoyalPet</a>
+    <a href="Telainicio.html" class="logo-small">RoyalPet</a>
     <h1>Consultas Veterinárias</h1>
 </header>
 
@@ -497,6 +482,7 @@ footer{
     <h2>Especialidades Disponíveis</h2>
 
     <div class="cards">
+        <!-- Cards de Especialidades -->
         <div class="card">
             <div class="icone">❤️</div>
             <h3>Cardiologia</h3>
@@ -718,10 +704,13 @@ footer{
     <div id="lista-consultas"></div>
 </section>
 
+<!-- ESTRUTURA DO BALÃO DE AVISO CUSTOMIZADO -->
 <div class="modal-overlay" id="modalAviso">
     <div class="modal-balao">
         <p id="modalTexto">Mensagem de aviso aqui.</p>
-        <div class="modal-botoes" id="modalBotoesContainer"></div>
+        <div class="modal-botoes" id="modalBotoesContainer">
+            <!-- Botões serão gerados dinamicamente via JS -->
+        </div>
     </div>
 </div>
 
@@ -732,14 +721,12 @@ footer{
 <script>
 let cardEmEdicao = null;
 
+// Executa ao carregar a página para ler o localStorage
 document.addEventListener('DOMContentLoaded', function() {
     carregarConsultasDoArmazenamento();
-    
-    // Monitoramento em tempo real para aplicar a borda vermelha assim que digitar errado
-    const campoData = document.getElementById('petData');
-    campoData.addEventListener('input', validarCampoDataEmTempoReal);
 });
 
+// Gerencia os botões Ver Mais e Ver Menos
 document.getElementById('btn-toggle-especialidades').addEventListener('click', function() {
     const cardsEscondidos = document.querySelectorAll('.card');
     const estaEscondido = cardsEscondidos[4].classList.contains('escondido');
@@ -757,46 +744,16 @@ document.getElementById('btn-toggle-especialidades').addEventListener('click', f
     }
 });
 
-// FUNÇÃO PARA VALIDAR E ADICIONAR A LINHA VERMELHA EM TEMPO REAL
-function validarCampoDataEmTempoReal() {
-    const campoData = document.getElementById('petData');
-    const valor = campoData.value;
-
-    if (!valor) {
-        campoData.classList.remove('campo-invalido');
-        return false;
-    }
-
-    const partes = valor.split('-'); // Formato nativo: YYYY-MM-DD
-    const ano = parseInt(partes[0], 10);
-
-    const dataDigitada = new Date(valor + 'T00:00:00');
-    const dataHoje = new Date();
-    dataHoje.setHours(0,0,0,0);
-
-    // Se o ano tiver mais de 4 dígitos (ex: 222222) ou for maior que 2100 ou estiver no passado
-    if (partes[0].length > 4 || ano > 2100 || dataDigitada < dataHoje) {
-        campoData.classList.add('campo-invalido');
-        return false;
-    } else {
-        campoData.classList.remove('campo-invalido');
-        return true;
-    }
-}
-
+// FUNÇÃO DO NOVO BALÃO DE AVISO / CONFIRMAÇÃO CUSTOMIZADO
 function abrirBalaoCustomizado(mensagem, tipo, acaoConfirmar = null) {
     const overlay = document.getElementById('modalAviso');
     const texto = document.getElementById('modalTexto');
     const containerBotoes = document.getElementById('modalBotoesContainer');
     
     texto.textContent = mensagem;
-    containerBotoes.innerHTML = ''; 
+    containerBotoes.innerHTML = ''; // Limpa botões antigos
 
-    overlay.classList.remove('erro-data');
-
-    if (tipo === 'alerta-erro') {
-        overlay.classList.add('erro-data');
-        
+    if (tipo === 'alerta') {
         const btnOk = document.createElement('button');
         btnOk.className = 'btn-modal btn-modal-confirmar';
         btnOk.textContent = 'Ok';
@@ -831,17 +788,20 @@ function fecharBalaoCustomizado() {
 document.getElementById('form-consulta').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    const campoData = document.getElementById('petData');
     const nome = document.getElementById('petNome').value;
     const especie = document.getElementById('petEspecie').value;
     const esp = document.getElementById('petEsp').value;
-    const data = campoData.value;
+    const data = document.getElementById('petData').value;
     const hora = document.getElementById('petHora').value;
 
-    // Força a validação final antes de processar o agendamento
-    if (!validarCampoDataEmTempoReal()) {
-        campoData.classList.add('campo-invalido');
-        abrirBalaoCustomizado('Coloque uma data correta.', 'alerta-erro');
+    // VALIDAÇÃO DE DATA IMPOSSÍVEL OU PASSADA
+    const dataDigitada = new Date(data + 'T00:00:00');
+    const dataHoje = new Date();
+    dataHoje.setHours(0,0,0,0);
+    const anoDigitado = dataDigitada.getFullYear();
+
+    if (anoDigitado > 2100 || dataDigitada < dataHoje) {
+        abrirBalaoCustomizado('Por favor, insira uma data correta.', 'alerta');
         return;
     }
 
@@ -872,9 +832,9 @@ document.getElementById('form-consulta').addEventListener('submit', function(e) 
     
     window.open(link, '_blank');
     this.reset();
-    campoData.classList.remove('campo-invalido'); // Reseta a linha de erro
 });
 
+// CRIAÇÃO DINÂMICA DO CARD NA TELA
 function adicionarCardNaTela(nome, especie, esp, data, hora) {
     const lista = document.getElementById('lista-consultas');
     const item = document.createElement('div');
@@ -917,15 +877,14 @@ function alterarConsulta(elementoCard) {
     document.getElementById('btn-submit-form').textContent = 'Salvar Alterações e Enviar';
     
     document.getElementById('titulo-form').scrollIntoView({ behavior: 'smooth' });
-    validarCampoDataEmTempoReal(); // Valida se a data do card antigo é correta
 }
 
 function excluirConsulta(elementoCard) {
+    // Agora chama o novo balão customizado em vez do confirm do navegador
     abrirBalaoCustomizado(`Tem certeza que deseja remover o agendamento do pet ${elementoCard.dataset.nome}?`, 'confirmacao', function() {
         if (cardEmEdicao === elementoCard) {
             cardEmEdicao = null;
             document.getElementById('form-consulta').reset();
-            document.getElementById('petData').classList.remove('campo-invalido');
             document.getElementById('titulo-form').textContent = 'Agendar Consulta';
             document.getElementById('btn-submit-form').textContent = 'Agendar Consulta';
         }
@@ -934,6 +893,7 @@ function excluirConsulta(elementoCard) {
     });
 }
 
+// PERSISTÊNCIA DE DADOS COM LOCALSTORAGE
 function salvarConsultasNoArmazenamento() {
     const cards = document.querySelectorAll('.item-consulta');
     const dadosConsultas = [];
@@ -948,6 +908,7 @@ function salvarConsultasNoArmazenamento() {
         });
     });
     
+    // Inverte a array para salvar na ordem correta do prepend ao carregar de volta
     localStorage.setItem('royalpet_consultas', JSON.stringify(dadosConsultas.reverse()));
 }
 
@@ -964,4 +925,3 @@ function carregarConsultasDoArmazenamento() {
 
 </body>
 </html>
-

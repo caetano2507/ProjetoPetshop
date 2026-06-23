@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banho e Tosa - RoyalPet</title>
+<title>Adestramento - RoyalPet</title>
 
 <style>
 *{
@@ -18,7 +18,7 @@ body{
     color: #333;
 }
 
-/* Header */
+/* HEADER */
 .main-header{
     background:#fff;
     padding:20px;
@@ -31,7 +31,7 @@ body{
 
 .logo-small{
     text-decoration:none;
-    color:#2E8B57;
+    color:#6A5ACD; /* Roxo baseado na identidade do card */
     font-size:1.3rem;
     font-weight:bold;
 }
@@ -41,9 +41,9 @@ body{
     font-size: 1.5rem;
 }
 
-/* Banner */
+/* BANNER ROXO - Identidade do Card de Adestramento */
 .hero-servico{
-    background:linear-gradient(135deg,#2E8B57,#3aa567);
+    background:linear-gradient(135deg,#6A5ACD,#8A2BE2);
     color:white;
     text-align:center;
     padding:70px 20px;
@@ -58,7 +58,7 @@ body{
     font-size:1.1rem;
 }
 
-/* Formulário */
+/* FORMULÁRIO */
 .agendamento{
     max-width:900px;
     margin:40px auto;
@@ -102,18 +102,18 @@ form{
 
 .campo input:focus,
 .campo select:focus{
-    border-color: #2E8B57;
-    box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
+    border-color: #6A5ACD;
+    box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.1);
 }
 
-/* Linha vermelha do erro */
+/* LINHA VERMELHA DE ERRO IDENTICA AO SEU PADRÃO */
 .campo input.campo-invalido {
     border-color: #fca5a5 !important;
     box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1) !important;
 }
 
 .btn-agendar{
-    background:#2E8B57;
+    background:#6A5ACD;
     color:white;
     border:none;
     padding:15px;
@@ -125,10 +125,10 @@ form{
 }
 
 .btn-agendar:hover{
-    background:#256F47;
+    background:#5344b3;
 }
 
-/* Cards informativos  */
+/* CARDS INFORMATIVOS DE ADESTRAMENTO */
 .info-servicos{
     max-width:900px;
     margin:40px auto;
@@ -154,6 +154,11 @@ form{
     text-align:center;
     box-shadow:0 4px 15px rgba(0,0,0,.05);
     border: 1px solid #eef2f5;
+    transition: 0.2s;
+}
+
+.card-servico:hover {
+    border-color: #6A5ACD;
 }
 
 .card-servico .icone{
@@ -172,7 +177,7 @@ form{
     line-height: 1.4;
 }
 
-/* Lista de agendamentos */
+/* LISTA DE SOLICITAÇÕES */
 .consultas-marcadas{
     max-width:900px;
     margin:40px auto;
@@ -194,7 +199,7 @@ form{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-left: 4px solid #2E8B57;
+    border-left: 4px solid #6A5ACD;
 }
 
 .item-consulta .info-pet h3{
@@ -214,8 +219,8 @@ form{
 }
 
 .item-consulta span.badge-esp{
-    background:#e8f7ee;
-    color:#2E8B57;
+    background:#f0edf9;
+    color:#6A5ACD;
     padding:6px 12px;
     border-radius:30px;
     font-size: 0.85rem;
@@ -239,12 +244,12 @@ form{
 }
 
 .btn-alterar {
-    color: #2E8B57;
-    border: 1px solid #2E8B57;
+    color: #6A5ACD;
+    border: 1px solid #6A5ACD;
 }
 
 .btn-alterar:hover {
-    background: #2E8B57;
+    background: #6A5ACD;
     color: white;
 }
 
@@ -258,7 +263,7 @@ form{
     color: white;
 }
 
-/* Balão de avisos */
+/* MODAL / BALÃO DE AVISO */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -290,7 +295,7 @@ form{
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     transform: scale(0.9);
     transition: transform 0.2s ease;
-    border-top: 6px solid #2E8B57;
+    border-top: 6px solid #6A5ACD;
 }
 
 .modal-overlay.erro-data .modal-balao {
@@ -321,12 +326,12 @@ form{
 }
 
 .btn-modal-confirmar {
-    background: #2E8B57;
+    background: #6A5ACD;
     color: white;
 }
 
 .btn-modal-confirmar:hover {
-    background: #256F47;
+    background: #5344b3;
 }
 
 .modal-overlay.erro-data .btn-modal-confirmar {
@@ -346,7 +351,7 @@ form{
     background: #e9ecef;
 }
 
-/* footer */
+/* FOOTER */
 footer{
     margin-top:50px;
     background:white;
@@ -368,87 +373,87 @@ footer{
 
 <header class="main-header">
     <a href="Telainicio.html" class="logo-small">RoyalPet</a>
-    <h1>Agendamento de Estética</h1>
+    <h1>Escola de Adestramento</h1>
 </header>
 
 <section class="hero-servico">
-    <h2>Banho e Tosa Profissional</h2>
-    <p>Higiene completa com produtos premium e muito carinho para o seu pet.</p>
+    <h2>Treinamento Comportamental Inteligente</h2>
+    <p>Técnicas modernas, baseadas no reforço positivo para melhorar a convivência familiar.</p>
 </section>
 
 <section class="agendamento">
-    <h2 id="titulo-form">Agendar Horário</h2>
+    <h2 id="titulo-form">Solicitar Avaliação</h2>
 
-    <form id="form-estetica">
+    <form id="form-adestramento">
         <div class="campo">
             <label>Nome do Pet</label>
             <input type="text" id="petNome" placeholder="Digite o nome do pet" required>
         </div>
 
         <div class="campo">
-            <label>Espécie</label>
-            <select id="petEspecie">
-                <option>Cachorro</option>
-                <option>Gato</option>
+            <label>Idade do Pet</label>
+            <select id="petIdade">
+                <option>Filhote (Até 1 ano)</option>
+                <option>Adulto (1 a 7 anos)</option>
+                <option>Idoso (Mais de 7 anos)</option>
             </select>
         </div>
 
         <div class="campo">
-            <label>Raça</label>
-            <input type="text" id="petRaca" placeholder="Ex: Shih Tzu, Persa, Vira-lata" required>
-        </div>
-
-        <div class="campo">
-            <label>Porte do Animal</label>
-            <select id="petPorte">
-                <option>Pequeno (Até 10kg)</option>
-                <option>Médio (11kg a 25kg)</option>
-                <option>Grande (Acima de 25kg)</option>
+            <label>Foco Principal do Treinamento</label>
+            <select id="petObjetivo">
+                <option>Obediência Básica (Sentar, Deitar, Ficar, Vir)</option>
+                <option>Xixi e Cocô no Lugar Certo</option>
+                <option>Ansiedade de Separação (Choro / Destruição)</option>
+                <option>Reatividade ou Agressividade (Na rua ou com visitas)</option>
+                <option>Socialização de Filhotes</option>
+                <option>Puxar muito a guia nos passeios</option>
             </select>
         </div>
 
         <div class="campo">
-            <label>Data Pretendida</label>
+            <label>Data para Primeira Sessão/Avaliação</label>
             <input type="date" id="petData" required>
         </div>
 
         <div class="campo">
-            <label>Horário</label>
+            <label>Horário de Preferência</label>
             <input type="time" id="petHora" required>
         </div>
 
         <button type="submit" class="btn-agendar" id="btn-submit-form">
-            Agendar Banho e Tosa
+            Solicitar Avaliação por WhatsApp
         </button>
     </form>
 </section>
 
 <section class="info-servicos">
-    <h2>Nossos Cuidados Inclusos</h2>
+    <h2>Por que escolher nossa metodologia?</h2>
     <div class="cards-servicos">
         <div class="card-servico">
-            <div class="icone">🧼</div>
-            <h3>Banho Premium</h3>
-            <p>Utilizamos shampoos e condicionadores específicos para o tipo de pelagem do seu amigo.</p>
+            <div class="icone">🍖</div>
+            <h3>Reforço Positivo</h3>
+            <p>Sem punições ou medo. Educamos usando recompensas, petiscos, brinquedos e estímulo correto.</p>
         </div>
         <div class="card-servico">
-            <div class="icone">✂️</div>
-            <h3>Tosa Especializada</h3>
-            <p>Tosa higiênica, na máquina ou na tesoura, respeitando as características de cada raça.</p>
+            <div class="icone">🏡</div>
+            <h3>Foco no Lar</h3>
+            <p>O treinamento envolve a família para garantir que o pet obedeça a você dentro da rotina da casa.</p>
         </div>
         <div class="card-servico">
-            <div class="icone">💅</div>
-            <h3>Unhas e Ouvidos</h3>
-            <p>Corte de unhas seguro e limpeza completa dos condutos auditivos inclusos em todas as sessões.</p>
+            <div class="icone">🎓</div>
+            <h3>Resultados Reais</h3>
+            <p>Técnicas modernas e validadas cientificamente que resolvem problemas comportamentais de verdade.</p>
         </div>
     </div>
 </section>
 
 <section class="consultas-marcadas">
-    <h2>Agendamentos Solicitados</h2>
-    <div id="lista-estetica"></div>
+    <h2>Avaliações Solicitadas</h2>
+    <div id="lista-adestramento"></div>
 </section>
 
+<!-- BALÃO DE AVISO CUSTOMIZADO -->
 <div class="modal-overlay" id="modalAviso">
     <div class="modal-balao">
         <p id="modalTexto">Mensagem de aviso aqui.</p>
@@ -457,20 +462,20 @@ footer{
 </div>
 
 <footer>
-    © 2026 RoyalPet
+    © 2026 RoyalPet - Todos os direitos reservados.
 </footer>
 
 <script>
 let cardEmEdicao = null;
 
 document.addEventListener('DOMContentLoaded', function() {
-    carregarAgendamentosDoArmazenamento();
+    carregarAdestramentosDoArmazenamento();
     
     const campoData = document.getElementById('petData');
     campoData.addEventListener('input', validarCampoDataEmTempoReal);
 });
 
-// Validação com a linha vermelha caso estejá errado alguma coisa 
+// VALIDAÇÃO CRÍTICA COM LINHA VERMELHA EM TEMPO REAL
 function validarCampoDataEmTempoReal() {
     const campoData = document.getElementById('petData');
     const valor = campoData.value;
@@ -496,7 +501,7 @@ function validarCampoDataEmTempoReal() {
     }
 }
 
-// Controlador do modal customizado 
+// CONTROLADOR DO MODAL CUSTOMIZADO
 function abrirBalaoCustomizado(mensagem, tipo, acaoConfirmar = null) {
     const overlay = document.getElementById('modalAviso');
     const texto = document.getElementById('modalTexto');
@@ -540,16 +545,14 @@ function fecharBalaoCustomizado() {
     document.getElementById('modalAviso').classList.remove('ativo');
 }
 
-// Esta enviando o formulário e enviando para o WhatsApp
-// SUBMIT DO FORMULÁRIO E ENVIO PARA O WHATSAPP
-document.getElementById('form-estetica').addEventListener('submit', function(e) {
+// SUBMIT E INTEGRAÇÃO WHATSAPP
+document.getElementById('form-adestramento').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const campoData = document.getElementById('petData');
     const nome = document.getElementById('petNome').value;
-    const especie = document.getElementById('petEspecie').value;
-    const raca = document.getElementById('petRaca').value;
-    const porte = document.getElementById('petPorte').value;
+    const idade = document.getElementById('petIdade').value;
+    const objetivo = document.getElementById('petObjetivo').value;
     const data = campoData.value;
     const hora = document.getElementById('petHora').value;
 
@@ -563,27 +566,26 @@ document.getElementById('form-estetica').addEventListener('submit', function(e) 
 
     if (cardEmEdicao) {
         cardEmEdicao.querySelector('.info-pet h3').textContent = nome;
-        cardEmEdicao.querySelector('.info-pet p').textContent = `${dataFormatada} às ${hora} | Raça: ${raca}`;
-        cardEmEdicao.querySelector('.badge-esp').textContent = porte.split(' ')[0];
+        cardEmEdicao.querySelector('.info-pet p').textContent = `${dataFormatada} às ${hora} | Foco: ${objetivo.split(' (')[0]}`;
+        cardEmEdicao.querySelector('.badge-esp').textContent = idade.split(' ')[0];
         
         cardEmEdicao.dataset.nome = nome;
-        cardEmEdicao.dataset.especie = especie;
-        cardEmEdicao.dataset.raca = raca;
-        cardEmEdicao.dataset.porte = porte;
+        cardEmEdicao.dataset.idade = idade;
+        cardEmEdicao.dataset.objetivo = objetivo;
         cardEmEdicao.dataset.data = data;
         cardEmEdicao.dataset.hora = hora;
 
         cardEmEdicao = null;
-        document.getElementById('titulo-form').textContent = 'Agendar Horário';
-        document.getElementById('btn-submit-form').textContent = 'Agendar Banho e Tosa';
+        document.getElementById('titulo-form').textContent = 'Solicitar Avaliação';
+        document.getElementById('btn-submit-form').textContent = 'Solicitar Avaliação por WhatsApp';
     } else {
-        adicionarCardNaTela(nome, especie, raca, porte, data, hora);
+        adicionarCardNaTela(nome, idade, objetivo, data, hora);
     }
 
-    salvarAgendamentosNoArmazenamento();
+    salvarAdestramentosNoArmazenamento();
 
-    // formata a mensagem do WhatsApp com os campos 
-    const msg = `Olá, vim pelo site da Royal Pet. Gostaria de agendar um Banho e Tosa para o meu pet:\n\n• Nome: ${nome}\n• Espécie: ${especie}\n• Raça: ${raca}\n• Porte: ${porte}\n• Data: ${dataFormatada}\n• Horário: ${hora}`;
+    // FORMATANDO TEXTO CRIATIVO PARA O WHATSAPP DO ADESTRADOR
+    const msg = `Olá, vim pelo site da Royal Pet. Gostaria de agendar uma Avaliação de Adestramento:\n\n🐾 Pet: ${nome}\n🎂 Idade: ${idade}\n🎯 Objetivo Principal: ${objetivo}\n📅 Data Desejada: ${dataFormatada}\n⏰ Horário: ${hora}`;
     const link = `https://wa.me/5511995417758?text=${encodeURIComponent(msg)}`;
     
     window.open(link, '_blank');
@@ -591,93 +593,91 @@ document.getElementById('form-estetica').addEventListener('submit', function(e) 
     campoData.classList.remove('campo-invalido');
 });
 
-function adicionarCardNaTela(nome, especie, raca, porte, data, hora) {
-    const lista = document.getElementById('lista-estetica');
+function adicionarCardNaTela(nome, idade, objetivo, data, hora) {
+    const lista = document.getElementById('lista-adestramento');
     const item = document.createElement('div');
     item.className = 'item-consulta';
     
     item.dataset.nome = nome;
-    item.dataset.especie = especie;
-    item.dataset.raca = raca;
-    item.dataset.porte = porte;
+    item.dataset.idade = idade;
+    item.dataset.objetivo = objetivo;
     item.dataset.data = data;
     item.dataset.hora = hora;
 
     const dataFormatada = data.split('-').reverse().join('/');
-    const exibicaoPorte = porte.split(' ')[0]; // Pega apenas "Pequeno", "Médio" ou "Grande"
+    const exibicaoFoco = objetivo.split(' (')[0]; // Limpa textos longos dos parênteses no card
+    const exibicaoIdade = idade.split(' ')[0];
 
     item.innerHTML = `
         <div class="info-pet">
-            <h3>${nome} (${especie})</h3>
-            <p>${dataFormatada} às ${hora} | Raça: ${raca}</p>
+            <h3>${nome}</h3>
+            <p>${dataFormatada} às ${hora} | <strong>Foco:</strong> ${exibicaoFoco}</p>
         </div>
         <div class="direita-bloco">
-            <span class="badge-esp">Porte ${exibicaoPorte}</span>
+            <span class="badge-esp">${exibicaoIdade}</span>
             <div class="acoes-consulta">
-                <button class="btn-acao btn-alterar" onclick="alterarAgendamento(this.closest('.item-consulta'))">Alterar</button>
-                <button class="btn-acao btn-excluir" onclick="excluirAgendamento(this.closest('.item-consulta'))">Excluir</button>
+                <button class="btn-acao btn-alterar" onclick="alterarAdestramento(this.closest('.item-consulta'))">Alterar</button>
+                <button class="btn-acao btn-excluir" onclick="excluirAdestramento(this.closest('.item-consulta'))">Excluir</button>
             </div>
         </div>
     `;
     lista.prepend(item);
 }
 
-function alterarAgendamento(elementoCard) {
+function alterarAdestramento(elementoCard) {
     cardEmEdicao = elementoCard;
 
     document.getElementById('petNome').value = elementoCard.dataset.nome;
-    document.getElementById('petEspecie').value = elementoCard.dataset.especie;
-    document.getElementById('petRaca').value = elementoCard.dataset.raca;
-    document.getElementById('petPorte').value = elementoCard.dataset.porte;
+    document.getElementById('petIdade').value = elementoCard.dataset.idade;
+    document.getElementById('petObjetivo').value = elementoCard.dataset.objetivo;
     document.getElementById('petData').value = elementoCard.dataset.data;
     document.getElementById('petHora').value = elementoCard.dataset.hora;
 
-    document.getElementById('titulo-form').textContent = 'Alterar Agendamento';
+    document.getElementById('titulo-form').textContent = 'Alterar Solicitação';
     document.getElementById('btn-submit-form').textContent = 'Salvar Alterações e Enviar';
     
     document.getElementById('titulo-form').scrollIntoView({ behavior: 'smooth' });
     validarCampoDataEmTempoReal();
 }
 
-function excluirAgendamento(elementoCard) {
-    abrirBalaoCustomizado(`Tem certeza que deseja remover o agendamento de banho do pet ${elementoCard.dataset.nome}?`, 'confirmacao', function() {
+function excluirAdestramento(elementoCard) {
+    abrirBalaoCustomizado(`Remover a solicitação de adestramento do pet ${elementoCard.dataset.nome}?`, 'confirmacao', function() {
         if (cardEmEdicao === elementoCard) {
             cardEmEdicao = null;
-            document.getElementById('form-estetica').reset();
+            document.getElementById('form-adestramento').reset();
             document.getElementById('petData').classList.remove('campo-invalido');
-            document.getElementById('titulo-form').textContent = 'Agendar Horário';
-            document.getElementById('btn-submit-form').textContent = 'Agendar Banho e Tosa';
+            document.getElementById('titulo-form').textContent = 'Solicitar Avaliação';
+            document.getElementById('btn-submit-form').textContent = 'Solicitar Avaliação por WhatsApp';
         }
         elementoCard.remove();
-        salvarAgendamentosNoArmazenamento();
+        salvarAdestramentosNoArmazenamento();
     });
 }
 
-// Serve para que quando o usuario clique para recarregar a pagina, não suma os agendametos
-function salvarAgendamentosNoArmazenamento() {
+// ARMAZENAMENTO LOCAL INDEPENDENTE
+function salvarAdestramentosNoArmazenamento() {
     const cards = document.querySelectorAll('.item-consulta');
-    const dadosEstetica = [];
+    const dadosAdestramento = [];
     
     cards.forEach(card => {
-        dadosEstetica.push({
+        dadosAdestramento.push({
             nome: card.dataset.nome,
-            especie: card.dataset.especie,
-            raca: card.dataset.raca,
-            porte: card.dataset.porte,
+            idade: card.dataset.idade,
+            objetivo: card.dataset.objetivo,
             data: card.dataset.data,
             hora: card.dataset.hora
         });
     });
     
-    localStorage.setItem('royalpet_estetica', JSON.stringify(dadosEstetica.reverse()));
+    localStorage.setItem('royalpet_adestramento', JSON.stringify(dadosAdestramento.reverse()));
 }
 
-function carregarAgendamentosDoArmazenamento() {
-    const salvas = localStorage.getItem('royalpet_estetica');
+function carregarAdestramentosDoArmazenamento() {
+    const salvas = localStorage.getItem('royalpet_adestramento');
     if (salvas) {
         const listaAgendamentos = JSON.parse(salvas);
-        listaAgendamentos.forEach(e => {
-            adicionarCardNaTela(e.nome, e.especie, e.raca, e.porte, e.data, e.hora);
+        listaAgendamentos.forEach(a => {
+            adicionarCardNaTela(a.nome, a.idade, a.objetivo, a.data, a.hora);
         });
     }
 }

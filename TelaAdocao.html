@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banho e Tosa - RoyalPet</title>
+<title>Adoção de Pets - RoyalPet</title>
 
 <style>
 *{
@@ -18,7 +18,7 @@ body{
     color: #333;
 }
 
-/* Header */
+/* header */
 .main-header{
     background:#fff;
     padding:20px;
@@ -31,7 +31,7 @@ body{
 
 .logo-small{
     text-decoration:none;
-    color:#2E8B57;
+    color:#C05F11;
     font-size:1.3rem;
     font-weight:bold;
 }
@@ -41,9 +41,9 @@ body{
     font-size: 1.5rem;
 }
 
-/* Banner */
+/* BANNER LARANJA */
 .hero-servico{
-    background:linear-gradient(135deg,#2E8B57,#3aa567);
+    background:linear-gradient(135deg,#C05F11,#E67E22);
     color:white;
     text-align:center;
     padding:70px 20px;
@@ -58,20 +58,123 @@ body{
     font-size:1.1rem;
 }
 
-/* Formulário */
+/* VITRINE DE ANIMAIS PARA ADOÇÃO */
+.vitrine-pets {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.vitrine-pets h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+.grid-pets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card-pet {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,.05);
+    border: 1px solid #eef2f5;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.card-pet:hover {
+    transform: translateY(-4px);
+    border-color: #C05F11;
+}
+
+/* CONTAINER DA FOTO DO ANIMAL */
+.container-foto-pet {
+    height: 200px; /* Altura ideal fixada para manter o alinhamento dos cards */
+    width: 100%;
+    overflow: hidden;
+    background: #f1f3f5;
+}
+
+.foto-pet-real {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta e adapta a imagem de forma inteligente sem distorcer */
+    display: block;
+}
+
+.conteudo-pet {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.conteudo-pet h3 {
+    font-size: 1.3rem;
+    color: #222;
+    margin-bottom: 5px;
+}
+
+.idade-pet {
+    font-size: 0.9rem;
+    color: #e67e22;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.descricao-pet {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.btn-escolher-pet {
+    background: #C05F11;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    text-align: center;
+    width: 100%;
+}
+
+.btn-escolher-pet:hover {
+    background: #a44f0e;
+}
+
+/* FORMULÁRIO DE INTENÇÃO / AGENDAMENTO */
 .agendamento{
     max-width:900px;
-    margin:40px auto;
+    margin:50px auto;
     background:white;
     padding:30px;
     border-radius:20px;
     box-shadow:0 4px 15px rgba(0,0,0,.06);
+    scroll-margin-top: 30px;
 }
 
 .agendamento h2{
     text-align:center;
-    margin-bottom:25px;
+    margin-bottom:5px;
     color:#222;
+}
+
+.sub-bloco-aviso {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
 }
 
 form{
@@ -102,18 +205,17 @@ form{
 
 .campo input:focus,
 .campo select:focus{
-    border-color: #2E8B57;
-    box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
+    border-color: #C05F11;
+    box-shadow: 0 0 0 3px rgba(192, 95, 17, 0.1);
 }
 
-/* Linha vermelha do erro */
 .campo input.campo-invalido {
     border-color: #fca5a5 !important;
     box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1) !important;
 }
 
 .btn-agendar{
-    background:#2E8B57;
+    background:#C05F11;
     color:white;
     border:none;
     padding:15px;
@@ -125,54 +227,10 @@ form{
 }
 
 .btn-agendar:hover{
-    background:#256F47;
+    background:#a44f0e;
 }
 
-/* Cards informativos  */
-.info-servicos{
-    max-width:900px;
-    margin:40px auto;
-    padding:0 20px;
-    text-align: center;
-}
-
-.info-servicos h2{
-    margin-bottom:30px;
-    color: #222;
-}
-
-.cards-servicos{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:20px;
-}
-
-.card-servico{
-    background:white;
-    padding:25px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 4px 15px rgba(0,0,0,.05);
-    border: 1px solid #eef2f5;
-}
-
-.card-servico .icone{
-    font-size:2rem;
-    margin-bottom: 10px;
-}
-
-.card-servico h3{
-    margin-bottom: 10px;
-    color: #222;
-}
-
-.card-servico p{
-    font-size: 0.9rem;
-    color: #666;
-    line-height: 1.4;
-}
-
-/* Lista de agendamentos */
+/* LISTA DE AGENDAMENTOS */
 .consultas-marcadas{
     max-width:900px;
     margin:40px auto;
@@ -194,7 +252,7 @@ form{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-left: 4px solid #2E8B57;
+    border-left: 4px solid #C05F11;
 }
 
 .item-consulta .info-pet h3{
@@ -214,8 +272,8 @@ form{
 }
 
 .item-consulta span.badge-esp{
-    background:#e8f7ee;
-    color:#2E8B57;
+    background:#fdf6f0;
+    color:#C05F11;
     padding:6px 12px;
     border-radius:30px;
     font-size: 0.85rem;
@@ -239,12 +297,12 @@ form{
 }
 
 .btn-alterar {
-    color: #2E8B57;
-    border: 1px solid #2E8B57;
+    color: #C05F11;
+    border: 1px solid #C05F11;
 }
 
 .btn-alterar:hover {
-    background: #2E8B57;
+    background: #C05F11;
     color: white;
 }
 
@@ -258,7 +316,7 @@ form{
     color: white;
 }
 
-/* Balão de avisos */
+/* BALÃO DE AVISO CUSTOMIZADO */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -290,7 +348,7 @@ form{
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     transform: scale(0.9);
     transition: transform 0.2s ease;
-    border-top: 6px solid #2E8B57;
+    border-top: 6px solid #C05F11;
 }
 
 .modal-overlay.erro-data .modal-balao {
@@ -321,12 +379,12 @@ form{
 }
 
 .btn-modal-confirmar {
-    background: #2E8B57;
+    background: #C05F11;
     color: white;
 }
 
 .btn-modal-confirmar:hover {
-    background: #256F47;
+    background: #a44f0e;
 }
 
 .modal-overlay.erro-data .btn-modal-confirmar {
@@ -346,7 +404,7 @@ form{
     background: #e9ecef;
 }
 
-/* footer */
+/* FOOTER */
 footer{
     margin-top:50px;
     background:white;
@@ -368,87 +426,99 @@ footer{
 
 <header class="main-header">
     <a href="Telainicio.html" class="logo-small">RoyalPet</a>
-    <h1>Agendamento de Estética</h1>
+    <h1>Adoção de Pets</h1>
 </header>
 
 <section class="hero-servico">
-    <h2>Banho e Tosa Profissional</h2>
-    <p>Higiene completa com produtos premium e muito carinho para o seu pet.</p>
+    <h2>Encontre Seu Novo Melhor Amigo</h2>
+    <p>Mude uma vida e ganhe um companheiro para todas as horas. Adote com responsabilidade!</p>
 </section>
 
-<section class="agendamento">
-    <h2 id="titulo-form">Agendar Horário</h2>
+<!-- VITRINE DE ANIMAIS (COM IMAGENS REAIS) -->
+<section class="vitrine-pets">
+    <h2>Pets esperando por um lar</h2>
+    <div class="grid-pets">
+        
+        <!-- CARD PET 1 - PIPOCA -->
+        <div class="card-pet">
+            <div class="container-foto-pet">
+                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=600" alt="Cachorro Pipoca" class="foto-pet-real">
+            </div>
+            <div class="conteudo-pet">
+                <h3>Pipoca</h3>
+                <div class="idade-pet">Filhote (8 meses)</div>
+                <p class="descricao-pet">Muito brincalhão, cheio de energia e adora correr atrás de bolinhas. Se dá superbem com outros cães e crianças.</p>
+                <button class="btn-escolher-pet" onclick="selecionarPetParaAdocao('Pipoca')">Quero Adotar o Pipoca</button>
+            </div>
+        </div>
 
-    <form id="form-estetica">
+        <!-- CARD PET 2 - MEL -->
+        <div class="card-pet">
+            <div class="container-foto-pet">
+                <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=600" alt="Gata Mel" class="foto-pet-real">
+            </div>
+            <div class="conteudo-pet">
+                <h3>Mel</h3>
+                <div class="idade-pet">Adulta (2 anos)</div>
+                <p class="descricao-pet">Extremamente calma, dócil e adora um colinho para ronronar. Perfeita para quem mora em apartamento e busca calmaria.</p>
+                <button class="btn-escolher-pet" onclick="selecionarPetParaAdocao('Mel')">Quero Adotar a Mel</button>
+            </div>
+        </div>
+
+        <!-- CARD PET 3 - THOR -->
+        <div class="card-pet">
+            <div class="container-foto-pet">
+                <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=600" alt="Cachorro Thor" class="foto-pet-real">
+            </div>
+            <div class="conteudo-pet">
+                <h3>Thor</h3>
+                <div class="idade-pet">Adulto (3 anos)</div>
+                <p class="descricao-pet">Muito companheiro e protetor. Já sabe sentar e dar a pata. É equilibrado, carinhoso e excelente para famílias ativas.</p>
+                <button class="btn-escolher-pet" onclick="selecionarPetParaAdocao('Thor')">Quero Adotar o Thor</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FORMULÁRIO DE INTERESSE -->
+<section class="agendamento" id="secaoFormulario">
+    <h2 id="titulo-form">Agendar Visita de Conhecimento</h2>
+    <p class="sub-bloco-aviso">Escolha um pet acima ou digite o nome para marcar uma entrevista</p>
+
+    <form id="form-adocao">
         <div class="campo">
-            <label>Nome do Pet</label>
-            <input type="text" id="petNome" placeholder="Digite o nome do pet" required>
+            <label>Nome do Pet Escolhido</label>
+            <input type="text" id="petNome" placeholder="Clique em um pet acima ou digite o nome" required>
         </div>
 
         <div class="campo">
-            <label>Espécie</label>
-            <select id="petEspecie">
-                <option>Cachorro</option>
-                <option>Gato</option>
-            </select>
+            <label>Seu Nome Completo</label>
+            <input type="text" id="adotanteNome" placeholder="Digite seu nome completo" required>
         </div>
 
         <div class="campo">
-            <label>Raça</label>
-            <input type="text" id="petRaca" placeholder="Ex: Shih Tzu, Persa, Vira-lata" required>
-        </div>
-
-        <div class="campo">
-            <label>Porte do Animal</label>
-            <select id="petPorte">
-                <option>Pequeno (Até 10kg)</option>
-                <option>Médio (11kg a 25kg)</option>
-                <option>Grande (Acima de 25kg)</option>
-            </select>
-        </div>
-
-        <div class="campo">
-            <label>Data Pretendida</label>
+            <label>Data da Visita ao Abrigo</label>
             <input type="date" id="petData" required>
         </div>
 
         <div class="campo">
-            <label>Horário</label>
+            <label>Horário da Visita</label>
             <input type="time" id="petHora" required>
         </div>
 
         <button type="submit" class="btn-agendar" id="btn-submit-form">
-            Agendar Banho e Tosa
+            Enviar Intenção por WhatsApp
         </button>
     </form>
 </section>
 
-<section class="info-servicos">
-    <h2>Nossos Cuidados Inclusos</h2>
-    <div class="cards-servicos">
-        <div class="card-servico">
-            <div class="icone">🧼</div>
-            <h3>Banho Premium</h3>
-            <p>Utilizamos shampoos e condicionadores específicos para o tipo de pelagem do seu amigo.</p>
-        </div>
-        <div class="card-servico">
-            <div class="icone">✂️</div>
-            <h3>Tosa Especializada</h3>
-            <p>Tosa higiênica, na máquina ou na tesoura, respeitando as características de cada raça.</p>
-        </div>
-        <div class="card-servico">
-            <div class="icone">💅</div>
-            <h3>Unhas e Ouvidos</h3>
-            <p>Corte de unhas seguro e limpeza completa dos condutos auditivos inclusos em todas as sessões.</p>
-        </div>
-    </div>
-</section>
-
 <section class="consultas-marcadas">
-    <h2>Agendamentos Solicitados</h2>
-    <div id="lista-estetica"></div>
+    <h2>Visitas Solicitadas</h2>
+    <div id="lista-adocao"></div>
 </section>
 
+<!-- BALÃO DE AVISO CUSTOMIZADO -->
 <div class="modal-overlay" id="modalAviso">
     <div class="modal-balao">
         <p id="modalTexto">Mensagem de aviso aqui.</p>
@@ -457,20 +527,22 @@ footer{
 </div>
 
 <footer>
-    © 2026 RoyalPet
+    © 2026 RoyalPet - Todos os direitos reservados.
 </footer>
 
 <script>
 let cardEmEdicao = null;
 
 document.addEventListener('DOMContentLoaded', function() {
-    carregarAgendamentosDoArmazenamento();
-    
-    const campoData = document.getElementById('petData');
-    campoData.addEventListener('input', validarCampoDataEmTempoReal);
+    carregarAdocoesDoArmazenamento();
+    document.getElementById('petData').addEventListener('input', validarCampoDataEmTempoReal);
 });
 
-// Validação com a linha vermelha caso estejá errado alguma coisa 
+function selecionarPetParaAdocao(nomePet) {
+    document.getElementById('petNome').value = nomePet;
+    document.getElementById('secaoFormulario').scrollIntoView({ behavior: 'smooth' });
+}
+
 function validarCampoDataEmTempoReal() {
     const campoData = document.getElementById('petData');
     const valor = campoData.value;
@@ -496,7 +568,6 @@ function validarCampoDataEmTempoReal() {
     }
 }
 
-// Controlador do modal customizado 
 function abrirBalaoCustomizado(mensagem, tipo, acaoConfirmar = null) {
     const overlay = document.getElementById('modalAviso');
     const texto = document.getElementById('modalTexto');
@@ -509,7 +580,6 @@ function abrirBalaoCustomizado(mensagem, tipo, acaoConfirmar = null) {
 
     if (tipo === 'alerta-erro') {
         overlay.classList.add('erro-data');
-        
         const btnOk = document.createElement('button');
         btnOk.className = 'btn-modal btn-modal-confirmar';
         btnOk.textContent = 'Ok';
@@ -540,16 +610,12 @@ function fecharBalaoCustomizado() {
     document.getElementById('modalAviso').classList.remove('ativo');
 }
 
-// Esta enviando o formulário e enviando para o WhatsApp
-// SUBMIT DO FORMULÁRIO E ENVIO PARA O WHATSAPP
-document.getElementById('form-estetica').addEventListener('submit', function(e) {
+document.getElementById('form-adocao').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const campoData = document.getElementById('petData');
-    const nome = document.getElementById('petNome').value;
-    const especie = document.getElementById('petEspecie').value;
-    const raca = document.getElementById('petRaca').value;
-    const porte = document.getElementById('petPorte').value;
+    const petNome = document.getElementById('petNome').value;
+    const adotanteNome = document.getElementById('adotanteNome').value;
     const data = campoData.value;
     const hora = document.getElementById('petHora').value;
 
@@ -562,28 +628,24 @@ document.getElementById('form-estetica').addEventListener('submit', function(e) 
     const dataFormatada = data.split('-').reverse().join('/');
 
     if (cardEmEdicao) {
-        cardEmEdicao.querySelector('.info-pet h3').textContent = nome;
-        cardEmEdicao.querySelector('.info-pet p').textContent = `${dataFormatada} às ${hora} | Raça: ${raca}`;
-        cardEmEdicao.querySelector('.badge-esp').textContent = porte.split(' ')[0];
+        cardEmEdicao.querySelector('.info-pet h3').textContent = `Visita para conhecer: ${petNome}`;
+        cardEmEdicao.querySelector('.info-pet p').textContent = `Agendado por ${adotanteNome} em ${dataFormatada} às ${hora}`;
         
-        cardEmEdicao.dataset.nome = nome;
-        cardEmEdicao.dataset.especie = especie;
-        cardEmEdicao.dataset.raca = raca;
-        cardEmEdicao.dataset.porte = porte;
+        cardEmEdicao.dataset.petnome = petNome;
+        cardEmEdicao.dataset.adotantenome = adotanteNome;
         cardEmEdicao.dataset.data = data;
         cardEmEdicao.dataset.hora = hora;
 
         cardEmEdicao = null;
-        document.getElementById('titulo-form').textContent = 'Agendar Horário';
-        document.getElementById('btn-submit-form').textContent = 'Agendar Banho e Tosa';
+        document.getElementById('titulo-form').textContent = 'Agendar Visita de Conhecimento';
+        document.getElementById('btn-submit-form').textContent = 'Enviar Intenção por WhatsApp';
     } else {
-        adicionarCardNaTela(nome, especie, raca, porte, data, hora);
+        adicionarCardNaTela(petNome, adotanteNome, data, hora);
     }
 
-    salvarAgendamentosNoArmazenamento();
+    salvarAdocoesNoArmazenamento();
 
-    // formata a mensagem do WhatsApp com os campos 
-    const msg = `Olá, vim pelo site da Royal Pet. Gostaria de agendar um Banho e Tosa para o meu pet:\n\n• Nome: ${nome}\n• Espécie: ${especie}\n• Raça: ${raca}\n• Porte: ${porte}\n• Data: ${dataFormatada}\n• Horário: ${hora}`;
+    const msg = `Olá, vim pelo site da Royal Pet! Tenho grande interesse no processo de adoção:\n\n❤️ Pet escolhido: ${petNome}\n👤 Nome do Interessado: ${adotanteNome}\n📅 Data da Entrevista/Visita: ${dataFormatada}\n⏰ Horário: ${hora}\n\nEstou ansioso para conhecê-lo!`;
     const link = `https://wa.me/5511995417758?text=${encodeURIComponent(msg)}`;
     
     window.open(link, '_blank');
@@ -591,93 +653,83 @@ document.getElementById('form-estetica').addEventListener('submit', function(e) 
     campoData.classList.remove('campo-invalido');
 });
 
-function adicionarCardNaTela(nome, especie, raca, porte, data, hora) {
-    const lista = document.getElementById('lista-estetica');
+function adicionarCardNaTela(petNome, adotanteNome, data, hora) {
+    const lista = document.getElementById('lista-adocao');
     const item = document.createElement('div');
     item.className = 'item-consulta';
     
-    item.dataset.nome = nome;
-    item.dataset.especie = especie;
-    item.dataset.raca = raca;
-    item.dataset.porte = porte;
+    item.dataset.petnome = petNome;
+    item.dataset.adotantenome = adotanteNome;
     item.dataset.data = data;
     item.dataset.hora = hora;
 
     const dataFormatada = data.split('-').reverse().join('/');
-    const exibicaoPorte = porte.split(' ')[0]; // Pega apenas "Pequeno", "Médio" ou "Grande"
 
     item.innerHTML = `
         <div class="info-pet">
-            <h3>${nome} (${especie})</h3>
-            <p>${dataFormatada} às ${hora} | Raça: ${raca}</p>
+            <h3>Visita para conhecer: ${petNome}</h3>
+            <p>Agendado por <strong>${adotanteNome}</strong> em ${dataFormatada} às ${hora}</p>
         </div>
         <div class="direita-bloco">
-            <span class="badge-esp">Porte ${exibicaoPorte}</span>
+            <span class="badge-esp">Pendente</span>
             <div class="acoes-consulta">
-                <button class="btn-acao btn-alterar" onclick="alterarAgendamento(this.closest('.item-consulta'))">Alterar</button>
-                <button class="btn-acao btn-excluir" onclick="excluirAgendamento(this.closest('.item-consulta'))">Excluir</button>
+                <button class="btn-acao btn-alterar" onclick="alterarAdocao(this.closest('.item-consulta'))">Alterar</button>
+                <button class="btn-acao btn-excluir" onclick="excluirAdocao(this.closest('.item-consulta'))">Excluir</button>
             </div>
         </div>
     `;
     lista.prepend(item);
 }
 
-function alterarAgendamento(elementoCard) {
+function alterarAdocao(elementoCard) {
     cardEmEdicao = elementoCard;
 
-    document.getElementById('petNome').value = elementoCard.dataset.nome;
-    document.getElementById('petEspecie').value = elementoCard.dataset.especie;
-    document.getElementById('petRaca').value = elementoCard.dataset.raca;
-    document.getElementById('petPorte').value = elementoCard.dataset.porte;
+    document.getElementById('petNome').value = elementoCard.dataset.petnome;
+    document.getElementById('adotanteNome').value = elementoCard.dataset.adotantenome;
     document.getElementById('petData').value = elementoCard.dataset.data;
     document.getElementById('petHora').value = elementoCard.dataset.hora;
 
-    document.getElementById('titulo-form').textContent = 'Alterar Agendamento';
+    document.getElementById('titulo-form').textContent = 'Alterar Agendamento de Visita';
     document.getElementById('btn-submit-form').textContent = 'Salvar Alterações e Enviar';
     
     document.getElementById('titulo-form').scrollIntoView({ behavior: 'smooth' });
     validarCampoDataEmTempoReal();
 }
 
-function excluirAgendamento(elementoCard) {
-    abrirBalaoCustomizado(`Tem certeza que deseja remover o agendamento de banho do pet ${elementoCard.dataset.nome}?`, 'confirmacao', function() {
+function excluirAdocao(elementoCard) {
+    abrirBalaoCustomizado(`Remover a solicitação de visita para o pet ${elementoCard.dataset.petnome}?`, 'confirmacao', function() {
         if (cardEmEdicao === elementoCard) {
             cardEmEdicao = null;
-            document.getElementById('form-estetica').reset();
+            document.getElementById('form-adocao').reset();
             document.getElementById('petData').classList.remove('campo-invalido');
-            document.getElementById('titulo-form').textContent = 'Agendar Horário';
-            document.getElementById('btn-submit-form').textContent = 'Agendar Banho e Tosa';
+            document.getElementById('titulo-form').textContent = 'Agendar Visita de Conhecimento';
+            document.getElementById('btn-submit-form').textContent = 'Enviar Intenção por WhatsApp';
         }
         elementoCard.remove();
-        salvarAgendamentosNoArmazenamento();
+        salvarAdocoesNoArmazenamento();
     });
 }
 
-// Serve para que quando o usuario clique para recarregar a pagina, não suma os agendametos
-function salvarAgendamentosNoArmazenamento() {
+function salvarAdocoesNoArmazenamento() {
     const cards = document.querySelectorAll('.item-consulta');
-    const dadosEstetica = [];
-    
+    const dadosAdocao = [];
     cards.forEach(card => {
-        dadosEstetica.push({
-            nome: card.dataset.nome,
-            especie: card.dataset.especie,
-            raca: card.dataset.raca,
-            porte: card.dataset.porte,
+        dadosAdocao.push({
+            petnome: card.dataset.petnome,
+            adotantenome: card.dataset.adotantenome,
             data: card.dataset.data,
             hora: card.dataset.hora
         });
     });
-    
-    localStorage.setItem('royalpet_estetica', JSON.stringify(dadosEstetica.reverse()));
+    localStorage.setItem('royalpet_adocao', JSON.stringify(dadosAdocao.reverse()));
 }
 
-function carregarAgendamentosDoArmazenamento() {
-    const salvas = localStorage.getItem('royalpet_estetica');
+function carregarAdocoesDoArmazenamento() {
+    const salvas = localStorage.getItem('royalpet_adocao');
     if (salvas) {
-        const listaAgendamentos = JSON.parse(salvas);
-        listaAgendamentos.forEach(e => {
-            adicionarCardNaTela(e.nome, e.especie, e.raca, e.porte, e.data, e.hora);
+        const listaVisitas = JSON.parse(salvas);
+        listaVisitas.forEach(a => {
+            adicionarCardNaTela(a.petnome, a.adotantenome, a.data, a.hora);
         });
     }
 }
