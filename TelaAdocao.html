@@ -645,7 +645,7 @@ document.getElementById('form-adocao').addEventListener('submit', function(e) {
 
     salvarAdocoesNoArmazenamento();
 
-    const msg = `Olá, vim pelo site da Royal Pet! Tenho grande interesse no processo de adoção:\n\n❤️ Pet escolhido: ${petNome}\n👤 Nome do Interessado: ${adotanteNome}\n📅 Data da Entrevista/Visita: ${dataFormatada}\n⏰ Horário: ${hora}\n\nEstou ansioso para conhecê-lo!`;
+    const msg = `Olá, vim pelo site da Royal Pet! Tenho grande interesse no processo de adoção:\n\n Pet escolhido: ${petNome}\n Nome do Interessado: ${adotanteNome}\n Data da Entrevista/Visita: ${dataFormatada}\n Horário: ${hora}\n\nEstou ansioso para conhecê-lo!`;
     const link = `https://wa.me/5511995417758?text=${encodeURIComponent(msg)}`;
     
     window.open(link, '_blank');

@@ -465,7 +465,10 @@ footer{
     © 2026 RoyalPet - Todos os direitos reservados.
 </footer>
 
-<script>
+<script type="module" src="./Controller/Adestramento_Controller.js"></script>
+
+
+<!-- <script>
 let cardEmEdicao = null;
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -475,7 +478,7 @@ document.addEventListener('DOMContentLoaded', function() {
     campoData.addEventListener('input', validarCampoDataEmTempoReal);
 });
 
-// VALIDAÇÃO CRÍTICA COM LINHA VERMELHA EM TEMPO REAL
+ VALIDAÇÃO CRÍTICA COM LINHA VERMELHA EM TEMPO REAL
 function validarCampoDataEmTempoReal() {
     const campoData = document.getElementById('petData');
     const valor = campoData.value;
@@ -501,7 +504,7 @@ function validarCampoDataEmTempoReal() {
     }
 }
 
-// CONTROLADOR DO MODAL CUSTOMIZADO
+ CONTROLADOR DO MODAL CUSTOMIZADO
 function abrirBalaoCustomizado(mensagem, tipo, acaoConfirmar = null) {
     const overlay = document.getElementById('modalAviso');
     const texto = document.getElementById('modalTexto');
@@ -545,7 +548,7 @@ function fecharBalaoCustomizado() {
     document.getElementById('modalAviso').classList.remove('ativo');
 }
 
-// SUBMIT E INTEGRAÇÃO WHATSAPP
+ SUBMIT E INTEGRAÇÃO WHATSAPP
 document.getElementById('form-adestramento').addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -584,8 +587,8 @@ document.getElementById('form-adestramento').addEventListener('submit', function
 
     salvarAdestramentosNoArmazenamento();
 
-    // FORMATANDO TEXTO CRIATIVO PARA O WHATSAPP DO ADESTRADOR
-    const msg = `Olá, vim pelo site da Royal Pet. Gostaria de agendar uma Avaliação de Adestramento:\n\n🐾 Pet: ${nome}\n🎂 Idade: ${idade}\n🎯 Objetivo Principal: ${objetivo}\n📅 Data Desejada: ${dataFormatada}\n⏰ Horário: ${hora}`;
+     FORMATANDO TEXTO CRIATIVO PARA O WHATSAPP DO ADESTRADOR
+    const msg = `Olá, vim pelo site da Royal Pet. Gostaria de agendar uma Avaliação de Adestramento:\n\n🐾 Pet: ${nome}\n Idade: ${idade}\n Objetivo Principal: ${objetivo}\n Data Desejada: ${dataFormatada}\n Horário: ${hora}`;
     const link = `https://wa.me/5511995417758?text=${encodeURIComponent(msg)}`;
     
     window.open(link, '_blank');
@@ -654,7 +657,7 @@ function excluirAdestramento(elementoCard) {
     });
 }
 
-// ARMAZENAMENTO LOCAL INDEPENDENTE
+ ARMAZENAMENTO LOCAL INDEPENDENTE
 function salvarAdestramentosNoArmazenamento() {
     const cards = document.querySelectorAll('.item-consulta');
     const dadosAdestramento = [];
@@ -681,7 +684,7 @@ function carregarAdestramentosDoArmazenamento() {
         });
     }
 }
-</script>
+</script> -->
 
 </body>
 </html>
