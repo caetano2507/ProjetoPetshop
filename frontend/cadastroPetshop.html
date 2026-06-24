@@ -1,67 +1,3 @@
-
-<!--
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Royal Pet - Cadastro</title>
-
- CSS 
-<link rel="stylesheet" href="style/cadastro.css">
-
- CONTROLLER 
-<script src="./controller/cadastro_controller.js" defer></script>
-
-</head>
-<body>
- <div class="container">
-    <button class="btn-voltar" id ="btnVoltar">← Voltar</button>
-
-
-    <h2 class="titulo" onclick="voltarTelaInicio()">ROYAL PET</h2>
-
-    Formulado do usuário
-    <form id="formCadastro">
-        <div class="form-grid">
-            Divs definindo qual tipo de informações podem ser passadas em cada campo
-            <div class="campo">
-                <label>Nome Completo</label>
-                <input type="text" id="nome" placeholder="Nome completo" required>
-            </div>
- 
-            <div class="campo">
-                <label>E-mail</label>
-                <input type="email" id="email" placeholder="E-mail" required>
-            </div>
- 
-            <div class="campo">
-                <label>Senha</label>
-                <input type="password" id="senha" placeholder="Digite sua senha" required>
-            </div>
- 
-            <div class="campo">
-                <label>Confirmar a senha</label>
-                <input type="password" id="confirmarSenha" placeholder="Confirmar senha" required>
-            </div>
-        </div>
- 
-        <label class="termos">
-            <input type="checkbox" id="termos" required> Chamei a caixinha de confirmação
-            <span>Eu li e aceito os termos de uso e privacidade.</span>
-        </label>
-        
-        <button type="submit" id="btnCriar">Criar minha conta</button> Criei o botão/Criar minha
-        <button type="button" class="btn-entrar" id="btnEntrar" onclick="entrar()">Entrar</button>
-        
-    </form>
- </div>
- 
- 
-</body>
-</html>
--->
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -108,9 +44,8 @@
  
             <button type="submit" id="btnCriar">Criar minha conta</button>
             
-            <button type="button" class="btn-entrar" id="btnEntrar">Entrar</button>
+            <button type="button" class="btn-entrar" id="btnEntrar" onclick="entrar()">Entrar</button>
         </form>
     </div>
 </body>
 </html>
- 

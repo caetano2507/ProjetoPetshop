@@ -1,107 +1,77 @@
-
- /*
- // Pegamos/Selecionamos o formulário
-    const form = document.getElementById('formCadastro');
-
-    form.addEventListener('submit', function(event) {
-        // Impede a página de ficar recarregando
-        event.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // --- 1. SELEÇÃO DOS ELEMENTOS DO HTML ---
+    const btnVoltar = document.getElementById("btnVoltar");
+    const btnEntrar = document.getElementById("btnEntrar");
+    const tituloInicio = document.getElementById("tituloInicio");
+    const formCadastro = document.getElementById("formCadastro");
  
-        // Pegando os valores dos campos
-        const nome = document.getElementById('nome').value;
-        const senha = document.getElementById('senha').value;
-        const confirmarSenha = document.getElementById('confirmarSenha').value;
-        const termos = document.getElementById('termos').checked;
- 
-        // Lógica de validação da senha e termos
-        if (senha !== confirmarSenha) {
-            alert(" As senhas não coincidem! Tente novamente.");
-            return;
-        }
- 
-        if (!termos) {
-            alert(" Você precisa aceitar os termos de uso.");
-            return;
-        }
- 
-        // Simulação de sucesso
-        alert(` Bem-vindo(a), ${nome}! Sua conta Royal Pet foi criada.`);
-        
-        // Aqui enviaria os dados para o seu servidor
-        console.log("Dados prontos para envio:", { nome, senha });
-    });
-    */
-/*
-// --- 1. SELEÇÃO DOS ELEMENTOS DO HTML ---
-const form = document.getElementById('formCadastro');
-const btnVoltar = document.getElementById('btnVoltar');
-const btnEntrar = document.getElementById('btnEntrar');
-const tituloInicio = document.getElementById('tituloInicio');
- 
-// --- 2. FUNÇÕES DE NAVEGAÇÃO DOS BOTÕES ---
-function voltarLogin() {
-    console.log("Botão Voltar clicado!");
-    window.location.href = "loginPetshop.html";
-}
- 
-function entrar() {
-    console.log("Botão Entrar clicado!");
-    window.location.href = "loginPetshop.html";
-}
- 
-function voltarTelaInicio() {
-    console.log("Título Royal Pet clicado!");
-    window.location.href = "Telainicio.html";
-}
- 
-// --- 3. VINCULANDO OS CLIQUES AOS BOTÕES ---
-if (btnVoltar) {
-    btnVoltar.addEventListener('click', voltarLogin);
-}
- 
-if (btnEntrar) {
-    btnEntrar.addEventListener('click', entrar);
-}
- 
-if (tituloInicio) {
-    tituloInicio.addEventListener('click', voltarTelaInicio);
-}
- 
- 
-// --- 4. SUA LÓGICA ORIGINAL DE CADASTRO (FORMULÁRIO) ---
-form.addEventListener('submit', function(event) {
-    // Impede a página de ficar recarregando
-    event.preventDefault();
- 
-    // Pegando os valores dos campos
-    const nome = document.getElementById('nome').value;
-    const senha = document.getElementById('senha').value;
-    const confirmarSenha = document.getElementById('confirmarSenha').value;
-    const termos = document.getElementById('termos').checked;
- 
-    // Lógica de validação da senha e termos
-    if (senha !== confirmarSenha) {
-        alert(" As senhas não coincidem! Tente novamente.");
-        return;
+    // --- 2. AÇÃO DO BOTÃO "VOLTAR" ---
+    if (btnVoltar) {
+        btnVoltar.addEventListener("click", () => {
+            window.location.href = "loginPetshop.html";
+        });
     }
  
-    if (!termos) {
-        alert(" Você precisa aceitar os termos de uso.");
-        return;
+    // --- 3. AÇÃO DO BOTÃO "ENTRAR" ---
+    if (btnEntrar) {
+        btnEntrar.addEventListener("click", () => {
+            window.location.href = "loginPetshop.html";
+        });
     }
  
-    // Simulação de sucesso
-    alert(` Bem-vindo(a), ${nome}! Sua conta Royal Pet foi criada.`);
+    // --- 4. AÇÃO AO CLICAR NO TÍTULO "ROYAL PET" (Ir para Home) ---
+    if (tituloInicio) {
+        tituloInicio.addEventListener("click", () => {
+            window.location.href = "atendimentoPetshop.html"; // Altere para o nome real da sua página inicial se for diferente
+        });
+    }
  
-    // Aqui enviaria os dados para o seu servidor
-    console.log("Dados prontos para envio:", { nome, senha });
+    // --- 5. ENVIO REALS DOS DADOS PARA O BANCO DE DADOS (BACKEND) ---
+    if (formCadastro) {
+        formCadastro.addEventListener("submit", async (event) => {
+            event.preventDefault(); // Não deixa a página recarregar
+ 
+            // Pegando os valores digitados nos campos
+            const nome = document.getElementById("nome").value;
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+            const confirmarSenha = document.getElementById("confirmarSenha").value;
+            const termos = document.getElementById("termos").checked;
+ 
+            // Validações básicas antes de enviar
+            if (senha !== confirmarSenha) {
+                alert("As senhas não coincidem! Tente novamente.");
+                return;
+            }
+ 
+            if (!termos) {
+                alert("Você precisa aceitar os termos de uso.");
+                return;
+            }
+ 
+            try {
+                // Envia as informações para a rota que criamos no Node (petshop_routers.js)
+                const resposta = await fetch("http://localhost:3000/petshop/cadastrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ nome, email, senha })
+                });
+ 
+                const dados = await resposta.json();
+ 
+                if (resposta.ok) {
+                    alert(`Bem-vindo(a), ${nome}! Sua conta Royal Pet foi criada com sucesso.`);
+                    window.location.href = "loginPetshop.html"; // Vai para a tela de login após cadastrar
+                } else {
+                    alert("Erro ao cadastrar: " + dados.erro);
+                }
+            } catch (error) {
+                console.error("Erro na requisição:", error);
+                alert("Não foi possível conectar ao servidor. Verifique se o Node está rodando.");
+            }
+        });
+    }
 });
-*/
-
-// Exemplo de como deve estar no comecinho ou fim da função do formulário no backend:
-exports.form = (req, res) => {
-    // Como o server.js está na pasta backend, para achar o html ele faz:
-    const path = require("path");
-    res.sendFile(path.join(__dirname, "../cadastroPetshop.html"));
-};
- 

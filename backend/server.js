@@ -7,6 +7,8 @@ const conexao = require("./database/conexao.js"); // ➔ O server só inicia a c
 const petshopRoutes = require("./routers/petshop_routers.js");
  
 const app = express();
+// Garante que o Node consiga ler a pasta style e as imagens do frontend
+app.use(express.static(path.join(__dirname, '../frontend')));
  
 app.use(cors());
 app.use(express.json());
