@@ -1,44 +1,46 @@
-// Adestramento_View.js
-export class AdestramentoView {
+export class AdocaoView {
     constructor() {
-        this.form = document.getElementById('form-adestramento');
+        this.form = document.getElementById('form-adocao');
+        this.campoPetNome = document.getElementById('petNome');
+        this.campoAdotanteNome = document.getElementById('adotanteNome');
         this.campoData = document.getElementById('petData');
-        this.lista = document.getElementById('lista-adestramento');
+        this.campoHora = document.getElementById('petHora');
+        this.lista = document.getElementById('lista-adocao');
         this.tituloForm = document.getElementById('titulo-form');
         this.btnSubmitForm = document.getElementById('btn-submit-form');
         this.modalAviso = document.getElementById('modalAviso');
         this.modalTexto = document.getElementById('modalTexto');
         this.modalBotoesContainer = document.getElementById('modalBotoesContainer');
+        this.secaoFormulario = document.getElementById('secaoFormulario');
+        this.vitrine = document.querySelector('.grid-pets');
     }
 
     getValoresFormulario() {
         return {
-            nome: document.getElementById('petNome').value,
-            idade: document.getElementById('petIdade').value,
-            objetivo: document.getElementById('petObjetivo').value,
+            petnome: this.campoPetNome.value,
+            adotantenome: this.campoAdotanteNome.value,
             data: this.campoData.value,
-            hora: document.getElementById('petHora').value
+            hora: this.campoHora.value
         };
     }
 
     preencherFormulario(dados) {
-        document.getElementById('petNome').value = dados.nome;
-        document.getElementById('petIdade').value = dados.idade;
-        document.getElementById('petObjetivo').value = dados.objetivo;
+        this.campoPetNome.value = dados.petnome;
+        this.campoAdotanteNome.value = dados.adotantenome;
         this.campoData.value = dados.data;
-        document.getElementById('petHora').value = dados.hora;
+        this.campoHora.value = dados.hora;
     }
 
     resetarFormulario() {
         this.form.reset();
         this.campoData.classList.remove('campo-invalido');
-        this.tituloForm.textContent = 'Solicitar Avaliação';
-        this.btnSubmitForm.textContent = 'Solicitar Avaliação por WhatsApp';
+        this.tituloForm.textContent = 'Agendar Visita de Conhecimento';
+        this.btnSubmitForm.textContent = 'Enviar Intenção por WhatsApp';
     }
 
     alternarModoEdicao(modoEdicao) {
         if (modoEdicao) {
-            this.tituloForm.textContent = 'Alterar Solicitação';
+            this.tituloForm.textContent = 'Alterar Agendamento de Visita';
             this.btnSubmitForm.textContent = 'Salvar Alterações e Enviar';
             this.tituloForm.scrollIntoView({ behavior: 'smooth' });
         } else {
@@ -54,31 +56,31 @@ export class AdestramentoView {
         }
     }
 
-    adicionarCardNaTela(pet) {
+    focarFormularioComPet(nomePet) {
+        this.campoPetNome.value = nomePet;
+        this.secaoFormulario.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    adicionarCardNaTela(visita) {
         const item = document.createElement('div');
         item.className = 'item-consulta';
-        item.id = `card-${pet.id}`;
+        item.id = `card-${visita.id}`;
         
-        // Atributos de dados para controle interno (Essencial para o controller ler)
-        item.dataset.id = pet.id;
-        item.dataset.nome = pet.nome;
-        item.dataset.idAdestramento = pet.id; // Mantendo compatibilidade com seu back
-        item.dataset.idade = pet.idade;
-        item.dataset.objetivo = pet.objetivo;
-        item.dataset.data = pet.data;
-        item.dataset.hora = pet.hora;
+        item.dataset.id = visita.id;
+        item.dataset.petnome = visita.petnome;
+        item.dataset.adotantenome = visita.adotantenome;
+        item.dataset.data = visita.data;
+        item.dataset.hora = visita.hora;
 
-        const dataFormatada = pet.data.split('-').reverse().join('/');
-        const exibicaoFoco = pet.objetivo.split(' (')[0]; 
-        const exibicaoIdade = pet.idade.split(' ')[0];
+        const dataFormatada = visita.data.split('-').reverse().join('/');
 
         item.innerHTML = `
             <div class="info-pet">
-                <h3>${pet.nome}</h3>
-                <p>${dataFormatada} às ${pet.hora} | <strong>Foco:</strong> ${exibicaoFoco}</p>
+                <h3>Visita para conhecer: ${visita.petnome}</h3>
+                <p>Agendado por <strong>${visita.adotantenome}</strong> em ${dataFormatada} às ${visita.hora}</p>
             </div>
             <div class="direita-bloco">
-                <span class="badge-esp">${exibicaoIdade}</span>
+                <span class="badge-esp">Pendente</span>
                 <div class="acoes-consulta">
                     <button class="btn-acao btn-alterar" data-acao="alterar">Alterar</button>
                     <button class="btn-acao btn-excluir" data-acao="excluir">Excluir</button>
@@ -88,21 +90,19 @@ export class AdestramentoView {
         this.lista.prepend(item);
     }
 
-    atualizarCardNaTela(id, pet) {
+    atualizarCardNaTela(id, visita) {
         const item = document.getElementById(`card-${id}`);
         if (!item) return;
 
-        const dataFormatada = pet.data.split('-').reverse().join('/');
+        const dataFormatada = visita.data.split('-').reverse().join('/');
         
-        item.querySelector('.info-pet h3').textContent = pet.nome;
-        item.querySelector('.info-pet p').textContent = `${dataFormatada} às ${pet.hora} | Foco: ${pet.objetivo.split(' (')[0]}`;
-        item.querySelector('.badge-esp').textContent = pet.idade.split(' ')[0];
+        item.querySelector('.info-pet h3').textContent = `Visita para conhecer: ${visita.petnome}`;
+        item.querySelector('.info-pet p').innerHTML = `Agendado por <strong>${visita.adotantenome}</strong> em ${dataFormatada} às ${visita.hora}`;
         
-        item.dataset.nome = pet.nome;
-        item.dataset.idade = pet.idade;
-        item.dataset.objetivo = pet.objetivo;
-        item.dataset.data = pet.data;
-        item.dataset.hora = pet.hora;
+        item.dataset.petnome = visita.petnome;
+        item.dataset.adotantenome = visita.adotantenome;
+        item.dataset.data = visita.data;
+        item.dataset.hora = visita.hora;
     }
 
     removerCardDaTela(id) {
@@ -111,7 +111,7 @@ export class AdestramentoView {
     }
 
     abrirBalaoCustomizado(mensagem, tipo, acaoConfirmar = null) {
-        this.modalTexto.textContent = mensagem; // Corrigido aqui (removido o 'mensaje =')
+        this.modalTexto.textContent = mensagem;
         this.modalBotoesContainer.innerHTML = ''; 
         this.modalAviso.classList.remove('erro-data');
 
@@ -146,9 +146,9 @@ export class AdestramentoView {
         this.modalAviso.classList.remove('ativo');
     }
 
-    abrirWhatsApp(pet) {
-        const dataFormatada = pet.data.split('-').reverse().join('/');
-        const msg = `Olá, vim pelo site da Royal Pet. Gostaria de agendar uma Avaliação de Adestramento:\n\n🐾 Pet: ${pet.nome}\n Idade: ${pet.idade}\n Objetivo Principal: ${pet.objetivo}\n Data Desejada: ${dataFormatada}\n Horário: ${pet.hora}`;
+    abrirWhatsApp(visita) {
+        const dataFormatada = visita.data.split('-').reverse().join('/');
+        const msg = `Olá, vim pelo site da Royal Pet! Tenho grande interesse no processo de adoção:\n\n🐾 Pet escolhido: ${visita.petnome}\n👤 Nome do Interessado: ${visita.adotantenome}\n📅 Data da Entrevista/Visita: ${dataFormatada}\n⏰ Horário: ${visita.hora}\n\nEstou ansioso para conhecê-lo!`;
         const link = `https://wa.me/5511995417758?text=${encodeURIComponent(msg)}`;
         window.open(link, '_blank');
     }

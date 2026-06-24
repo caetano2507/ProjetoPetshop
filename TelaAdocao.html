@@ -448,7 +448,7 @@ footer{
                 <h3>Pipoca</h3>
                 <div class="idade-pet">Filhote (8 meses)</div>
                 <p class="descricao-pet">Muito brincalhão, cheio de energia e adora correr atrás de bolinhas. Se dá superbem com outros cães e crianças.</p>
-                <button class="btn-escolher-pet" onclick="selecionarPetParaAdocao('Pipoca')">Quero Adotar o Pipoca</button>
+                <button class="btn-escolher-pet" data-acao="selecionar-pet" data-nome-pet="Pipoca">Quero Adotar o Pipoca</button>
             </div>
         </div>
 
@@ -461,7 +461,7 @@ footer{
                 <h3>Mel</h3>
                 <div class="idade-pet">Adulta (2 anos)</div>
                 <p class="descricao-pet">Extremamente calma, dócil e adora um colinho para ronronar. Perfeita para quem mora em apartamento e busca calmaria.</p>
-                <button class="btn-escolher-pet" onclick="selecionarPetParaAdocao('Mel')">Quero Adotar a Mel</button>
+                <button class="btn-escolher-pet" data-acao="selecionar-pet" data-nome-pet="Mel">Quero Adotar a Mel</button>
             </div>
         </div>
 
@@ -474,7 +474,7 @@ footer{
                 <h3>Thor</h3>
                 <div class="idade-pet">Adulto (3 anos)</div>
                 <p class="descricao-pet">Muito companheiro e protetor. Já sabe sentar e dar a pata. É equilibrado, carinhoso e excelente para famílias ativas.</p>
-                <button class="btn-escolher-pet" onclick="selecionarPetParaAdocao('Thor')">Quero Adotar o Thor</button>
+                <button class="btn-escolher-pet" data-acao="selecionar-pet" data-nome-pet="Thor">Quero Adotar o Thor</button>
             </div>
         </div>
 
@@ -530,210 +530,7 @@ footer{
     © 2026 RoyalPet - Todos os direitos reservados.
 </footer>
 
-<script>
-let cardEmEdicao = null;
-
-document.addEventListener('DOMContentLoaded', function() {
-    carregarAdocoesDoArmazenamento();
-    document.getElementById('petData').addEventListener('input', validarCampoDataEmTempoReal);
-});
-
-function selecionarPetParaAdocao(nomePet) {
-    document.getElementById('petNome').value = nomePet;
-    document.getElementById('secaoFormulario').scrollIntoView({ behavior: 'smooth' });
-}
-
-function validarCampoDataEmTempoReal() {
-    const campoData = document.getElementById('petData');
-    const valor = campoData.value;
-
-    if (!valor) {
-        campoData.classList.remove('campo-invalido');
-        return false;
-    }
-
-    const partes = valor.split('-');
-    const ano = parseInt(partes[0], 10);
-
-    const dataDigitada = new Date(valor + 'T00:00:00');
-    const dataHoje = new Date();
-    dataHoje.setHours(0,0,0,0);
-
-    if (partes[0].length > 4 || ano > 2100 || dataDigitada < dataHoje) {
-        campoData.classList.add('campo-invalido');
-        return false;
-    } else {
-        campoData.classList.remove('campo-invalido');
-        return true;
-    }
-}
-
-function abrirBalaoCustomizado(mensagem, tipo, acaoConfirmar = null) {
-    const overlay = document.getElementById('modalAviso');
-    const texto = document.getElementById('modalTexto');
-    const containerBotoes = document.getElementById('modalBotoesContainer');
-    
-    texto.textContent = mensagem;
-    containerBotoes.innerHTML = ''; 
-
-    overlay.classList.remove('erro-data');
-
-    if (tipo === 'alerta-erro') {
-        overlay.classList.add('erro-data');
-        const btnOk = document.createElement('button');
-        btnOk.className = 'btn-modal btn-modal-confirmar';
-        btnOk.textContent = 'Ok';
-        btnOk.onclick = fecharBalaoCustomizado;
-        containerBotoes.appendChild(btnOk);
-    } else if (tipo === 'confirmacao') {
-        const btnCancelar = document.createElement('button');
-        btnCancelar.className = 'btn-modal btn-modal-cancelar';
-        btnCancelar.textContent = 'Cancelar';
-        btnCancelar.onclick = fecharBalaoCustomizado;
-
-        const btnConfirmar = document.createElement('button');
-        btnConfirmar.className = 'btn-modal btn-modal-confirmar';
-        btnConfirmar.textContent = 'Confirmar';
-        btnConfirmar.onclick = function() {
-            acaoConfirmar();
-            fecharBalaoCustomizado();
-        };
-
-        containerBotoes.appendChild(btnCancelar);
-        containerBotoes.appendChild(btnConfirmar);
-    }
-
-    overlay.classList.add('ativo');
-}
-
-function fecharBalaoCustomizado() {
-    document.getElementById('modalAviso').classList.remove('ativo');
-}
-
-document.getElementById('form-adocao').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const campoData = document.getElementById('petData');
-    const petNome = document.getElementById('petNome').value;
-    const adotanteNome = document.getElementById('adotanteNome').value;
-    const data = campoData.value;
-    const hora = document.getElementById('petHora').value;
-
-    if (!validarCampoDataEmTempoReal()) {
-        campoData.classList.add('campo-invalido');
-        abrirBalaoCustomizado('Coloque uma data correta.', 'alerta-erro');
-        return;
-    }
-
-    const dataFormatada = data.split('-').reverse().join('/');
-
-    if (cardEmEdicao) {
-        cardEmEdicao.querySelector('.info-pet h3').textContent = `Visita para conhecer: ${petNome}`;
-        cardEmEdicao.querySelector('.info-pet p').textContent = `Agendado por ${adotanteNome} em ${dataFormatada} às ${hora}`;
-        
-        cardEmEdicao.dataset.petnome = petNome;
-        cardEmEdicao.dataset.adotantenome = adotanteNome;
-        cardEmEdicao.dataset.data = data;
-        cardEmEdicao.dataset.hora = hora;
-
-        cardEmEdicao = null;
-        document.getElementById('titulo-form').textContent = 'Agendar Visita de Conhecimento';
-        document.getElementById('btn-submit-form').textContent = 'Enviar Intenção por WhatsApp';
-    } else {
-        adicionarCardNaTela(petNome, adotanteNome, data, hora);
-    }
-
-    salvarAdocoesNoArmazenamento();
-
-    const msg = `Olá, vim pelo site da Royal Pet! Tenho grande interesse no processo de adoção:\n\n Pet escolhido: ${petNome}\n Nome do Interessado: ${adotanteNome}\n Data da Entrevista/Visita: ${dataFormatada}\n Horário: ${hora}\n\nEstou ansioso para conhecê-lo!`;
-    const link = `https://wa.me/5511995417758?text=${encodeURIComponent(msg)}`;
-    
-    window.open(link, '_blank');
-    this.reset();
-    campoData.classList.remove('campo-invalido');
-});
-
-function adicionarCardNaTela(petNome, adotanteNome, data, hora) {
-    const lista = document.getElementById('lista-adocao');
-    const item = document.createElement('div');
-    item.className = 'item-consulta';
-    
-    item.dataset.petnome = petNome;
-    item.dataset.adotantenome = adotanteNome;
-    item.dataset.data = data;
-    item.dataset.hora = hora;
-
-    const dataFormatada = data.split('-').reverse().join('/');
-
-    item.innerHTML = `
-        <div class="info-pet">
-            <h3>Visita para conhecer: ${petNome}</h3>
-            <p>Agendado por <strong>${adotanteNome}</strong> em ${dataFormatada} às ${hora}</p>
-        </div>
-        <div class="direita-bloco">
-            <span class="badge-esp">Pendente</span>
-            <div class="acoes-consulta">
-                <button class="btn-acao btn-alterar" onclick="alterarAdocao(this.closest('.item-consulta'))">Alterar</button>
-                <button class="btn-acao btn-excluir" onclick="excluirAdocao(this.closest('.item-consulta'))">Excluir</button>
-            </div>
-        </div>
-    `;
-    lista.prepend(item);
-}
-
-function alterarAdocao(elementoCard) {
-    cardEmEdicao = elementoCard;
-
-    document.getElementById('petNome').value = elementoCard.dataset.petnome;
-    document.getElementById('adotanteNome').value = elementoCard.dataset.adotantenome;
-    document.getElementById('petData').value = elementoCard.dataset.data;
-    document.getElementById('petHora').value = elementoCard.dataset.hora;
-
-    document.getElementById('titulo-form').textContent = 'Alterar Agendamento de Visita';
-    document.getElementById('btn-submit-form').textContent = 'Salvar Alterações e Enviar';
-    
-    document.getElementById('titulo-form').scrollIntoView({ behavior: 'smooth' });
-    validarCampoDataEmTempoReal();
-}
-
-function excluirAdocao(elementoCard) {
-    abrirBalaoCustomizado(`Remover a solicitação de visita para o pet ${elementoCard.dataset.petnome}?`, 'confirmacao', function() {
-        if (cardEmEdicao === elementoCard) {
-            cardEmEdicao = null;
-            document.getElementById('form-adocao').reset();
-            document.getElementById('petData').classList.remove('campo-invalido');
-            document.getElementById('titulo-form').textContent = 'Agendar Visita de Conhecimento';
-            document.getElementById('btn-submit-form').textContent = 'Enviar Intenção por WhatsApp';
-        }
-        elementoCard.remove();
-        salvarAdocoesNoArmazenamento();
-    });
-}
-
-function salvarAdocoesNoArmazenamento() {
-    const cards = document.querySelectorAll('.item-consulta');
-    const dadosAdocao = [];
-    cards.forEach(card => {
-        dadosAdocao.push({
-            petnome: card.dataset.petnome,
-            adotantenome: card.dataset.adotantenome,
-            data: card.dataset.data,
-            hora: card.dataset.hora
-        });
-    });
-    localStorage.setItem('royalpet_adocao', JSON.stringify(dadosAdocao.reverse()));
-}
-
-function carregarAdocoesDoArmazenamento() {
-    const salvas = localStorage.getItem('royalpet_adocao');
-    if (salvas) {
-        const listaVisitas = JSON.parse(salvas);
-        listaVisitas.forEach(a => {
-            adicionarCardNaTela(a.petnome, a.adotantenome, a.data, a.hora);
-        });
-    }
-}
-</script>
+<script type="module" src="./Controller/Adocao_Controller.js"></script>
 
 </body>
 </html>

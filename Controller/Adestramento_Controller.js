@@ -1,6 +1,6 @@
-// AdestramentoController.js
-import { AdestramentoModel } from './AdestramentoModel.js';
-import { AdestramentoView } from './AdestramentoView.js';
+// Adestramento_Controller.js
+import { AdestramentoModel } from '../Model/Adestramento_Model.js';
+import { AdestramentoView } from '../View/Adestramento_View.js';
 
 class AdestramentoController {
     constructor(model, view) {
@@ -18,6 +18,7 @@ class AdestramentoController {
             // Como o model já traz invertido do back, listamos normalmente
             adestramentos.forEach(pet => this.view.adicionarCardNaTela(pet));
         } catch (e) {
+            console.error(e);
             this.view.abrirBalaoCustomizado('Erro ao carregar dados do servidor.', 'alerta-erro');
         }
 
@@ -75,6 +76,7 @@ class AdestramentoController {
             this.view.abrirWhatsApp(dadosPet);
             this.view.resetarFormulario();
         } catch (error) {
+            console.error(error);
             this.view.abrirBalaoCustomizado('Erro ao processar requisição no servidor.', 'alerta-erro');
         }
     }
@@ -110,6 +112,7 @@ class AdestramentoController {
                     }
                     this.view.removerCardDaTela(id);
                 } catch (error) {
+                    console.error(error);
                     this.view.abrirBalaoCustomizado('Não foi possível deletar.', 'alerta-erro');
                 }
             });
