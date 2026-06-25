@@ -1,7 +1,8 @@
-import { AdocaoModel } from '../Model/Adocao_Model.js';
-import { AdocaoView } from '../View/Adocao_View.js';
+// Nessa parte fica a lógica de interceptar as ações do usuário, disparar as  validações de data e organizar as atualizações entre a View e a Model
+import { Banho_tosaModel } from '../Model/Banho-Tosa_Model.js';
+import { Banho_tosaView } from '../View/Banho-Tosa_View.js';
 
-class AdocaoController {
+class Banho_tosaController {
     constructor(model, view) {
         this.model = model;
         this.view = view;
@@ -12,28 +13,17 @@ class AdocaoController {
 
     async init() {
         try {
-            const visitas = await this.model.listarTodas();
-            visitas.forEach(v => this.view.adicionarCardNaTela(v));
+            const agendamentos = await this.model.listarTodos();
+            agendamentos.forEach(a => this.view.adicionarCardNaTela(a));
         } catch (e) {
             console.error(e);
             this.view.abrirBalaoCustomizado('Erro ao carregar dados do servidor.', 'alerta-erro');
         }
 
-        // Vincular Eventos
+        // Eventos
         this.view.campoData.addEventListener('input', () => this.validarCampoDataEmTempoReal());
         this.view.form.addEventListener('submit', (e) => this.handleFormSubmit(e));
         this.view.lista.addEventListener('click', (e) => this.handleListaClick(e));
-        
-        // Ouvinte dinâmico para a Vitrine (Mesmo adicionando mais no HTML, funciona automático!)
-        this.view.vitrine.addEventListener('click', (e) => this.handleVitrineClick(e));
-    }
-
-    handleVitrineClick(e) {
-        const botao = e.target.closest('button[data-acao="selecionar-pet"]');
-        if (!botao) return;
-
-        const nomePet = botao.dataset.nomePet;
-        this.view.focarFormularioComPet(nomePet);
     }
 
     validarCampoDataEmTempoReal() {
@@ -67,21 +57,21 @@ class AdocaoController {
             return;
         }
 
-        const dadosVisita = this.view.getValoresFormulario();
+        const dadosAgendamento = this.view.getValoresFormulario();
 
         try {
             if (this.cardEmEdicao) {
                 const id = this.cardEmEdicao.dataset.id;
-                await this.model.atualizar(id, dadosVisita);
-                this.view.atualizarCardNaTela(id, dadosVisita);
+                await this.model.atualizar(id, dadosAgendamento);
+                this.view.atualizarCardNaTela(id, dadosAgendamento);
                 this.cardEmEdicao = null;
                 this.view.alternarModoEdicao(false);
             } else {
-                const novaVisita = await this.model.criar(dadosVisita);
-                this.view.adicionarCardNaTela(novaVisita);
+                const novoAgendamento = await this.model.criar(dadosAgendamento);
+                this.view.adicionarCardNaTela(novoAgendamento);
             }
 
-            this.view.abrirWhatsApp(dadosVisita);
+            this.view.abrirWhatsApp(dadosAgendamento);
             this.view.resetarFormulario();
         } catch (error) {
             console.error(error);
@@ -99,8 +89,10 @@ class AdocaoController {
         if (acao === 'alterar') {
             this.cardEmEdicao = card;
             this.view.preencherFormulario({
-                petnome: card.dataset.petnome,
-                adotantenome: card.dataset.adotantenome,
+                nome: card.dataset.nome,
+                especie: card.dataset.especie,
+                raca: card.dataset.raca,
+                porte: card.dataset.porte,
                 data: card.dataset.data,
                 hora: card.dataset.hora
             });
@@ -108,9 +100,9 @@ class AdocaoController {
             this.validarCampoDataEmTempoReal();
         } else if (acao === 'excluir') {
             const id = card.dataset.id;
-            const nomePet = card.dataset.petnome;
+            const nomePet = card.dataset.nome;
 
-            this.view.abrirBalaoCustomizado(`Remover a solicitação de visita para o pet ${nomePet}?`, 'confirmacao', async () => {
+            this.view.abrirBalaoCustomizado(`Tem certeza que deseja remover o agendamento de banho do pet ${nomePet}?`, 'confirmacao', async () => {
                 try {
                     await this.model.deletar(id);
                     if (this.cardEmEdicao === card) {
@@ -128,5 +120,5 @@ class AdocaoController {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    new AdocaoController(new AdocaoModel(), new AdocaoView());
+    new Banho_tosaController(new Banho_tosaModel(), new Banho_tosaView());
 });

@@ -1,4 +1,3 @@
-// Adestramento_View.js
 export class AdestramentoView {
     constructor() {
         this.form = document.getElementById('form-adestramento');

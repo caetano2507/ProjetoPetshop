@@ -272,6 +272,7 @@ footer {
 }
 </style>
 </head>
+                     
 <body>
 
 <div class="page">
@@ -280,7 +281,8 @@ footer {
     <a class="brand-logo" href="Telainicio.html">
       Royal <span>Pet</span>
     </a>
-    <span class="brand-paw">🐾</span>  </div>
+    <span class="brand-paw">🐾</span>
+  </div>
 
   <p class="hero-label">Nossos Serviços</p>
   <h1 class="hero-title">
@@ -289,54 +291,9 @@ footer {
   </h1>
   <p class="hero-sub">Agende, conheça e ofereça o melhor para seu melhor amigo.</p>
 
-  <div class="grid-3">
-
-    <div class="card">
-      <div class="icon-wrap icon-green">🩺
-        </div>
-
-      <h3 class="card-title">Veterinário</h3>
-      <p class="card-desc">Consultas, vacinas e acompanhamento clínico especializado</p>
-      <a href="TelaConsulta.html" class="btn btn-green">Saiba mais →</a>
-    </div>
-
-    <div class="card">
-      <div class="icon-wrap icon-blue">🛁
-        </div>
-
-      <h3 class="card-title">Banho e Tosa</h3>
-      <p class="card-desc">Higiene completa com produtos premium e carinho</p>
-      <a href="TelaBanho-Tosa.html" class="btn btn-green">Saiba mais →</a>
-    </div>
-
-    <div class="card">
-      <div class="icon-wrap icon-purple">🎓
-        </div>
-
-      <h3 class="card-title">Adestramento</h3>
-      <p class="card-desc">Treinamento comportamental com técnicas modernas e eficazes</p>
-      <a href="TelaAdestramento.html" class="btn btn-green">Saiba mais →</a>
-    </div>
-
-  </div>
-
-  <div class="grid-2">
-
-    <div class="card">
-      <div class="icon-wrap icon-red">🏠</div>
-      <h3 class="card-title">Hotel & Day Care</h3>
-      <p class="card-desc">Hospedagem e creche com todo conforto e segurança</p>
-      <a href="TelaHotelPet.html" class="btn btn-green">Saiba mais →</a>
-    </div>
-
-    <div class="card">
-      <div class="icon-wrap icon-orange">🐶</div>
-      <h3 class="card-title">Adoção de Pets</h3>
-      <p class="card-desc">Encontre um novo amigo para a sua família com amor</p>
-      <a href="TelaAdocao.html" class="btn btn-green">Saiba mais →</a>
-    </div>
-
-  </div>
+  <!-- Os containers agora são populados dinamicamente via MVC -->
+  <div class="grid-3" id="container-servicos-principais"></div>
+  <div class="grid-2" id="container-servicos-secundarios"></div>
 
   <div class="features">
     <div class="feature-item">
@@ -372,5 +329,8 @@ footer {
   <footer>© 2026 Royal Pet</footer>
 
 </div>
+
+<script type="module" src="./Controller/Serviços_Controller.js"></script>
+
 </body>
 </html>

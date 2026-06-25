@@ -1,4 +1,3 @@
-// Adestramento_Controller.js
 import { AdestramentoModel } from '../Model/Adestramento_Model.js';
 import { AdestramentoView } from '../View/Adestramento_View.js';
 

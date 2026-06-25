@@ -137,22 +137,6 @@ footer {
 <!-- EMAILJS -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 
-<script>
-(function(){
-    emailjs.init("2HoT6UIuSnJaVZblD"); 
-})();
-
-document.getElementById("form-contato").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    emailjs.sendForm("service_c7ppt9s", "template_msqrfsv", this)
-    .then(function() {
-        alert("Mensagem enviada com sucesso!");
-    }, function(error) {
-        alert("Erro ao enviar: " + JSON.stringify(error));
-    });
-});
-</script>
-
+<script type="module" src="./Controller/Contato_Controller.js"></script>
 </body>
 </html>

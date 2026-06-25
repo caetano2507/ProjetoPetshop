@@ -1,4 +1,3 @@
-// AdestramentoModel.js
 export class AdestramentoModel {
     constructor() {
         this.apiUrl = 'http://localhost:3000/api/adestramentos';
