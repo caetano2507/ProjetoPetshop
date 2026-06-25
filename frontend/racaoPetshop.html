@@ -1,205 +1,201 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Royal Pet - Rações</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <body>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Royal Pet - Rações</title>
  
-  <header class="main-header">
-      <span class="logo-small" onclick="voltarTelaInicio()">RoyalPet</span>
-      <h1>Rações</h1>
-
-
-<!-- CSS -->
-<link rel="stylesheet" href="style/paginas.css">
-
-<!-- CONTROLLER -->
-<script src="./js/controller/cadastro_controller.js" defer></script>
-
-  </header>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+ <link rel="stylesheet" href="style/paginas.css">
  
-  <main class="container">
-      
-      <div class="product-grid">
-          </div>
-  </main>
- 
-</body>
-
+ <script src="./controller/racao_controller.js" defer></script>
 </head>
 <body>
-
-    
-    <main class="container">
-
-        <section class="product-section">
-            <h2 class="section-title">Produtos recomendados</h2>
-            <div class="product-grid">
-                
-                <article class="product-card">
-                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    <div class="product-image">
-                        <img src="https://i.postimg.cc/6pjLtQzt/download.png" alt="Ração Nutripaws">
-                    </div>
-                    <button class="add-btn"><i class="fas fa-plus"></i></button>
-                    <div class="info-area">
-                        <span class="discount-tag">40% OFF</span>
-                        <p class="price">R$ 125,80</p>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    <div class="product-image">
-                        <img src="https://i.postimg.cc/yY7FRRbV/download-(1).png" alt="Ração Dog Chow">
-                    </div>
-                    <button class="add-btn"><i class="fas fa-plus"></i></button>
-                    <div class="info-area">
-                        <span class="discount-tag">20% OFF</span>
-                        <p class="price">R$ 80,90</p>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    <div class="product-image">
-                        <img src="https://i.postimg.cc/wMgshK07/download-(2).png" alt="Ração Pedigree">
-                    </div>
-                    <button class="add-btn"><i class="fas fa-plus"></i></button>
-                    <div class="info-area">
-                        <span class="discount-tag">5% OFF</span>
-                        <p class="price">R$ 42,90</p>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    <div class="product-image">
-                        <img src="https://i.postimg.cc/nV3LdQLd/download-(3).png" alt="Ração Whiskas">
-                    </div>
-                    <button class="add-btn"><i class="fas fa-plus"></i></button>
-                    <div class="info-area">
-                        <span class="discount-tag">15% OFF</span>
-                        <p class="price">R$ 70,00</p>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    <div class="product-image">
-                        <img src="https://i.postimg.cc/ydQzTcTS/download-(4).png" alt="Ração Nutripaws">
-                    </div>
-                    <button class="add-btn"><i class="fas fa-plus"></i></button>
-                    <div class="info-area">
-                        <span class="discount-tag">25% OFF</span>
-                        <p class="price">R$ 110,00</p>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    <div class="product-image">
-                        <img src="https://i.postimg.cc/SQHKFbW2/download-(6).png" alt="Ração Dog Chow">
-                    </div>
-                    <button class="add-btn"><i class="fas fa-plus"></i></button>
-                    <div class="info-area">
-                        <span class="discount-tag">10% OFF</span>
-                        <p class="price">R$ 95,50</p>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    <div class="product-image">
-                        <img src="https://i.postimg.cc/0jSP2rpx/download-(7).png" alt="Ração Pedigree">
-                    </div>
-                    <button class="add-btn"><i class="fas fa-plus"></i></button>
-                    <div class="info-area">
-                        <span class="discount-tag">30% OFF</span>
-                        <p class="price">R$ 39,90</p>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    <div class="product-image">
-                        <img src="https://i.postimg.cc/tTZH27vm/download-(8).png" alt="Ração Whiskas">
-                    </div>
-                    <button class="add-btn"><i class="fas fa-plus"></i></button>
-                    <div class="info-area">
-                        <span class="discount-tag">12% OFF</span>
-                        <p class="price">R$ 109,80</p>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-        <section class="product-section">
-            <h2 class="section-title">Super Ofertas do Dia <i class="fas fa-tag icon-red"></i></h2>
-            <div class="product-grid">
-                
-                <article class="product-card">
-                    <span class="super-oferta-badge">Super oferta</span>
-                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    <div class="product-image">
-                        <img src="https://i.postimg.cc/nV3LdQLd/download-(3).png" alt="Sache Felix">
-                    </div>
-                    <button class="add-btn"><i class="fas fa-plus"></i></button>
-                    <div class="info-area">
-                        <span class="discount-tag">70% OFF</span>
-                        <p class="price">R$ 23,90</p>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <span class="super-oferta-badge">Super oferta</span>
-                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    <div class="product-image">
-                        <img src="https://i.postimg.cc/yY7FRRbV/download-(1).png" alt="Sache Felix 2">
-                    </div>
-                    <button class="add-btn"><i class="fas fa-plus"></i></button>
-                    <div class="info-area">
-                        <span class="discount-tag">60% OFF</span>
-                        <p class="price">R$ 21,90</p>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <span class="super-oferta-badge">Super oferta</span>
-                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    <div class="product-image">
-                        <img src="https://i.postimg.cc/0jSP2rpx/download-(7).png" alt="Sache Felix 3">
-                    </div>
-                    <button class="add-btn"><i class="fas fa-plus"></i></button>
-                    <div class="info-area">
-                        <span class="discount-tag">50% OFF</span>
-                        <p class="price">R$ 40,00</p>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <span class="super-oferta-badge">Super oferta</span>
-                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                    <div class="product-image">
-                        <img src="https://i.postimg.cc/ydQzTcTS/download-(4).png" alt="Whiskas sache">
-                    </div>
-                    <button class="add-btn"><i class="fas fa-plus"></i></button>
-                    <div class="info-area">
-                        <span class="discount-tag">80% OFF</span>
-                        <p class="price">R$ 32,20</p>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-   
-    </main>
-
+ 
+ <header class="main-header">
+ <span class="logo-small" onclick="voltarTelaInicio()" style="cursor: pointer;">RoyalPet</span>
+ <h1>Rações</h1>
+ </header>
+ 
+ <main class="container">
+ 
+ <section class="product-section">
+ <h2 class="section-title">Produtos recomendados</h2>
+ <div class="product-grid">
+ 
+ <article class="product-card">
+ <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+ <div class="product-image">
+ <img src="https://i.postimg.cc/6pjLtQzt/download.png" alt="Ração Nutripaws">
+ </div>
+ <button class="add-btn"><i class="fas fa-plus"></i></button>
+ <div class="info-area">
+ <span class="discount-tag">40% OFF</span>
+ <p class="price">R$ 125,80</p>
+ </div>
+ </article>
+ 
+ <article class="product-card">
+ <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+ <div class="product-image">
+ <img src="https://i.postimg.cc/yY7FRRbV/download-(1).png" alt="Ração Dog Chow">
+ </div>
+ <button class="add-btn"><i class="fas fa-plus"></i></button>
+ <div class="info-area">
+ <span class="discount-tag">20% OFF</span>
+ <p class="price">R$ 80,90</p>
+ </div>
+ </article>
+ 
+ <article class="product-card">
+ <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+ <div class="product-image">
+ <img src="https://i.postimg.cc/wMgshK07/download-(2).png" alt="Ração Pedigree">
+ </div>
+ <button class="add-btn"><i class="fas fa-plus"></i></button>
+ <div class="info-area">
+ <span class="discount-tag">5% OFF</span>
+ <p class="price">R$ 42,90</p>
+ </div>
+ </article>
+ 
+ <article class="product-card">
+ <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+ <div class="product-image">
+ <img src="https://i.postimg.cc/nV3LdQLd/download-(3).png" alt="Ração Whiskas">
+ </div>
+ <button class="add-btn"><i class="fas fa-plus"></i></button>
+ <div class="info-area">
+ <span class="discount-tag">15% OFF</span>
+ <p class="price">R$ 70,00</p>
+ </div>
+ </article>
+ 
+ <article class="product-card">
+ <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+ <div class="product-image">
+ <img src="https://i.postimg.cc/ydQzTcTS/download-(4).png" alt="Ração Nutripaws">
+ </div>
+ <button class="add-btn"><i class="fas fa-plus"></i></button>
+ <div class="info-area">
+ <span class="discount-tag">25% OFF</span>
+ <p class="price">R$ 110,00</p>
+ </div>
+ </article>
+ 
+ <article class="product-card">
+ <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+ <div class="product-image">
+ <img src="https://i.postimg.cc/SQHKFbW2/download-(6).png" alt="Ração Dog Chow">
+ </div>
+ <button class="add-btn"><i class="fas fa-plus"></i></button>
+ <div class="info-area">
+ <span class="discount-tag">10% OFF</span>
+ <p class="price">R$ 95,50</p>
+ </div>
+ </article>
+ 
+ <article class="product-card">
+ <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+ <div class="product-image">
+ <img src="https://i.postimg.cc/0jSP2rpx/download-(7).png" alt="Ração Pedigree">
+ </div>
+ <button class="add-btn"><i class="fas fa-plus"></i></button>
+ <div class="info-area">
+ <span class="discount-tag">30% OFF</span>
+ <p class="price">R$ 39,90</p>
+ </div>
+ </article>
+ 
+ <article class="product-card">
+ <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+ <div class="product-image">
+ <img src="https://i.postimg.cc/tTZH27vm/download-(8).png" alt="Ração Whiskas">
+ </div>
+ <button class="add-btn"><i class="fas fa-plus"></i></button>
+ <div class="info-area">
+ <span class="discount-tag">12% OFF</span>
+ <p class="price">R$ 109,80</p>
+ </div>
+ </article>
+ 
+ </div>
+  <section class="product-section">
+ <h2 class="section-title">Super Ofertas do Dia <i class="fas fa-tag icon-red"></i></h2>
+ 
+ <div class="carousel-wrapper" style="width: 100% !important; overflow: hidden !important; display: block !important;">
+ <div id="ofertas-carousel" style="display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; overflow-x: auto !important; gap: 20px !important; scroll-behavior: smooth !important; width: 100% !important; padding: 10px 0 !important; scrollbar-width: none !important;">
+ 
+ <article class="product-card-carousel" style="min-width: 260px !important; max-width: 260px !important; flex-shrink: 0 !important; display: inline-block !important; background: white; padding: 15px; border-radius: 12px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+ <span class="super-oferta-badge">Super oferta</span>
+ <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+ <div class="product-image">
+ <img src="https://i.postimg.cc/nV3LdQLd/download-(3).png" alt="Sache Felix" style="width: 100%; height: auto; max-height: 150px; object-fit: contain;">
+ </div>
+ <button class="add-btn"><i class="fas fa-plus"></i></button>
+ <div class="info-area">
+ <span class="discount-tag">70% OFF</span>
+ <p class="price">R$ 23,90</p>
+ </div>
+ </article>
+ 
+ <article class="product-card-carousel" style="min-width: 260px !important; max-width: 260px !important; flex-shrink: 0 !important; display: inline-block !important; background: white; padding: 15px; border-radius: 12px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+ <span class="super-oferta-badge">Super oferta</span>
+ <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+ <div class="product-image">
+ <img src="https://i.postimg.cc/yY7FRRbV/download-(1).png" alt="Sache Felix 2" style="width: 100%; height: auto; max-height: 150px; object-fit: contain;">
+ </div>
+ <button class="add-btn"><i class="fas fa-plus"></i></button>
+ <div class="info-area">
+ <span class="discount-tag">60% OFF</span>
+ <p class="price">R$ 21,90</p>
+ </div>
+ </article>
+ 
+ <article class="product-card-carousel" style="min-width: 260px !important; max-width: 260px !important; flex-shrink: 0 !important; display: inline-block !important; background: white; padding: 15px; border-radius: 12px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+ <span class="super-oferta-badge">Super oferta</span>
+ <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+ <div class="product-image">
+ <img src="https://i.postimg.cc/0jSP2rpx/download-(7).png" alt="Sache Felix 3" style="width: 100%; height: auto; max-height: 150px; object-fit: contain;">
+ </div>
+ <button class="add-btn"><i class="fas fa-plus"></i></button>
+ <div class="info-area">
+ <span class="discount-tag">50% OFF</span>
+ <p class="price">R$ 40,00</p>
+ </div>
+ </article>
+ 
+ <article class="product-card-carousel" style="min-width: 260px !important; max-width: 260px !important; flex-shrink: 0 !important; display: inline-block !important; background: white; padding: 15px; border-radius: 12px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+ <span class="super-oferta-badge">Super oferta</span>
+ <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+ <div class="product-image">
+ <img src="https://i.postimg.cc/ydQzTcTS/download-(4).png" alt="Whiskas sache" style="width: 100%; height: auto; max-height: 150px; object-fit: contain;">
+ </div>
+ <button class="add-btn"><i class="fas fa-plus"></i></button>
+ <div class="info-area">
+ <span class="discount-tag">80% OFF</span>
+ <p class="price">R$ 32,20</p>
+ </div>
+ </article>
+ 
+ <article class="product-card-carousel" style="min-width: 260px !important; max-width: 260px !important; flex-shrink: 0 !important; display: inline-block !important; background: white; padding: 15px; border-radius: 12px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+ <span class="super-oferta-badge">Super oferta</span>
+ <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+ <div class="product-image">
+ <img src="https://i.postimg.cc/tTZH27vm/download-(8).png" alt="Ração Golden Special" style="width: 100%; height: auto; max-height: 150px; object-fit: contain;">
+ </div>
+ <button class="add-btn"><i class="fas fa-plus"></i></button>
+ <div class="info-area">
+ <span class="discount-tag">35% OFF</span>
+ <p class="price">R$ 109,90</p>
+ </div>
+ </article>
+ 
+ </div>
+ </div>
+ </section>
+ 
+ </main>
 </body>
 </html>
+ 
