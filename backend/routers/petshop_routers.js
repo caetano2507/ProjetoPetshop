@@ -48,24 +48,38 @@ router.post("/cadastrar", (req, res) => {
  
 // Verificar o Login no Banco
 router.post("/login", (req, res) => {
- const { email, senha } = req.body;
+  const { email, senha } = req.body;
  
- const sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
- conexao.query(sql, [email, senha], (erro, resultados) => {
- if (erro) {
- console.error("Erro no banco:", erro);
- return res.status(500).json({ erro: "Erro interno." });
- }
- if (resultados.length > 0) {
- return res.status(200).json({ mensagem: "Login efetuado!" });
- } else {
- return res.status(401).json({ erro: "E-mail ou senha incorretos." });
- }
- });
+  // Busca o usuário correspondente no banco do Aiven
+  const sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
+  conexao.query(sql, [email, senha], (erro, resultados) => {
+    if (erro) {
+      console.error("Erro no banco:", erro);
+      return res.status(500).json({ erro: "Erro interno." });
+    }
+ 
+    if (resultados.length > 0) {
+      const usuarioLogado = resultados[0];
+ 
+      // Pega a regra diretamente da coluna do banco de dados
+    
+      const regraDoBanco = usuarioLogado.regra || "user"; 
+ 
+      // Devolve a mensagem E a regra para o front-end
+      return res.status(200).json({ 
+        mensagem: "Login efetuado!", 
+        regra: regraDoBanco 
+      });
+ 
+    } else {
+      return res.status(401).json({ erro: "E-mail ou senha incorretos." });
+    }
+  });
 });
  
+ 
 // ==========================================
-// 3. CRUD DE PRODUTOS (RAÇÃO)
+// CRUD DE PRODUTOS (RAÇÃO)
 // ==========================================
 router.get("/racao", (req, res) => {
  conexao.query("SELECT * FROM racao", (erro, resultados) => {
@@ -83,7 +97,7 @@ router.post("/racao", (req, res) => {
 });
  
 // ==========================================
-// 4. RECUPERAÇÃO DE SENHA
+// RECUPERAÇÃO DE SENHA
 // ==========================================
 router.post("/esqueci-senha", async (req, res) => {
  const { email } = req.body;
@@ -127,6 +141,6 @@ router.post("/esqueci-senha", async (req, res) => {
  }
 });
  
-// O MODULE.EXPORTS DEVE FICAR SEMPRE NA ÚLTIMA LINHA DO ARQUIVO!
+// Exportação da rota
 module.exports = router;
  

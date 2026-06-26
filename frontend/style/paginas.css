@@ -174,15 +174,58 @@
             z-index: 10;
         }
 
-        /* --- RESPONSIVIDADE PARA CELULAR (2 colunas) --- */
-        @media (max-width: 600px) {
-            .container { padding: 10px; }
-            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .product-card { padding: 10px; }
-            .main-header h1 { font-size: 2rem; }
-            .add-btn { bottom: 55px; font-size: 1rem; }
-        }
-
+       /* --- RESPONSIVIDADE PARA CELULARS E TABLETS --- */
+ 
+        /* Ajuste para telas intermediárias (Tablets) */
+    @media (max-width: 768px) {
+     .main-header {
+    padding: 60px 20px 30px 20px; /* Dá espaço para a logo absoluta não cobrir o título */
+    }
+    .main-header .logo-small {
+   left: 50%;
+   transform: translateX(-50%); /* Centraliza a logo no topo em telas menores */
+   top: 15px;
+    }
+    .main-header h1 {
+   font-size: 2.5rem;
+    }
+}
+ 
+        /* Ajuste fino para celulares (2 colunas) */
+    @media (max-width: 600px) {
+     .container { 
+    padding: 10px; 
+    }
+    .main-header {
+    margin-bottom: 15px;
+    }
+    .main-header h1 { 
+   font-size: 1.8rem; 
+    }
+    .product-grid { 
+   grid-template-columns: repeat(2, 1fr); /* Mantém as duas colunas que você planejou */
+   gap: 12px; 
+    }
+    .product-card { 
+    padding: 12px; 
+    }
+    .product-image {
+    height: 110px; /* Reduz ligeiramente a imagem para caber melhor na grade de 2 colunas */
+    }
+    .price {
+    font-size: 1.1rem; /* Ajusta o tamanho da fonte do preço */
+    }
+    .add-btn { 
+   bottom: 52px; 
+   font-size: 1.1rem; 
+   right: 10px;
+ }
+ .wishlist-btn {
+   top: 10px;
+   right: 10px;
+ }
+}
+ 
         .logo-small {
             cursor: pointer;
         }
