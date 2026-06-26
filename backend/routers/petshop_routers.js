@@ -53,9 +53,11 @@ router.post("/login", (req, res) => {
   // Busca o usuário correspondente no banco do Aiven
   const sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
   conexao.query(sql, [email, senha], (erro, resultados) => {
+    console.log(email)
+    console.log(senha)
     if (erro) {
       console.error("Erro no banco:", erro);
-      return res.status(500).json({ erro: "Erro interno." });
+      return res.status(500).json({ erro: "Erro interno." + erro });
     }
  
     if (resultados.length > 0) {
