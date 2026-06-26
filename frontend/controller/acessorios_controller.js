@@ -1,12 +1,12 @@
 // =========================================================================
-// 1. NAVEGAÇÃO EXTERNA (LOGO)
+// Volta pra "Telainicio"
 // =========================================================================
 function voltarTelaInicio() {
     window.location.href = "Telainicio.html";
 }
  
 // =========================================================================
-// 2. LÓGICA PRINCIPAL DA PÁGINA
+// LÓGICA PRINCIPAL DA PÁGINA
 // =========================================================================
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(autoScrollTimer);
     }
  
-    // Inicializa o autoplay se o carrossel existir na tela
+    // Inicializa o autoplay
     if (carousel && carouselWrapper) {
         iniciarAutoPlay();
         carouselWrapper.addEventListener('mouseenter', pausarAutoPlay);
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
  
     // =========================================================================
-    // 4. SISTEMA DO CARRINHO (REDIRECIONA PARA A TELA DO DIEGO)
+    // SISTEMA DO CARRINHO (REDIRECIONA PARA A TELA DO DIEGO)
     // =========================================================================
     const botoesCarrinho = document.querySelectorAll('.add-btn');
     let carrinhoSalvo = JSON.parse(localStorage.getItem('carrinho_' + paginaAtual)) || [];

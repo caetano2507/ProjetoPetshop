@@ -1,4 +1,5 @@
- function voltarTelaInicio() {
+//Volta pra "Telainicio.html"
+function voltarTelaInicio() {
         window.location.href = "Telainicio.html";
         }
 
@@ -16,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cardServicos = document.getElementById("cardServicos");
     const cardUnidades = document.getElementById("cardUnidades"); // Puxa o card novo
  
-    // Lista de Respostas
+    // Lista de Respostas dos cards
     const respostas = {
         pedido: {
             titulo: "Status do Pedido 📦",

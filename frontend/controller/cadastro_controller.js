@@ -1,33 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- 1. SELEÇÃO DOS ELEMENTOS DO HTML ---
+    // --- SELEÇÃO DOS ELEMENTOS DO HTML ---
     const btnVoltar = document.getElementById("btnVoltar");
     const btnEntrar = document.getElementById("btnEntrar");
     const tituloInicio = document.getElementById("tituloInicio");
     const formCadastro = document.getElementById("formCadastro");
  
-    // --- 2. AÇÃO DO BOTÃO "VOLTAR" ---
+    // --- AÇÃO DO BOTÃO "VOLTAR" ---
     if (btnVoltar) {
         btnVoltar.addEventListener("click", () => {
             window.location.href = "loginPetshop.html";
         });
     }
  
-    // --- 3. AÇÃO DO BOTÃO "ENTRAR" ---
+    // --- AÇÃO DO BOTÃO "ENTRAR" ---
     if (btnEntrar) {
         btnEntrar.addEventListener("click", () => {
             window.location.href = "loginPetshop.html";
         });
     }
  
-    // --- 4. AÇÃO AO CLICAR NO TÍTULO "ROYAL PET" (Ir para Home) ---
+    // --- AÇÃO AO CLICAR NO TÍTULO "ROYAL PET" (Ir para Home) ---
     if (tituloInicio) {
         tituloInicio.addEventListener("click", () => {
-            window.location.href = "atendimentoPetshop.html"; // Altere para o nome real da sua página inicial se for diferente
+            window.location.href = "Telainicio.html"; // Volta pra tela inicial
         });
     }
  
-    // --- 5. ENVIO REALS DOS DADOS PARA O BANCO DE DADOS (BACKEND) ---
+    // --- ENVIO DOS DADOS PARA O BANCO DE DADOS (BACKEND) ---
     if (formCadastro) {
         formCadastro.addEventListener("submit", async (event) => {
             event.preventDefault(); // Não deixa a página recarregar
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
  
             try {
-                // Envia as informações para a rota que criamos no Node (petshop_routers.js)
+                // Envia as informações para a rota (petshop_routers.js)
                 const resposta = await fetch("http://localhost:3000/petshop/cadastrar", {
                     method: "POST",
                     headers: {

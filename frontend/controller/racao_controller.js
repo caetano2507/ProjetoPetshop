@@ -1,12 +1,12 @@
 // =========================================================================
-// 1. NAVEGAÇÃO EXTERNA (LOGO)
+// Volta pra "Telainicio"
 // =========================================================================
 function voltarTelaInicio() {
     window.location.href = "Telainicio.html";
 }
  
 // =========================================================================
-// 2. LÓGICA PRINCIPAL DA PÁGINA
+// LÓGICA PRINCIPAL DA PÁGINA
 // =========================================================================
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -46,11 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
         carouselWrapper.addEventListener('mouseleave', iniciarAutoPlay);
     }
  
-    // Identifica a página atual para separar as listas no LocalStorage
+    
     const paginaAtual = window.location.pathname.split("/").pop(); 
  
     // =========================================================================
-    // 3. SISTEMA DE FAVORITOS (REDIRECIONA PARA A TELA DO DIEGO)
+    // SISTEMA DE FAVORITOS (REDIRECIONA PARA A TELA DO DIEGO)
     // =========================================================================
     const botoesFavorito = document.querySelectorAll('.wishlist-btn');
     let favoritosSalvos = JSON.parse(localStorage.getItem('favoritos_' + paginaAtual)) || [];
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
  
     // =========================================================================
-    // 4. SISTEMA DO CARRINHO (REDIRECIONA PARA A TELA DO DIEGO)
+    // SISTEMA DO CARRINHO (REDIRECIONA PARA A TELA DO DIEGO)
     // =========================================================================
     const botoesCarrinho = document.querySelectorAll('.add-btn');
     let carrinhoSalvo = JSON.parse(localStorage.getItem('carrinho_' + paginaAtual)) || [];
