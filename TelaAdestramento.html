@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adestramento - RoyalPet</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
 *{
     margin:0;
@@ -29,11 +31,18 @@ body{
     gap:15px;
 }
 
-.logo-small{
-    text-decoration:none;
-    color:#6A5ACD; /* Roxo baseado na identidade do card */
-    font-size:1.3rem;
-    font-weight:bold;
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;                        /* Tamanho exato padrão da sua Tela de Serviços */
+    font-weight: 700;                       /* Peso exato padrão da sua Tela de Serviços */
+    color: #1a1a1a;                         /* <--- ALTERE A COR DO "Royal" MANUALMENTE AQUI */
+    text-decoration: none;
+    display: inline-block;
+}
+
+.logo span {
+    color: #2d7a4e;                         /* O verde exato do "Pet" da sua tela de serviços */
+    font-weight: 700;
 }
 
 .main-header h1{
@@ -372,7 +381,10 @@ footer{
 <body>
 
 <header class="main-header">
-    <a href="Telainicio.html" class="logo-small">RoyalPet</a>
+
+<a href="Telainicio.html" class="logo">
+    Royal <span>Pet</span> <span style="font-size: 14px; opacity: 0.6; margin-left: 8px;"></span>
+</a>
     <h1>Escola de Adestramento</h1>
 </header>
 
@@ -431,17 +443,17 @@ footer{
     <h2>Por que escolher nossa metodologia?</h2>
     <div class="cards-servicos">
         <div class="card-servico">
-            <div class="icone">🍖</div>
+            <!-- <div class="icone"></div> -->
             <h3>Reforço Positivo</h3>
             <p>Sem punições ou medo. Educamos usando recompensas, petiscos, brinquedos e estímulo correto.</p>
         </div>
         <div class="card-servico">
-            <div class="icone">🏡</div>
+            <!-- <div class="icone"></div> -->
             <h3>Foco no Lar</h3>
             <p>O treinamento envolve a família para garantir que o pet obedeça a você dentro da rotina da casa.</p>
         </div>
         <div class="card-servico">
-            <div class="icone">🎓</div>
+            <!-- <div class="icone"></div> -->
             <h3>Resultados Reais</h3>
             <p>Técnicas modernas e validadas cientificamente que resolvem problemas comportamentais de verdade.</p>
         </div>

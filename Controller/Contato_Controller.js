@@ -23,11 +23,11 @@ class ContatoController {
 
         const dadosForm = this.view.getValoresFormulario();
 
-        // 1. Primeiro envia via EmailJS usando o elemento do próprio form (this.view.form)
+        //  Primeiro envia via EmailJS usando o elemento do próprio form (this.view.form)
         emailjs.sendForm("service_c7ppt9s", "template_msqrfsv", this.view.form)
             .then(async () => {
                 try {
-                    // 2. Se o e-mail foi com sucesso, salva a cópia no servidor
+                    //  Se o e-mail foi com sucesso, salva a cópia no servidor
                     await this.model.salvarMensagem(dadosForm);
                     
                     this.view.mostrarSucesso();

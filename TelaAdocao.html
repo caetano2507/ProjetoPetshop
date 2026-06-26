@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adoção de Pets - RoyalPet</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
 <style>
 *{
     margin:0;
@@ -29,11 +31,19 @@ body{
     gap:15px;
 }
 
-.logo-small{
-    text-decoration:none;
-    color:#C05F11;
-    font-size:1.3rem;
-    font-weight:bold;
+
+.logo {
+    font-family: 'Playfair Display', serif; 
+    font-size: 30px;                        
+    font-weight: 900;                      
+    letter-spacing: -0.7px;                 
+    color: #1a1a1a;                         
+    text-decoration: none; /* Garante que não fique sublinhado*/
+    display: inline-block;
+}
+
+.logo span {
+    color: #2d7a4e;                         /
 }
 
 .main-header h1{
@@ -425,7 +435,9 @@ footer{
 <body>
 
 <header class="main-header">
-    <a href="Telainicio.html" class="logo-small">RoyalPet</a>
+<a href="Telainicio.html" class="logo">
+    Royal <span>Pet</span> <span style="font-size: 14px; opacity: 0.6; margin-left: 8px;"></span>
+</a>
     <h1>Adoção de Pets</h1>
 </header>
 
@@ -434,7 +446,7 @@ footer{
     <p>Mude uma vida e ganhe um companheiro para todas as horas. Adote com responsabilidade!</p>
 </section>
 
-<!-- VITRINE DE ANIMAIS (COM IMAGENS REAIS) -->
+<!-- VITRINE DE ANIMAIS -->
 <section class="vitrine-pets">
     <h2>Pets esperando por um lar</h2>
     <div class="grid-pets">
@@ -527,7 +539,7 @@ footer{
 </div>
 
 <footer>
-    © 2026 RoyalPet - Todos os direitos reservados.
+    © 2026 RoyalPet 
 </footer>
 
 <script type="module" src="./Controller/Adocao_Controller.js"></script>

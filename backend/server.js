@@ -4,20 +4,20 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
-// middlewares  (Essenciais para o MVC funcionar)
-app.use(cors()); // Isso resolve o erro vermelho de CORS do navegador
+// middlewares 
+app.use(cors()); 
 app.use(express.json()); // Permite que o servidor entenda os dados do Pet enviados em JSON
 
 // Nosso "Banco de Dados" temporário (Salva na memória do servidor)
 let bancoDeDadosAdestramentos = [];
 
-// ROTA 1: Buscar todos os agendamentos (GET)
+//rota 1: Buscar todos os agendamentos (GET)
 app.get('/api/adestramentos', (req, res) => {
     // Retorna a lista invertida para o card mais novo aparecer no topo
     res.json([...bancoDeDadosAdestramentos].reverse());
 });
 
-// ROTA 2: Criar novo agendamento (POST)
+//rota 2: Criar novo agendamento (POST)
 app.post('/api/adestramentos', (req, res) => {
     const { nome, idade, objetivo, data, hora } = req.body;
 
@@ -35,7 +35,7 @@ app.post('/api/adestramentos', (req, res) => {
     res.status(201).json(novoAgendamento);
 });
 
-// ROTA 3: Atualizar um agendamento existente (PUT)
+//rota 3: Atualizar um agendamento existente (PUT)
 app.put('/api/adestramentos/:id', (req, res) => {
     const { id } = req.params;
     const { nome, idade, objetivo, data, hora } = req.body;
@@ -50,7 +50,7 @@ app.put('/api/adestramentos/:id', (req, res) => {
     res.status(404).json({ message: "Pet não encontrado para atualização." });
 });
 
-// ROTA 4: Excluir um agendamento (DELETE)
+//rota 4: Excluir um agendamento (DELETE)
 app.delete('/api/adestramentos/:id', (req, res) => {
     const { id } = req.params;
 
@@ -62,11 +62,6 @@ app.delete('/api/adestramentos/:id', (req, res) => {
     }
 
     res.status(404).json({ message: "Pet não encontrado para exclusão." });
-});
-
-// Ligar o Servidor
-app.listen(PORT, () => {
-    console.log(` Servidor da Royal Pet rodando em: http://localhost:${PORT}`);
 });
 
 
@@ -363,49 +358,146 @@ app.get('/api/catalogo-servicos', (req, res) => {
     res.json(catalogoServicos);
 });
 
-// ESCUTA DO SERVIDOR (Esta linha DEVE ser a última do arquivo)
-app.listen(PORT, () => {
-    console.log(`Servidor rodando redondo na porta ${PORT}`);
-});
-
-
 
 // Módulo central do catálogo de brinquedos 
 
 const catalogoBrinquedos = [
+    // --- PRODUTOS RECOMENDADOS ---
     {
-        name: "Mordedor Corda com Bola",
-        price: 34.90,
-        img: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=400"
+        name: "Brinquedo Mordedor Ossinho",
+        price: 125.80,
+        desconto: "40% OFF",
+        posicao: "recomendado",
+        img: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=300&auto=format&fit=crop"
     },
     {
-        name: "Frango de Borracha Clássico",
-        price: 19.90,
-        img: "https://images.unsplash.com/photo-1591946614720-90a587da4a36?auto=format&fit=crop&q=80&w=400"
+        name: "Corda com Nó para Cães",
+        price: 80.90,
+        desconto: "20% OFF",
+        posicao: "recomendado",
+        img: "https://images.unsplash.com/photo-1608454367599-c1139e64ef76?q=80&w=300&auto=format&fit=crop"
     },
     {
-        name: "Bolinha de Tênis Ultra Resistente",
-        price: 14.90,
-        img: "https://images.unsplash.com/photo-1610243431326-72644265cc8d?auto=format&fit=crop&q=80&w=400"
-    },
-    {
-        name: "Brinquedo de Pelúcia Crocodilo",
-        price: 45.90,
-        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?auto=format&fit=crop&q=80&w=400"
-    },
-    {
-        name: "KONG Classic Interativo",
-        price: 89.90,
-        img: "https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?auto=format&fit=crop&q=80&w=400"
+        name: "Bolinha de Borracha Resistente",
+        price: 42.90,
+        desconto: "5% OFF",
+        posicao: "recomendado",
+        img: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?q=80&w=300&auto=format&fit=crop"
     },
     {
         name: "Arranhador Torre para Gatos",
-        price: 129.90,
-        img: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?auto=format&fit=crop&q=80&w=400"
+        price: 70.00,
+        desconto: "15% OFF",
+        posicao: "recomendado",
+        img: "https://images.unsplash.com/photo-1591561954555-607968c989ab?q=80&w=300&auto=format&fit=crop"
+    },
+    {
+        name: "Brinquedo Interativo Pet",
+        price: 110.00,
+        desconto: "25% OFF",
+        posicao: "recomendado",
+        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
+    },
+    {
+        name: "Frango de Borracha ClÃ¡ssico",
+        price: 95.50,
+        desconto: "10% OFF",
+        posicao: "recomendado",
+        img: "https://images.unsplash.com/photo-1608454367599-c1139e64ef76?q=80&w=300&auto=format&fit=crop"
+    },
+    {
+        name: "Ratinho de PelÃºcia com Catnip",
+        price: 39.90,
+        desconto: "30% OFF",
+        posicao: "recomendado",
+        img: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?q=80&w=300&auto=format&fit=crop"
+    },
+    {
+        name: "Circuito de Bolinhas para Gatos",
+        price: 109.80,
+        desconto: "12% OFF",
+        posicao: "recomendado",
+        img: "https://images.unsplash.com/photo-1591561954555-607968c989ab?q=80&w=300&auto=format&fit=crop"
+    },
+    // --- SUPER OFERTAS DO DIA (CARROSSEL) ---
+    {
+        name: "Mini Mordedor Dental",
+        price: 23.90,
+        desconto: "70% OFF",
+        posicao: "oferta",
+        img: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?q=80&w=300&auto=format&fit=crop"
+    },
+    {
+        name: "Brinquedo Disco Flyer",
+        price: 21.90,
+        desconto: "60% OFF",
+        posicao: "oferta",
+        img: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=300&auto=format&fit=crop"
+    },
+    {
+        name: "Varinha Interativa Penas Gato",
+        price: 40.00,
+        desconto: "50% OFF",
+        posicao: "oferta",
+        img: "https://images.unsplash.com/photo-1591561954555-607968c989ab?q=80&w=300&auto=format&fit=crop"
+    },
+    {
+        name: "PelÃºcia Macaco com Apito",
+        price: 32.20,
+        desconto: "80% OFF",
+        posicao: "oferta",
+        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
+    },
+    {
+        name: "PelÃºcia Macaco com Apito",
+        price: 32.20,
+        desconto: "80% OFF",
+        posicao: "oferta",
+        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
+    },
+    {
+        name: "PelÃºcia Macaco com Apito",
+        price: 32.20,
+        desconto: "80% OFF",
+        posicao: "oferta",
+        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
+    },
+    {
+        name: "PelÃºcia Macaco com Apito",
+        price: 32.20,
+        desconto: "80% OFF",
+        posicao: "oferta",
+        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
+    },
+    {
+        name: "PelÃºcia Macaco com Apito",
+        price: 32.20,
+        desconto: "80% OFF",
+        posicao: "oferta",
+        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
+    },
+    {
+        name: "PelÃºcia Macaco com Apito",
+        price: 32.20,
+        desconto: "80% OFF",
+        posicao: "oferta",
+        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
+    },
+    {
+        name: "PelÃºcia Macaco com Apito",
+        price: 32.20,
+        desconto: "80% OFF",
+        posicao: "oferta",
+        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
     }
 ];
 
-// Rota para listar os produtos na vitrine
-app.get('/api/brinquedos', (req, res) => {
-    res.json(catalogoBrinquedos);
+    app.get('/api/brinquedos', (req, res) => {
+        res.json(catalogoBrinquedos);
+    });
+
+    
+//escuta o servidor (Essa parte deve ser a ultima do arquivo)
+app.listen(PORT, () => {
+    console.log(`Servidor rodando redondo na porta ${PORT}`);
 });

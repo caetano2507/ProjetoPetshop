@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hotel & Day Care - RoyalPet</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
 <style>
 *{
     margin:0;
@@ -29,11 +31,18 @@ body{
     gap:15px;
 }
 
-.logo-small{
-    text-decoration:none;
-    color:#C0392B;
-    font-size:1.3rem;
-    font-weight:bold;
+.logo {
+    font-family: 'Playfair Display', serif; 
+    font-size: 30px;                       
+    font-weight: 900;                       
+    letter-spacing: -0.7px;                 
+    color: #1a1a1a;                         
+    text-decoration: none; /* Garante que não fique sublinhado*/
+    display: inline-block;
+}
+
+.logo span {
+    color: #2d7a4e;                         
 }
 
 .main-header h1{
@@ -386,7 +395,7 @@ footer{
 <body>
 
 <header class="main-header">
-    <a href="index.html" class="logo-small">RoyalPet</a>
+    <a href="Telainicio.html" class="logo">Royal<span>Pet</span></a>
     <h1>Hotel & Day Care</h1>
 </header>
 
@@ -444,17 +453,17 @@ footer{
     <h2>Estrutura e Diferenciais</h2>
     <div class="cards-servicos">
         <div class="card-servico">
-            <div class="icone">🏡</div>
+            <div class="icone"></div>
             <h3>Espaço Livre</h3>
             <p>Ambientes amplos para recreação diária. Aqui seu pet não fica preso em gaiolas.</p>
         </div>
         <div class="card-servico">
-            <div class="icone">🎥</div>
+            <div class="icone"></div>
             <h3>Fotos e Vídeos</h3>
             <p>Enviamos boletins diários com registros das atividades e refeições do seu amiguinho.</p>
         </div>
         <div class="card-servico">
-            <div class="icone">🩺</div>
+            <div class="icone"></div>
             <h3>Suporte Veterinário</h3>
             <p>Profissionais de prontidão prontos para monitorar a saúde e a alimentação do pet.</p>
         </div>
@@ -478,298 +487,7 @@ footer{
     © 2026 RoyalPet - Todos os direitos reservados.
 </footer>
 
-<script>
-let cardEmEdicao = null;
-
-document.addEventListener('DOMContentLoaded', function() {
-    carregarHotelDoArmazenamento();
-    
-    document.getElementById('petData').addEventListener('input', () => verificarCampoData('petData'));
-    document.getElementById('petDataSaida').addEventListener('input', () => verificarCampoData('petDataSaida'));
-    
-    // Escuta a mudança do select de serviços para alternar os campos
-    document.getElementById('hotelServico').addEventListener('change', gerenciarFluxoCamposDatas);
-});
-
-// FUNÇÃO DINÂMICA: ESCONDE/MOSTRA O CHECK-OUT
-function gerenciarFluxoCamposDatas() {
-    const servico = document.getElementById('hotelServico').value;
-    const blocoSaida = document.getElementById('blocoSaida');
-    const campoSaidaInput = document.getElementById('petDataSaida');
-    const labelEntrada = document.getElementById('labelDataEntrada');
-    const containerDatas = document.getElementById('containerDatas');
-
-    if (servico === 'Day Care') {
-        blocoSaida.style.display = 'none';
-        campoSaidaInput.removeAttribute('required');
-        campoSaidaInput.value = ''; // Limpa se houver resíduo
-        labelEntrada.textContent = 'Data do Day Care';
-        containerDatas.classList.add('modo-daycare');
-    } else {
-        blocoSaida.style.display = 'flex';
-        campoSaidaInput.setAttribute('required', 'true');
-        labelEntrada.textContent = 'Data de Entrada (Check-in)';
-        containerDatas.classList.remove('modo-daycare');
-    }
-}
-
-// VALIDAR QUALQUER UM DOS CAMPOS DE DATA COM LINHA VERMELHA EM TEMPO REAL
-function verificarCampoData(idCampo) {
-    const campo = document.getElementById(idCampo);
-    const valor = campo.value;
-
-    if (!valor) {
-        campo.classList.remove('campo-invalido');
-        return false;
-    }
-
-    const partes = valor.split('-');
-    const ano = parseInt(partes[0], 10);
-
-    const dataDigitada = new Date(valor + 'T00:00:00');
-    const dataHoje = new Date();
-    dataHoje.setHours(0,0,0,0);
-
-    if (partes[0].length > 4 || ano > 2100 || dataDigitada < dataHoje) {
-        campo.classList.add('campo-invalido');
-        return false;
-    } else {
-        campo.classList.remove('campo-invalido');
-        return true;
-    }
-}
-
-// CONTROLADOR DO MODAL CUSTOMIZADO
-function abrirBalaoCustomizado(mensagem, tipo, acaoConfirmar = null) {
-    const overlay = document.getElementById('modalAviso');
-    const texto = document.getElementById('modalTexto');
-    const containerBotoes = document.getElementById('modalBotoesContainer');
-    
-    texto.textContent = mensagem;
-    containerBotoes.innerHTML = ''; 
-
-    overlay.classList.remove('erro-data');
-
-    if (tipo === 'alerta-erro') {
-        overlay.classList.add('erro-data');
-        
-        const btnOk = document.createElement('button');
-        btnOk.className = 'btn-modal btn-modal-confirmar';
-        btnOk.textContent = 'Ok';
-        btnOk.onclick = fecharBalaoCustomizado;
-        containerBotoes.appendChild(btnOk);
-    } else if (tipo === 'confirmacao') {
-        const btnCancelar = document.createElement('button');
-        btnCancelar.className = 'btn-modal btn-modal-cancelar';
-        btnCancelar.textContent = 'Cancelar';
-        btnCancelar.onclick = fecharBalaoCustomizado;
-
-        const btnConfirmar = document.createElement('button');
-        btnConfirmar.className = 'btn-modal btn-modal-confirmar';
-        btnConfirmar.textContent = 'Confirmar';
-        btnConfirmar.onclick = function() {
-            acaoConfirmar();
-            fecharBalaoCustomizado();
-        };
-
-        containerBotoes.appendChild(btnCancelar);
-        containerBotoes.appendChild(btnConfirmar);
-    }
-
-    overlay.classList.add('ativo');
-}
-
-function fecharBalaoCustomizado() {
-    document.getElementById('modalAviso').classList.remove('ativo');
-}
-
-// FORM SUBMIT & WHATSAPP INTEGRATION
-document.getElementById('form-hotel').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const campoIn = document.getElementById('petData');
-    const campoOut = document.getElementById('petDataSaida');
-    
-    const nome = document.getElementById('petNome').value;
-    const servico = document.getElementById('hotelServico').value;
-    const social = document.getElementById('hotelSocial').value;
-    const dataIn = campoIn.value;
-    const dataOut = campoOut.value;
-
-    const vIn = verificarCampoData('petData');
-    
-    // Validação condicional dependendo do tipo do serviço
-    if (servico === 'Hospedagem') {
-        const vOut = verificarCampoData('petDataSaida');
-        if (!vIn || !vOut) {
-            if(!vIn) campoIn.classList.add('campo-invalido');
-            if(!vOut) campoOut.classList.add('campo-invalido');
-            abrirBalaoCustomizado('Coloque uma data correta.', 'alerta-erro');
-            return;
-        }
-
-        if (new Date(dataOut + 'T00:00:00') < new Date(dataIn + 'T00:00:00')) {
-            campoOut.classList.add('campo-invalido');
-            abrirBalaoCustomizado('A data de saída não pode ser antes da data de entrada.', 'alerta-erro');
-            return;
-        }
-    } else {
-        if (!vIn) {
-            campoIn.classList.add('campo-invalido');
-            abrirBalaoCustomizado('Coloque uma data correta.', 'alerta-erro');
-            return;
-        }
-    }
-
-    const dataInFormatada = dataIn.split('-').reverse().join('/');
-    const dataOutFormatada = dataOut ? dataOut.split('-').reverse().join('/') : '';
-
-    if (cardEmEdicao) {
-        cardEmEdicao.dataset.nome = nome;
-        cardEmEdicao.dataset.servico = servico;
-        cardEmEdicao.dataset.social = social;
-        cardEmEdicao.dataset.datain = dataIn;
-        cardEmEdicao.dataset.dataout = dataOut;
-
-        const containerTextoHTML = cardEmEdicao.querySelector('.info-pet p');
-        if (servico === 'Hospedagem') {
-            containerTextoHTML.innerHTML = `Período: <strong>${dataInFormatada}</strong> a <strong>${dataOutFormatada}</strong>`;
-        } else {
-            containerTextoHTML.innerHTML = `Data: <strong>${dataInFormatada}</strong> (Período Diário)`;
-        }
-
-        cardEmEdicao.querySelector('.info-pet h3').textContent = nome;
-        cardEmEdicao.querySelector('.badge-esp').textContent = servico;
-
-        cardEmEdicao = null;
-        document.getElementById('titulo-form').textContent = 'Reservar Vaga';
-        document.getElementById('btn-submit-form').textContent = 'Solicitar Reserva por WhatsApp';
-    } else {
-        adicionarCardNaTela(nome, servico, social, dataIn, dataOut);
-    }
-
-    salvarHotelNoArmazenamento();
-
-    // Mensagem inteligente baseada na escolha
-    let msg = `Olá, vim pelo site da Royal Pet. Gostaria de solicitar uma reserva:\n\n Serviço: ${servico}\n Nome do Pet: ${nome}\n Sociabilidade: ${social}\n`;
-    if (servico === 'Hospedagem') {
-        msg += ` Entrada: ${dataInFormatada}\n Saída: ${dataOutFormatada}`;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-    } else {
-        msg += ` Data do Day Care: ${dataInFormatada}`;
-    }
-
-    const link = `https://wa.me/5511995417758?text=${encodeURIComponent(msg)}`;
-    
-    window.open(link, '_blank');
-    this.reset();
-    campoIn.classList.remove('campo-invalido');
-    campoOut.classList.remove('campo-invalido');
-    gerenciarFluxoCamposDatas(); // Garante o reset do layout visual das datas
-});
-
-function adicionarCardNaTela(nome, servico, social, dataIn, dataOut) {
-    const lista = document.getElementById('lista-hotel');
-    const item = document.createElement('div');
-    item.className = 'item-consulta';
-    
-    item.dataset.nome = nome;
-    item.dataset.servico = servico;
-    item.dataset.social = social;
-    item.dataset.datain = dataIn;
-    item.dataset.dataout = dataOut;
-
-    const dataInFormatada = dataIn.split('-').reverse().join('/');
-    const dataOutFormatada = dataOut ? dataOut.split('-').reverse().join('/') : '';
-
-    let textoPeriodo = `Data: <strong>${dataInFormatada}</strong> (Período Diário)`;
-    if (servico === 'Hospedagem') {
-        textoPeriodo = `Período: <strong>${dataInFormatada}</strong> a <strong>${dataOutFormatada}</strong>`;
-    }
-
-    item.innerHTML = `
-        <div class="info-pet">
-            <h3>${nome}</h3>
-            <p>${textoPeriodo}</p>
-        </div>
-        <div class="direita-bloco">
-            <span class="badge-esp">${servico}</span>
-            <div class="acoes-consulta">
-                <button class="btn-acao btn-alterar" onclick="alterarReserva(this.closest('.item-consulta'))">Alterar</button>
-                <button class="btn-acao btn-excluir" onclick="excluirReserva(this.closest('.item-consulta'))">Excluir</button>
-            </div>
-        </div>
-    `;
-    lista.prepend(item);
-}
-
-function alterarReserva(elementoCard) {
-    cardEmEdicao = elementoCard;
-
-    document.getElementById('petNome').value = elementoCard.dataset.nome;
-    document.getElementById('hotelServico').value = elementoCard.dataset.servico;
-    
-    // Atualiza o estado dos inputs de data antes de injetar os valores guardados
-    gerenciarFluxoCamposDatas();
-
-    document.getElementById('hotelSocial').value = elementoCard.dataset.social;
-    document.getElementById('petData').value = elementoCard.dataset.datain;
-    
-    if (elementoCard.dataset.servico === 'Hospedagem') {
-        document.getElementById('petDataSaida').value = elementoCard.dataset.dataout;
-        verificarCampoData('petDataSaida');
-    }
-
-    document.getElementById('titulo-form').textContent = 'Alterar Reserva';
-    document.getElementById('btn-submit-form').textContent = 'Salvar Alterações e Enviar';
-    
-    document.getElementById('titulo-form').scrollIntoView({ behavior: 'smooth' });
-    verificarCampoData('petData');
-}
-
-function excluirReserva(elementoCard) {
-    abrirBalaoCustomizado(`Remover a solicitação de reserva do pet ${elementoCard.dataset.nome}?`, 'confirmacao', function() {
-        if (cardEmEdicao === elementoCard) {
-            cardEmEdicao = null;
-            document.getElementById('form-hotel').reset();
-            document.getElementById('petData').classList.remove('campo-invalido');
-            document.getElementById('petDataSaida').classList.remove('campo-invalido');
-            document.getElementById('titulo-form').textContent = 'Reservar Vaga';
-            document.getElementById('btn-submit-form').textContent = 'Solicitar Reserva por WhatsApp';
-            gerenciarFluxoCamposDatas();
-        }
-        elementoCard.remove();
-        salvarHotelNoArmazenamento();
-    });
-}
-
-// LOCALSTORAGE PARA PERSISTIR DADOS EXCLUSIVOS DO HOTEL
-function salvarHotelNoArmazenamento() {
-    const cards = document.querySelectorAll('.item-consulta');
-    const dadosHotel = [];
-    
-    cards.forEach(card => {
-        dadosHotel.push({
-            nome: card.dataset.nome,
-            servico: card.dataset.servico,
-            social: card.dataset.social,
-            datain: card.dataset.datain,
-            dataout: card.dataset.dataout
-        });
-    });
-    
-    localStorage.setItem('royalpet_hotel', JSON.stringify(dadosHotel.reverse()));
-}
-
-function carregarHotelDoArmazenamento() {
-    const salvas = localStorage.getItem('royalpet_hotel');
-    if (salvas) {
-        const listaReservas = JSON.parse(salvas);
-        listaReservas.forEach(h => {
-            adicionarCardNaTela(h.nome, h.servico, h.social, h.datain, h.dataout);
-        });
-    }
-}
-</script>
+<script type="module" src="./Controller/HotelPet_Controller.js"></script>
 
 </body>
 </html>

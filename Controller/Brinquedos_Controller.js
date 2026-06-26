@@ -14,7 +14,6 @@ class BrinquedosController {
             const produtos = await this.model.listarBrinquedos();
             this.view.renderizarProdutos(produtos);
             this.view.atualizarCoracoesVisuais();
-            
             this.configurarEventos();
         } catch (error) {
             console.error("Erro na Inicialização:", error);
@@ -22,12 +21,18 @@ class BrinquedosController {
     }
 
     configurarEventos() {
-        this.view.grid.addEventListener('click', (e) => {
+        document.body.addEventListener('click', (e) => {
             const botaoAdd = e.target.closest('.add-btn');
-            const botaoFav = e.target.closest('.fav-btn');
+            const botaoFav = e.target.closest('.wishlist-btn');
 
-            if (botaoAdd) this.handleAdicionarCarrinho(botaoAdd);
-            if (botaoFav) this.handleAlternarFavorito(botaoFav);
+            if (botaoAdd) {
+                e.stopPropagation();
+                this.handleAdicionarCarrinho(botaoAdd);
+            }
+            if (botaoFav) {
+                e.stopPropagation();
+                this.handleAlternarFavorito(botaoFav);
+            }
         });
 
         window.addEventListener('storage', () => {
@@ -44,13 +49,20 @@ class BrinquedosController {
         carrinho.push({ name, price, img });
         
         localStorage.setItem('royalPetCart', JSON.stringify(carrinho));
+        
+        this.view.mostrarAvisoVisual(name);
         window.dispatchEvent(new Event('storage'));
-        alert(`${name} adicionado ao carrinho!`);
+
+        if (window.parent && window.parent.document) {
+            const openCartIconEl = window.parent.document.getElementById('open-cart-icon');
+            if (openCartIconEl) openCartIconEl.click(); 
+        }
     }
 
     handleAlternarFavorito(btn) {
-        const cardInfo = btn.closest('.product-info');
-        const addBtn = cardInfo.querySelector('.add-btn');
+        const card = btn.closest('.product-card');
+        const addBtn = card.querySelector('.add-btn');
+        
         const name = addBtn.getAttribute('data-name');
         const price = parseFloat(addBtn.getAttribute('data-price'));
         const img = addBtn.getAttribute('data-img');
@@ -70,7 +82,7 @@ class BrinquedosController {
     }
 }
 
-r
+// Inicializa corretamente usando o operador 'new'
 document.addEventListener('DOMContentLoaded', () => {
     new BrinquedosController(new BrinquedosModel(), new BrinquedosView());
 });

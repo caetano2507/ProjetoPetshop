@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sobre Nós - Royal Pet</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
 <style>
 * {
     margin: 0;
@@ -20,13 +22,27 @@ body {
 
 /* HEADER */
 header {
-    background: #41bdea;
+    background: #ffffff;
     padding: 20px;
     text-align: center;
     font-size: 28px;
     font-weight: bold;
     color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+
+.logo {
+    font-family: 'Playfair Display', serif; 
+    font-size: 30px;                        
+    font-weight: 900;                     
+    letter-spacing: -0.7px;                 
+    color: #1a1a1a;                         
+    text-decoration: none; /* Garante que não fique sublinhado*/
+    display: inline-block;
+}
+
+.logo span {
+    color: #2d7a4e;                        
 }
 
 /* HERO */
@@ -111,7 +127,7 @@ footer {
 <body>
 
 <header>
-    Royal Pet
+    <a href="Telainicio.html" class="logo">Royal<span>Pet</span></a>
 </header>
 
 <section class="hero">

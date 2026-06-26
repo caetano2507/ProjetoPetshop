@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Banho e Tosa - RoyalPet</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
 <style>
 *{
     margin:0;
@@ -29,13 +31,19 @@ body{
     gap:15px;
 }
 
-.logo-small{
-    text-decoration:none;
-    color:#2E8B57;
-    font-size:1.3rem;
-    font-weight:bold;
+.logo {
+    font-family: 'Playfair Display', serif; 
+    font-size: 30px;                        
+    font-weight: 900;                       
+    letter-spacing: -0.7px;                 
+    color: #1a1a1a;                         
+    text-decoration: none; /* Garante que não fique sublinhado*/
+    display: inline-block;
 }
 
+.logo span {
+    color: #2d7a4e;                        
+}
 .main-header h1{
     color:#222;
     font-size: 1.5rem;
@@ -367,7 +375,7 @@ footer{
 <body>
 
 <header class="main-header">
-    <a href="Telainicio.html" class="logo-small">RoyalPet</a>
+    <a href="Telainicio.html" class="logo">Royal<span>Pet</span></a>
     <h1>Agendamento de Estética</h1>
 </header>
 
@@ -427,17 +435,17 @@ footer{
     <h2>Nossos Cuidados Inclusos</h2>
     <div class="cards-servicos">
         <div class="card-servico">
-            <div class="icone">🧼</div>
+            <div class="icone"></div>
             <h3>Banho Premium</h3>
             <p>Utilizamos shampoos e condicionadores específicos para o tipo de pelagem do seu amigo.</p>
         </div>
         <div class="card-servico">
-            <div class="icone">✂️</div>
+            <div class="icone"></div>
             <h3>Tosa Especializada</h3>
             <p>Tosa higiênica, na máquina ou na tesoura, respeitando as características de cada raça.</p>
         </div>
         <div class="card-servico">
-            <div class="icone">💅</div>
+            <div class="icone"></div>
             <h3>Unhas e Ouvidos</h3>
             <p>Corte de unhas seguro e limpeza completa dos condutos auditivos inclusos em todas as sessões.</p>
         </div>
