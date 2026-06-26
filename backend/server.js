@@ -359,143 +359,175 @@ app.get('/api/catalogo-servicos', (req, res) => {
 });
 
 
-// Módulo central do catálogo de brinquedos 
-
 const catalogoBrinquedos = [
-    // --- PRODUTOS RECOMENDADOS ---
+    // --- MAIS BRINQUEDOS (20 NOVOS ITENS) ---
+
     {
-        name: "Brinquedo Mordedor Ossinho",
-        price: 125.80,
-        desconto: "40% OFF",
+        name: "Bola Inteligente Automática",
+        price: 149.90,
+        desconto: "18% OFF",
         posicao: "recomendado",
-        img: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=300&auto=format&fit=crop"
+        categoria: "cachorros",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Bola+Inteligente\nAutomatica"
     },
     {
-        name: "Corda com Nó para Cães",
-        price: 80.90,
-        desconto: "20% OFF",
-        posicao: "recomendado",
-        img: "https://images.unsplash.com/photo-1608454367599-c1139e64ef76?q=80&w=300&auto=format&fit=crop"
-    },
-    {
-        name: "Bolinha de Borracha Resistente",
-        price: 42.90,
-        desconto: "5% OFF",
-        posicao: "recomendado",
-        img: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?q=80&w=300&auto=format&fit=crop"
-    },
-    {
-        name: "Arranhador Torre para Gatos",
-        price: 70.00,
-        desconto: "15% OFF",
-        posicao: "recomendado",
-        img: "https://images.unsplash.com/photo-1591561954555-607968c989ab?q=80&w=300&auto=format&fit=crop"
-    },
-    {
-        name: "Brinquedo Interativo Pet",
-        price: 110.00,
+        name: "Pelúcia Raposa com Apito",
+        price: 69.90,
         desconto: "25% OFF",
         posicao: "recomendado",
-        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
+        categoria: "cachorros",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Pelucia+Raposa\nCom+Apito"
     },
     {
-        name: "Frango de Borracha ClÃ¡ssico",
-        price: 95.50,
+        name: "Mordedor Halteres de Borracha",
+        price: 39.90,
         desconto: "10% OFF",
         posicao: "recomendado",
-        img: "https://images.unsplash.com/photo-1608454367599-c1139e64ef76?q=80&w=300&auto=format&fit=crop"
+        categoria: "cachorros",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Mordedor\nHalteres"
     },
     {
-        name: "Ratinho de PelÃºcia com Catnip",
-        price: 39.90,
+        name: "Bola com Dispenser de Petiscos",
+        price: 79.90,
+        desconto: "20% OFF",
+        posicao: "recomendado",
+        categoria: "cachorros",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Bola+Com\nDispenser"
+    },
+    {
+        name: "Brinquedo Polvo de Pelúcia",
+        price: 56.90,
         desconto: "30% OFF",
         posicao: "recomendado",
-        img: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?q=80&w=300&auto=format&fit=crop"
+        categoria: "cachorros",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Polvo+De\nPelucia"
     },
     {
-        name: "Circuito de Bolinhas para Gatos",
-        price: 109.80,
-        desconto: "12% OFF",
+        name: "Argola Mordedora Flexível",
+        price: 32.90,
+        desconto: "15% OFF",
+        posicao: "oferta",
+        categoria: "cachorros",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Argola\nMordedora"
+    },
+    {
+        name: "Corda Colorida Trançada",
+        price: 27.90,
+        desconto: "35% OFF",
+        posicao: "oferta",
+        categoria: "cachorros",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Corda+Colorida\nTrancada"
+    },
+    {
+        name: "Osso de Nylon Sabor Bacon",
+        price: 49.90,
+        desconto: "40% OFF",
+        posicao: "oferta",
+        categoria: "cachorros",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Osso+De\nNylon"
+    },
+    {
+        name: "Varinha com Ratinho de Pelúcia",
+        price: 34.90,
+        desconto: "30% OFF",
         posicao: "recomendado",
-        img: "https://images.unsplash.com/photo-1591561954555-607968c989ab?q=80&w=300&auto=format&fit=crop"
+        categoria: "gatos",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Varinha+Com\nRatinho"
     },
-    // --- SUPER OFERTAS DO DIA (CARROSSEL) ---
     {
-        name: "Mini Mordedor Dental",
-        price: 23.90,
-        desconto: "70% OFF",
+        name: "Bolinha com Guizo",
+        price: 18.90,
+        desconto: "15% OFF",
         posicao: "oferta",
-        img: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?q=80&w=300&auto=format&fit=crop"
+        categoria: "gatos",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Bolinha\nCom+Guizo"
     },
     {
-        name: "Brinquedo Disco Flyer",
-        price: 21.90,
-        desconto: "60% OFF",
+        name: "Mola Interativa para Gatos",
+        price: 22.90,
+        desconto: "20% OFF",
         posicao: "oferta",
-        img: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=300&auto=format&fit=crop"
+        categoria: "gatos",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Mola\nInterativa"
     },
     {
-        name: "Varinha Interativa Penas Gato",
-        price: 40.00,
+        name: "Brinquedo Abelha com Catnip",
+        price: 36.90,
+        desconto: "25% OFF",
+        posicao: "recomendado",
+        categoria: "gatos",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Abelha+Com\nCatnip"
+    },
+    {
+        name: "Arranhador Ondulado Premium",
+        price: 89.90,
+        desconto: "18% OFF",
+        posicao: "recomendado",
+        categoria: "gatos",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Arranhador\nOndulado"
+    },
+    {
+        name: "Bola Giratória com LED",
+        price: 72.90,
+        desconto: "35% OFF",
+        posicao: "recomendado",
+        categoria: "gatos",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Bola+Giratoria\nCom+LED"
+    },
+    {
+        name: "Peixinho de Catnip",
+        price: 29.90,
+        desconto: "45% OFF",
+        posicao: "oferta",
+        categoria: "gatos",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Peixinho\nDe+Catnip"
+    },
+    {
+        name: "Torre Interativa com Bolinhas",
+        price: 84.90,
+        desconto: "22% OFF",
+        posicao: "recomendado",
+        categoria: "gatos",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Torre\nInterativa"
+    },
+    {
+        name: "Pompom com Penas",
+        price: 16.90,
         desconto: "50% OFF",
         posicao: "oferta",
-        img: "https://images.unsplash.com/photo-1591561954555-607968c989ab?q=80&w=300&auto=format&fit=crop"
+        categoria: "gatos",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Pompom\nCom+Penas"
     },
     {
-        name: "PelÃºcia Macaco com Apito",
-        price: 32.20,
-        desconto: "80% OFF",
+        name: "Brinquedo Lagartixa de Pelúcia",
+        price: 42.90,
+        desconto: "28% OFF",
         posicao: "oferta",
-        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
+        categoria: "gatos",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Lagartixa\nDe+Pelucia"
     },
     {
-        name: "PelÃºcia Macaco com Apito",
-        price: 32.20,
-        desconto: "80% OFF",
-        posicao: "oferta",
-        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
+        name: "Túnel Dobrável Colorido",
+        price: 64.90,
+        desconto: "20% OFF",
+        posicao: "recomendado",
+        categoria: "gatos",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Tunel\nDobravel"
     },
     {
-        name: "PelÃºcia Macaco com Apito",
-        price: 32.20,
-        desconto: "80% OFF",
+        name: "Kit 4 Bolinhas Coloridas",
+        price: 24.90,
+        desconto: "35% OFF",
         posicao: "oferta",
-        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
-    },
-    {
-        name: "PelÃºcia Macaco com Apito",
-        price: 32.20,
-        desconto: "80% OFF",
-        posicao: "oferta",
-        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
-    },
-    {
-        name: "PelÃºcia Macaco com Apito",
-        price: 32.20,
-        desconto: "80% OFF",
-        posicao: "oferta",
-        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
-    },
-    {
-        name: "PelÃºcia Macaco com Apito",
-        price: 32.20,
-        desconto: "80% OFF",
-        posicao: "oferta",
-        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
-    },
-    {
-        name: "PelÃºcia Macaco com Apito",
-        price: 32.20,
-        desconto: "80% OFF",
-        posicao: "oferta",
-        img: "https://images.unsplash.com/photo-1568393691622-c7ba131d63b6?q=80&w=300&auto=format&fit=crop"
+        categoria: "gatos",
+        img: "https://placehold.co/400x400/f3f4f6/374151?text=Kit+Bolinhas\nColoridas"
     }
+
 ];
 
-    app.get('/api/brinquedos', (req, res) => {
-        res.json(catalogoBrinquedos);
-    });
-
+app.get('/api/brinquedos', (req, res) => {
+    res.json(catalogoBrinquedos);
+});
     
 //escuta o servidor (Essa parte deve ser a ultima do arquivo)
 app.listen(PORT, () => {
