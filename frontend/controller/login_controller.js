@@ -1,4 +1,5 @@
 // Aguarda a página carregar completamente
+baseUrl = "https://projetopetshop.onrender.com/petshop/"
 document.addEventListener("DOMContentLoaded", () => {
  
   const formLogin = document.getElementById("loginForm"); 
@@ -16,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
  
       try {
         // Envia os dados para o seu Backend oficial rodando no localhost:3000
-        const resposta = await fetch("http://localhost:3000/petshop/login", {
+        const resposta = await fetch(`${baseUrl}login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

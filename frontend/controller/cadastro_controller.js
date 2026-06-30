@@ -1,4 +1,4 @@
-baseUrl = "https://projetopetshop.onrender.com/"
+baseUrl = "https://projetopetshop.onrender.com/petshop/"
 document.addEventListener("DOMContentLoaded", () => {
     const formCadastro = document.getElementById("formCadastro"); // Certifique-se de que a tag <form> no seu cadastroPetshop.html tenha id="formCadastro"
  

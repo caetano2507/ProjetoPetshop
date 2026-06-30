@@ -1,3 +1,4 @@
+baseUrl = "https://projetopetshop.onrender.com/"
 document.addEventListener("DOMContentLoaded", () => {
  
   // ========================================================
@@ -13,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const senha = document.getElementById('senha').value;
  
       try {
-        const resposta = await fetch('/petshop/login', {
+        const resposta = await fetch(`${baseUrl}login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, senha })
