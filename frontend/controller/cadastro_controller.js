@@ -1,77 +1,46 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // --- SELEÇÃO DOS ELEMENTOS DO HTML ---
-    const btnVoltar = document.getElementById("btnVoltar");
-    const btnEntrar = document.getElementById("btnEntrar");
-    const tituloInicio = document.getElementById("tituloInicio");
-    const formCadastro = document.getElementById("formCadastro");
+    const formCadastro = document.getElementById("formCadastro"); // Certifique-se de que a tag <form> no seu cadastroPetshop.html tenha id="formCadastro"
  
-    // --- AÇÃO DO BOTÃO "VOLTAR" ---
-    if (btnVoltar) {
-        btnVoltar.addEventListener("click", () => {
-            window.location.href = "loginPetshop.html";
-        });
-    }
- 
-    // --- AÇÃO DO BOTÃO "ENTRAR" ---
-    if (btnEntrar) {
-        btnEntrar.addEventListener("click", () => {
-            window.location.href = "loginPetshop.html";
-        });
-    }
- 
-    // --- AÇÃO AO CLICAR NO TÍTULO "ROYAL PET" (Ir para Home) ---
-    if (tituloInicio) {
-        tituloInicio.addEventListener("click", () => {
-            window.location.href = "Telainicio.html"; // Volta pra tela inicial
-        });
-    }
- 
-    // --- ENVIO DOS DADOS PARA O BANCO DE DADOS (BACKEND) ---
     if (formCadastro) {
         formCadastro.addEventListener("submit", async (event) => {
-            event.preventDefault(); // Não deixa a página recarregar
+            event.preventDefault(); // Impede a página de recarregar e quebrar a requisição
  
-            // Pegando os valores digitados nos campos
+            // Captura os valores dos inputs do HTML pelos IDs corretos
             const nome = document.getElementById("nome").value;
             const email = document.getElementById("email").value;
             const senha = document.getElementById("senha").value;
             const confirmarSenha = document.getElementById("confirmarSenha").value;
-            const termos = document.getElementById("termos").checked;
  
-            // Validações básicas antes de enviar
+            // Validação de segurança básica no frontend
             if (senha !== confirmarSenha) {
-                alert("As senhas não coincidem! Tente novamente.");
-                return;
-            }
- 
-            if (!termos) {
-                alert("Você precisa aceitar os termos de uso.");
+                alert("As senhas não coincidem!");
                 return;
             }
  
             try {
-                // Envia as informações para a rota (petshop_routers.js)
+                // Envia os dados para a rota correta do seu servidor Node
                 const resposta = await fetch("http://localhost:3000/petshop/cadastrar", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ nome, email, senha })
+                    body: JSON.stringify({ nome, email, senha }) // Chaves exatas que o banco espera
                 });
  
                 const dados = await resposta.json();
  
                 if (resposta.ok) {
-                    alert(`Bem-vindo(a), ${nome}! Sua conta Royal Pet foi criada com sucesso.`);
-                    window.location.href = "loginPetshop.html"; // Vai para a tela de login após cadastrar
+                    alert("Conta criada com sucesso! 🎉 Redirecionando para o login...");
+                    window.location.href = "/petshop/login"; // Joga o usuário de volta para a tela de loginPetshop.html
                 } else {
-                    alert("Erro ao cadastrar: " + dados.erro);
+                    alert("Erro do servidor: " + (dados.erro || "Não foi possível cadastrar."));
                 }
+ 
             } catch (error) {
-                console.error("Erro na requisição:", error);
-                alert("Não foi possível conectar ao servidor. Verifique se o Node está rodando.");
+                console.error("Erro na requisição de cadastro:", error);
+                alert("Não foi possível conectar ao servidor backend.");
             }
         });
     }
 });
+ 
