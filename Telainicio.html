@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,8 @@
 
 <header class="main-header">
     <div class="header-container">
-        <a href="Telainicio.html" class="logo">Royal<span>Pet</span></a>
+        <!-- se tirar esse "#" e o "href" a logo perde o designer dela, então ao inves de alguma ref eu coloquei um "#" que faz basicamente o mesmo papel -->
+        <a href="#" class="logo">Royal<span>Pet</span></a>
         
         <nav class="nav-links">
             <a href="loginPetshop.html" class="btn-inicio">Início</a>
@@ -21,6 +22,16 @@
         </nav>
 
         <div class="search-and-actions">
+            <div class="search-container">
+                <input
+                    type="text"
+                    placeholder="O que seu pet procura?"
+                >
+                <button>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+
             <div class="user-icons">
                 <i href="atendimentoPetshop.html" class="fa-solid fa-headset"></i>
                 
@@ -39,6 +50,21 @@
 </header>
 
 <main class="hero">
+
+    <section class="hero-banner">
+    <div class="hero-overlay">
+        <div class="hero-text">
+            <h1>Cuidado que faz seu pet feliz.</h1>
+            <p>
+                Rações, brinquedos, acessórios e muito mais para o seu melhor amigo.
+            </p>
+            <!-- <a href="racaoPetshop.html" class="hero-btn">
+                Explorar
+            </a> -->
+        </div>
+    </div>
+
+</section>
 
     <div class="cards-wrapper">
         <a href="racaoPetshop.html" class="card-link">
@@ -161,15 +187,15 @@ body {
 
 .logo {
     font-family: 'Playfair Display', serif;
-    font-size: 24px;                        /* Tamanho exato padrão da sua Tela de Serviços */
-    font-weight: 700;                       /* Peso exato padrão da sua Tela de Serviços */
-    color: #1a1a1a;                         /* <--- ALTERE A COR DO "Royal" MANUALMENTE AQUI */
+    font-size: 24px;                       
+    font-weight: 700;                       
+    color: #1a1a1a;                        
     text-decoration: none;
     display: inline-block;
 }
 
 .logo span {
-    color: #2d7a4e;                         /* O verde exato do "Pet" da sua tela de serviços */
+    color: #2d7a4e;                         
     font-weight: 700;
 }
 
@@ -309,22 +335,22 @@ body {
 .heart-badge { background-color: #2ecc71; }
 
 /* hero */
-.hero {
-    flex: 1;
-    height: 80vh;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.hero{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
-.cards-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
+.cards-wrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:35px;
+    flex-wrap:wrap;
+    margin-top:-40px;
+    z-index:5;
+    position:relative;
 }
 
 .card-link {
@@ -332,28 +358,27 @@ body {
     color: inherit;
 }
 
-.category-card {
-    width: 180px;
-    height: 220px;
-    background: white;
-    border-radius: 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+.category-card{
+    width:210px;
+    height:250px;
+    background:white;
+    border-radius:40px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:18px;
+    box-shadow:0 20px 45px rgba(0,0,0,.10),0 8px 20px rgba(0,0,0,.06);
+    transition:.35s;
 }
 
-.category-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+.category-card:hover{
+    transform:translateY(-15px) scale(1.04);
 }
 
 .card-icon img {
-    width: 110px;
-    height: 110px;
+    width:120px;
+    height:120px;
     object-fit: contain;
 }
 
@@ -589,6 +614,60 @@ body {
 #checkout-btn:hover { background: #1a252f; }
 #add-all-to-cart-btn:hover { background: #27ae60 !important; }
 #add-all-to-cart-btn:active { transform: scale(0.98); }
+
+.hero-banner{
+    width:100%;
+    height:420px;
+    background:
+    linear-gradient(
+    rgba(0,0,0,.35),
+    rgba(0,0,0,.35)),
+    url("./Imagens/fotobanner3.jpg.jpg");
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-overlay{
+    width:100%;
+    max-width:1200px;
+    height:100%;
+    display:flex;
+    align-items:center;
+    padding:0 60px;
+}
+
+.hero-text{
+    color:white;
+    max-width:540px;
+    margin-left:40px;
+    transform:translateY(-15px);
+}
+
+.hero-text h1{
+    font-size:52px;
+    margin-bottom:15px;
+}
+
+.hero-text p{
+    font-size:19px;
+    margin-bottom:25px;
+}
+
+.hero-btn{
+    display:inline-block;
+    padding:14px 34px;
+    background:#48CAE4;
+    color:white;
+    text-decoration:none;
+    border-radius:40px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.hero-btn:hover{
+    background:#0096C7;
+
+}
 
 @media (max-width: 480px) {
     .cart-sidebar {

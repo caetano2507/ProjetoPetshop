@@ -53,10 +53,18 @@ body{
 
 /* BANNER */
 .hero-consultas{
-    background:linear-gradient(135deg,#2E8B57,#3aa567);
+    height: 350px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
+    url("./Imagens/fotoconsulta4.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
     color:white;
     text-align:center;
-    padding:70px 20px;
 }
 
 .hero-consultas h2{
@@ -714,7 +722,7 @@ footer{
     <div id="lista-consultas"></div>
 </section>
 
-<!-- ESTRUTURA DO BALÃO DE AVISO CUSTOMIZADO -->
+<!-- estrutura do balão de aviso customizado -->
 <div class="modal-overlay" id="modalAviso">
     <div class="modal-balao">
         <p id="modalTexto">Mensagem de aviso aqui.</p>
@@ -725,7 +733,7 @@ footer{
 </div>
 
 <footer>
-    © 2026 RoyalPet - Todos os direitos reservados.
+    © 2026 RoyalPet 
 </footer>
 
 <script type="module" src="./Controller/Consulta_Controller.js"></script>
