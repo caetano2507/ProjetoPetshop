@@ -1,38 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>RoyalPet - Dashboard</title>
+<meta charset="UTF-8">
+<title>Royal Pet - Login</title>
  
- <link rel="stylesheet" href="./style/login.css">
+<link rel="stylesheet" href="./style/style.css">
  
- <script src="./login.js" defer></script>
+<script src="./controller/login_controller.js" defer></script>
 </head>
-<body class="dashboard-page">
+<body>
+  <div class="container">
+    <div class="card">
+      <h2 class="titulo">ROYAL PET</h2>
  
- <aside class="sidebar">
-   <div class="sidebar-logo">
-     <h2>RoyalPet</h2>
-     <h3 id="sidebar-role-text">Painel</h3>
-   </div>
+      <form id="loginForm">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="Digite seu e-mail" autocomplete="email" required>
+        <br>
  
-   <nav class="sidebar-nav">
-     <a href="#" class="nav-item active">📋 Dashboard</a>
-     <a href="./atendimentoPetshop.html" class="nav-item">🧼 Atendimento</a>
-     <a href="./acessoriosPetshop.html" class="nav-item">🦴 Acessórios</a>
-     <a href="./casasPetshop.html" class="nav-item">🏠 Casas</a>
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Digite sua senha" autocomplete="current-password" required>
+        <br>
  
-     <div id="menu-admin-only" class="admin-only-section hidden">
-       <div class="nav-divider">GERENCIAMENTO</div>
-       <a href="/petshop/racao-tela" class="nav-item special-nav">🌾 Controlar Rações</a>
-     </div>
-   </nav>
+        <a href="#" id="esqueciSenha">Esqueceu a senha?</a>
  
-   <div class="sidebar-footer">
-     <a href="./loginPetshop.html" class="nav-item logout">🚪 Sair</a>
-   </div>
- </aside>
- 
- <main class="main-content">
- 
+        <button type="submit" id="btnEntrar">Entrar</button>
+        <br><br>
+        <p>Novo no RoyalPet? <a href="./cadastroPetshop.html">Crie sua conta</a></p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

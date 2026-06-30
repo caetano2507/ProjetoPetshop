@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>RoyalPet - Dashboard</title>
+ 
+ <link rel="stylesheet" href="./style/login.css">
+ 
+ <script src="./login.js" defer></script>
+</head>
+<body class="dashboard-page">
+ 
+ <aside class="sidebar">
+   <div class="sidebar-logo">
+     <h2>RoyalPet</h2>
+     <h3 id="sidebar-role-text">Painel</h3>
+   </div>
+ 
+   <nav class="sidebar-nav">
+     <a href="#" class="nav-item active">📋 Dashboard</a>
+     <a href="./atendimentoPetshop.html" class="nav-item">🧼 Atendimento</a>
+     <a href="./acessoriosPetshop.html" class="nav-item">🦴 Acessórios</a>
+     <a href="./casasPetshop.html" class="nav-item">🏠 Casas</a>
+ 
+     <div id="menu-admin-only" class="admin-only-section hidden">
+       <div class="nav-divider">GERENCIAMENTO</div>
+       <a href="/petshop/racao-tela" class="nav-item special-nav">🌾 Controlar Rações</a>
+     </div>
+   </nav>
+ 
+   <div class="sidebar-footer">
+     <a href="./loginPetshop.html" class="nav-item logout">🚪 Sair</a>
+   </div>
+ </aside>
+ 
+ <main class="main-content">
+ 
