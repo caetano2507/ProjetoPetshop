@@ -368,7 +368,7 @@ const catalogoBrinquedos = [
         desconto: "18% OFF",
         posicao: "recomendado",
         categoria: "cachorros",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Bola+Inteligente\nAutomatica"
+        img: "https://i.postimg.cc/TPMPKyf6/bolainteligente.webp"
     },
     {
         name: "Pelúcia Raposa com Apito",
@@ -376,7 +376,7 @@ const catalogoBrinquedos = [
         desconto: "25% OFF",
         posicao: "recomendado",
         categoria: "cachorros",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Pelucia+Raposa\nCom+Apito"
+        img: "https://i.postimg.cc/zX7ML4NY/fotopelucia.jpg"
     },
     {
         name: "Mordedor Halteres de Borracha",
