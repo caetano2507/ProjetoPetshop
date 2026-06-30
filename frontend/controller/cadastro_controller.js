@@ -1,3 +1,4 @@
+baseUrl = "https://projetopetshop.onrender.com/"
 document.addEventListener("DOMContentLoaded", () => {
     const formCadastro = document.getElementById("formCadastro"); // Certifique-se de que a tag <form> no seu cadastroPetshop.html tenha id="formCadastro"
  
@@ -19,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
  
             try {
                 // Envia os dados para a rota correta do seu servidor Node
-                const resposta = await fetch("http://localhost:3000/petshop/cadastrar", {
+                const resposta = await fetch(`${baseUrl}cadastrar`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
