@@ -360,7 +360,6 @@ app.get('/api/catalogo-servicos', (req, res) => {
 
 
 const catalogoBrinquedos = [
-    // --- MAIS BRINQUEDOS (20 NOVOS ITENS) ---
 
     {
         name: "Bola Inteligente Automática",
@@ -384,7 +383,7 @@ const catalogoBrinquedos = [
         desconto: "10% OFF",
         posicao: "recomendado",
         categoria: "cachorros",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Mordedor\nHalteres"
+        img: "https://i.postimg.cc/Zn7zJ7F8/fotomordedor.jpg"
     },
     {
         name: "Bola com Dispenser de Petiscos",
@@ -392,7 +391,7 @@ const catalogoBrinquedos = [
         desconto: "20% OFF",
         posicao: "recomendado",
         categoria: "cachorros",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Bola+Com\nDispenser"
+        img: "https://i.postimg.cc/Jnx9Q6gM/bolapetisco.jpg"
     },
     {
         name: "Brinquedo Polvo de Pelúcia",
@@ -400,7 +399,7 @@ const catalogoBrinquedos = [
         desconto: "30% OFF",
         posicao: "recomendado",
         categoria: "cachorros",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Polvo+De\nPelucia"
+        img: "https://i.postimg.cc/JzCPG36X/brinquedopolvo.jpg"
     },
     {
         name: "Argola Mordedora Flexível",
@@ -408,7 +407,7 @@ const catalogoBrinquedos = [
         desconto: "15% OFF",
         posicao: "oferta",
         categoria: "cachorros",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Argola\nMordedora"
+        img: "https://i.postimg.cc/xdT71y8x/mordedor.webp"
     },
     {
         name: "Corda Colorida Trançada",
@@ -416,15 +415,15 @@ const catalogoBrinquedos = [
         desconto: "35% OFF",
         posicao: "oferta",
         categoria: "cachorros",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Corda+Colorida\nTrancada"
+        img: "https://i.postimg.cc/YqKsWwjL/cordacachorro.webp"
     },
     {
-        name: "Osso de Nylon Sabor Bacon",
+        name: "Osso Sabor Bacon",
         price: 49.90,
         desconto: "40% OFF",
         posicao: "oferta",
         categoria: "cachorros",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Osso+De\nNylon"
+        img: "https://i.postimg.cc/yd3LDfHv/osso.webp"
     },
     {
         name: "Varinha com Ratinho de Pelúcia",
@@ -432,7 +431,7 @@ const catalogoBrinquedos = [
         desconto: "30% OFF",
         posicao: "recomendado",
         categoria: "gatos",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Varinha+Com\nRatinho"
+        img: "https://i.postimg.cc/C5HH8X6w/brinquedogato.jpg"
     },
     {
         name: "Bolinha com Guizo",
@@ -440,7 +439,7 @@ const catalogoBrinquedos = [
         desconto: "15% OFF",
         posicao: "oferta",
         categoria: "gatos",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Bolinha\nCom+Guizo"
+        img: "https://i.postimg.cc/J0mjRK4V/bolinha.jpg"
     },
     {
         name: "Mola Interativa para Gatos",
@@ -448,7 +447,7 @@ const catalogoBrinquedos = [
         desconto: "20% OFF",
         posicao: "oferta",
         categoria: "gatos",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Mola\nInterativa"
+        img: "https://i.postimg.cc/761Tt7Mx/molagato.jpg"
     },
     {
         name: "Brinquedo Abelha com Catnip",
@@ -456,7 +455,7 @@ const catalogoBrinquedos = [
         desconto: "25% OFF",
         posicao: "recomendado",
         categoria: "gatos",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Abelha+Com\nCatnip"
+        img: "https://i.postimg.cc/13gVhbcn/abelinha.jpg"
     },
     {
         name: "Arranhador Ondulado Premium",
@@ -464,7 +463,7 @@ const catalogoBrinquedos = [
         desconto: "18% OFF",
         posicao: "recomendado",
         categoria: "gatos",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Arranhador\nOndulado"
+        img: "https://i.postimg.cc/3NSNzZkf/arranhador.jpg"
     },
     {
         name: "Bola Giratória com LED",
@@ -472,7 +471,7 @@ const catalogoBrinquedos = [
         desconto: "35% OFF",
         posicao: "recomendado",
         categoria: "gatos",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Bola+Giratoria\nCom+LED"
+        img: "https://i.postimg.cc/0jB5V24H/boladegato.jpg"
     },
     {
         name: "Peixinho de Catnip",
@@ -480,7 +479,7 @@ const catalogoBrinquedos = [
         desconto: "45% OFF",
         posicao: "oferta",
         categoria: "gatos",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Peixinho\nDe+Catnip"
+        img: "https://i.postimg.cc/0NskW4ts/catnip.webp"
     },
     {
         name: "Torre Interativa com Bolinhas",
@@ -488,7 +487,7 @@ const catalogoBrinquedos = [
         desconto: "22% OFF",
         posicao: "recomendado",
         categoria: "gatos",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Torre\nInterativa"
+        img: "https://i.postimg.cc/4yqZz274/torrebolinha.webp"
     },
     {
         name: "Pompom com Penas",
@@ -496,7 +495,7 @@ const catalogoBrinquedos = [
         desconto: "50% OFF",
         posicao: "oferta",
         categoria: "gatos",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Pompom\nCom+Penas"
+        img: "https://i.postimg.cc/JhM8cknh/pompom.jpg"
     },
     {
         name: "Brinquedo Lagartixa de Pelúcia",
@@ -504,7 +503,7 @@ const catalogoBrinquedos = [
         desconto: "28% OFF",
         posicao: "oferta",
         categoria: "gatos",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Lagartixa\nDe+Pelucia"
+        img: "https://i.postimg.cc/G3V1gNtH/largaticha.webp"
     },
     {
         name: "Túnel Dobrável Colorido",
@@ -512,7 +511,7 @@ const catalogoBrinquedos = [
         desconto: "20% OFF",
         posicao: "recomendado",
         categoria: "gatos",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Tunel\nDobravel"
+        img: "https://i.postimg.cc/j52GZQrD/tunelgato.jpg"
     },
     {
         name: "Kit 4 Bolinhas Coloridas",
@@ -520,7 +519,7 @@ const catalogoBrinquedos = [
         desconto: "35% OFF",
         posicao: "oferta",
         categoria: "gatos",
-        img: "https://placehold.co/400x400/f3f4f6/374151?text=Kit+Bolinhas\nColoridas"
+        img: "https://i.postimg.cc/T39ds9BL/bolinha.webp"
     }
 
 ];
