@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
           alert("Login efetuado com sucesso! Redirecionando...");
           
           // REDIRECIONA PARA A ROTA QUE ABRE O DASHBOARD (login.html)
-          window.location.href = "frontend/index.html"; 
+          window.location.href = "login.html"; 
         } else {
           // Mostra o erro exato vindo do banco (ex: E-mail ou senha incorretos)
           alert("Erro: " + (dados.erro || "Credenciais inválidas."));
