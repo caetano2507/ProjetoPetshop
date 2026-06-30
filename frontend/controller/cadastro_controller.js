@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
  
                 if (resposta.ok) {
                     alert("Conta criada com sucesso! 🎉 Redirecionando para o login...");
-                    window.location.href = "/petshop/login"; // Joga o usuário de volta para a tela de loginPetshop.html
+                    window.location.href = "https://projetopetshop.onrender.com/login.html"; // Joga o usuário de volta para a tela de loginPetshop.html
                 } else {
                     alert("Erro do servidor: " + (dados.erro || "Não foi possível cadastrar."));
                 }
